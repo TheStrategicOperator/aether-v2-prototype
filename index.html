@@ -3,15 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <title>AETHER V3 Tester</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0b0f17;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    button {
+      padding: 14px 26px;
+      font-size: 18px;
+      background: #6c8cff;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>AETHER V3 Tester Build</h1>
 
-  <script type="module">
-    import { startAether } from "./src/app.ts";
-    startAether();
-  </script>
+<h1>AETHER V3 Tester</h1>
+<p>Founder Structure Decision Engine</p>
+
+<button onclick="runScan()">Run Demo Scan</button>
+
+<div id="result"></div>
+
+<script type="module">
+
+import { runAetherScan } from "./src/logic/runAetherScan.ts";
+
+window.runScan = () => {
+
+  const answers = {
+    founderCount: "solo",
+    location: "us",
+    revenueStage: "none",
+    expectedRevenue: "moderate",
+    liabilityConcern: "high",
+    investorIntent: "maybe",
+    hiringPlan: "contractors",
+    priority: "protection"
+  };
+
+  const result = runAetherScan(answers);
+
+  document.getElementById("result").innerText =
+    "Recommended Structure: " + result.structure;
+
+};
+
+</script>
 
 </body>
 </html>
