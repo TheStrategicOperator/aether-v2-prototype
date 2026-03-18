@@ -239,8 +239,7 @@ var steps = [
 
 var current = 0;
 var answers = JSON.parse(localStorage.getItem('aether_answers') || '{}');
-var savedStep = parseInt(localStorage.getItem('aether_step') || '0');
-if (savedStep > 0 && savedStep < steps.length) current = savedStep;
+// Always start at step 0 — previous answers stay pre-filled so returning users just change what's different
 
 function renderDots() {
   var wrap = document.getElementById('stepDots');
