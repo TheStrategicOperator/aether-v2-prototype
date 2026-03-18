@@ -230,9 +230,10 @@ function renderHold(wrap,a){
     </div>
 
     <div class="hold-action-row">
-      <button class="btn-primary" onclick="resetScan()">Re-run Scan</button>
-      <a href="index.html" class="btn-secondary">Back to AETHER</a>
+      <button class="btn-primary" onclick="resetScan()">Update My Scan</button>
+      <button class="btn-secondary" onclick="formAnyway()">I want to form anyway →</button>
     </div>
+    <p style="margin-top:16px;font-size:11px;color:#304F6A;line-height:1.6;">AETHER recommends waiting — but the decision is yours. If you choose to proceed, your blueprint is ready below.</p>
   `;
 }
 
@@ -269,9 +270,10 @@ function renderEdge(wrap,a){
     </div>
 
     <div class="hold-action-row">
-      <button class="btn-primary" onclick="resetScan()">Re-run Scan</button>
-      <a href="index.html" class="btn-secondary">Back to AETHER</a>
+      <button class="btn-primary" onclick="resetScan()">Update My Scan</button>
+      <button class="btn-secondary" onclick="formAnyway()">I want to form anyway →</button>
     </div>
+    <p style="margin-top:16px;font-size:11px;color:#304F6A;line-height:1.6;">AETHER recommends getting a few things in place first — but the decision is yours. If you choose to proceed, your blueprint is ready below.</p>
   `;
 }
 
@@ -477,7 +479,91 @@ function render(){
   });
 }
 
-function resetScan(){localStorage.removeItem('aether_answers');localStorage.removeItem('aether_step');window.location.href='scan.html';}
+function resetScan(){
+  // Keep answers so scan pre-fills — just reset step to 0 so user reviews from start
+  localStorage.setItem('aether_step','0');
+  window.location.href='scan.html';
+}
+
+function formAnyway(){
+  // Override readiness — force FORM_NOW and render blueprint
+  var wrap=document.getElementById('resultsWrap');
+  var entity=decide(answers);
+  if(!entity)entity='Single-Member LLC';
+  var bp=BP[entity];
+  var si=STAGE_MAP[entity];
+  bp.classification['Operating State']=answers.operatingState||'Not specified';
+  var fields=Object.entries(bp.classification).map(([k,v])=>`<div class="panel-field"><div class="field-label">${k}</div><div class="field-value">${v}</div></div>`).join('');
+  var whyHtml=bp.why.map(w=>`<li>${w}</li>`).join('');
+  var actHtml=bp.actions.map(a=>`<li>${a}</li>`).join('');
+  var p2Html=bp.phase2.map(p=>`<li>${p}</li>`).join('');
+  var total=bp.actions.length;
+  wrap.innerHTML=`
+    <div style="margin-bottom:24px;padding:12px 20px;background:rgba(201,161,74,0.07);border:1px solid rgba(201,161,74,0.25);border-left:3px solid #C9A14A;">
+      <p style="font-size:12px;color:#C9A14A;font-weight:500;letter-spacing:0.06em;">You chose to proceed — AETHER respects that. Here is your formation blueprint.</p>
+    </div>
+    <p class="result-eyebrow">Formation Blueprint — Founder Override</p>
+    <h1 class="result-headline">Recommended:<br><span>${entity}</span></h1>
+    <p class="result-sub">${bp.subhead}</p>
+    <div class="stage-panel">
+      <div class="stage-hdr"><span class="stage-hdr-label">Your Current Founder Stage</span></div>
+      <div class="stage-body">
+        <div class="stage-name">${si.stage}</div>
+        <p class="stage-desc">${si.desc}</p>
+        <p class="stage-why">${si.why}</p>
+        ${si.next?`<div class="stage-next"><div class="stage-next-label">Next Stage Preview</div><p class="stage-next-text"><strong>${si.next.name}:</strong> ${si.next.text}</p></div>`:''}
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-hdr"><span class="panel-title">Entity Classification</span></div>
+      <div class="panel-body">${fields}</div>
+    </div>
+    <div class="section" style="animation-delay:0.5s">
+      <div class="section-title">Why This Fits</div>
+      <ul class="why-list">${whyHtml}</ul>
+    </div>
+    <div class="section" style="animation-delay:0.6s">
+      <div class="section-title">Strategic Notes</div>
+      <p class="strategic-notes">${bp.notes}</p>
+    </div>
+    <div class="section" style="animation-delay:0.7s">
+      <div class="roadmap-header">
+        <div><div class="roadmap-stage-label">Your Setup Path — ${si.stage}</div><div class="roadmap-stage-name">Formation Roadmap</div></div>
+        <div class="roadmap-progress" id="rmProgress">0 of ${total} steps complete</div>
+      </div>
+      <div class="roadmap-bar-wrap"><div class="roadmap-bar" id="rmBar"></div></div>
+      <ol class="next-actions" id="actionList">${actHtml}</ol>
+      <p class="roadmap-hint">Tap any step to mark it complete</p>
+      <div class="ops-check">
+        <div class="ops-check-hdr"><div class="ops-check-icon">⚑</div><div class="ops-check-title">Operational Requirements Check</div></div>
+        <p class="ops-check-body">Before you try to open a business bank account or set up a payment processor — read this.</p>
+        <ul class="ops-check-list">
+          <li>Most banks require a real operating address — not just your registered agent address.</li>
+          <li>Your EIN confirmation letter (CP-575) from the IRS is required by banks. Apply at irs.gov.</li>
+          <li>Payment processors like Stripe and PayPal may require proof of business activity before activating your account.</li>
+          <li>If operating internationally, Mercury and Relay are more accessible but still have requirements.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase2">
+      <div class="phase2-title">Phase II Preview</div>
+      <div class="phase2-head">What comes after formation</div>
+      <ul class="phase2-list">${p2Html}</ul>
+    </div>
+    <div class="action-row">
+      <a href="partners.html" class="btn-primary">View Formation Providers →</a>
+      <button class="btn-secondary" onclick="resetScan()">← Update My Scan</button>
+    </div>
+  `;
+  document.querySelectorAll('#actionList li').forEach(li=>{
+    li.addEventListener('click',function(){
+      this.classList.toggle('done');
+      const done=document.querySelectorAll('#actionList li.done').length;
+      document.getElementById('rmBar').style.width=(done/total*100)+'%';
+      document.getElementById('rmProgress').textContent=`${done} of ${total} steps complete`;
+    });
+  });
+}
 render();
 
 document.querySelectorAll('.tt').forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classList.remove('active');});el.classList.toggle('active');});});
