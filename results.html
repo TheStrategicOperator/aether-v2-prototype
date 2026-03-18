@@ -20,7 +20,7 @@ nav a:hover,nav a.active{color:#C9A14A;}
 /* TOOLTIPS */
 .tt{position:relative;display:inline;border-bottom:1px dotted rgba(201,161,74,0.35);color:inherit;cursor:help;white-space:nowrap;}
 .tt-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:250px;padding:10px 14px;background:#0B2240!important;border:1px solid rgba(201,161,74,0.35);color:#C8DEFF;font-family:'Inter',sans-serif;font-size:12px;font-weight:300;line-height:1.55;z-index:999;pointer-events:none;text-align:left;white-space:normal;}
-.tt-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#0B2240;}
+.tt-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#FFFFFF;}
 .tt-box::before{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(201,161,74,0.35);margin-top:1px;}
 .tt.active .tt-box,.tt:hover .tt-box{display:block;}
 .tt-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#C9A14A;display:block;margin-bottom:4px;}
@@ -109,23 +109,6 @@ footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(
 .footer-link{font-size:12px;color:#304F6A;text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
 .footer-link:hover{color:#C9A14A;}
 @media(max-width:768px){header{padding:0 24px;}nav{gap:18px;}.results-wrap{padding:100px 20px 60px;}.panel-body{grid-template-columns:1fr;}.panel-field{border-right:none;}.panel-field:last-child{border-bottom:none;}.phase2-list{grid-template-columns:1fr;}.action-row{flex-direction:column;}footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}}
-.checklist-card{margin-top:20px;padding:24px 28px;background:#061729!important;border:1px solid rgba(201,161,74,0.20);border-left:3px solid #C9A14A;}
-.checklist-hdr{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
-.checklist-icon{width:28px;height:28px;background:rgba(201,161,74,0.10);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
-.checklist-title{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#C9A14A;}
-.checklist-sub{font-size:12px;color:#4A7A6A;margin-bottom:16px;letter-spacing:0.04em;}
-.checklist-items{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
-.checklist-items li{font-size:13px;color:#6A90B8;padding:10px 14px 10px 42px;background:#0A1F38!important;border:1px solid rgba(255,255,255,0.06);position:relative;line-height:1.5;cursor:default;transition:all 0.2s;}
-.checklist-items li:hover{border-color:rgba(255,255,255,0.06);color:#6A90B8;}
-.checklist-items li.checked{color:#C9A14A;border-color:rgba(201,161,74,0.28);text-decoration:line-through;opacity:0.7;}
-.checklist-items li::before{content:'○';position:absolute;left:14px;top:10px;color:#C9A14A;font-size:14px;}
-.checklist-items li.checked::before{content:'✓';}
-.be-ready{margin-top:4px;padding:16px 20px;background:#0A1F38!important;border:1px solid rgba(255,255,255,0.06);border-left:2px solid rgba(201,161,74,0.3);}
-.be-ready-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;margin-bottom:10px;}
-.be-ready-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
-.be-ready-list li{font-size:12px;color:#4A6A8A;padding-left:16px;position:relative;line-height:1.55;}
-.be-ready-list li::before{content:'›';position:absolute;left:0;color:#C9A14A;}
-.reminder-tease{margin-top:12px;font-size:11px;color:#304F6A;letter-spacing:0.05em;font-style:italic;}
 </style>
 </head>
 <body>
@@ -134,9 +117,8 @@ footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(
   <nav>
     <a href="index.html">Home</a>
     <a href="scan.html">Structure Scan</a>
-    <a href="results.html" class="active">Results</a>
     <a href="partners.html">Providers</a>
-    <a href="legal.html">Legal</a>
+    <a href="results.html" class="active">Results</a>
   </nav>
 </header>
 <div class="results-wrap" id="resultsWrap"></div>
@@ -268,8 +250,6 @@ function render(){
     wrap.innerHTML=`<div class="no-data"><h2>No scan data found.</h2><p>Complete the Structure Scan to generate your formation blueprint.</p><a href="scan.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#C9A14A!important;color:#061729!important;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;-webkit-appearance:none;">Begin Structure Scan →</a></div>`;
     return;
   }
-  const CHECKLIST_MAP={'Single-Member LLC':['Apply for your EIN at irs.gov — free and instant online','Open a dedicated business bank account — never mix personal funds','Set up a basic bookkeeping system from day one','Verify your state annual report deadline and calendar it','Check local business license requirements for your city'],'LLC with S-Corp Election':['Apply for your EIN immediately after LLC formation','File Form 2553 within 75 days of formation (or by March 15)','Set up a payroll system and pay yourself a reasonable salary','Open separate accounts for operating funds and distributions','Set up quarterly estimated tax payments','Engage a CPA before your first full tax year under S-Corp status'],'Multi-Member LLC':['Apply for your EIN as a multi-member LLC — required even without employees','Open a business bank account and set up capital accounts for each member','Finalize and sign your multi-member operating agreement','Calendar the annual report deadline for your formation state','Model each member\'s estimated tax liability with a CPA before year-end'],'C-Corporation':['Apply for your EIN as a C-Corporation','File 83(b) elections for all founding shareholders within 30 days','Set up a cap table tool like Carta immediately','Register as a foreign entity in your home state if formed in Delaware','Consult a CPA on QSBS eligibility to preserve your Section 1202 window','Open a business bank account with your EIN and CP-575 letter']};
-  const checklistHtml=(CHECKLIST_MAP[entity]||[]).map(function(i){return'<li>'+i+'</li>';}).join('');
   const bp=BP[entity];
   const si=STAGE_MAP[entity];
   bp.classification['Operating State']=answers.operatingState||'Not specified';
@@ -333,7 +313,6 @@ function render(){
         </ul>
       </div>
 
-      <div class="checklist-card"><div class="checklist-hdr"><div class="checklist-icon">&#10022;</div><div class="checklist-title">Your Post-Formation Checklist</div></div><div class="checklist-sub">Automatically updates as you complete your roadmap steps</div><ul class="checklist-items" id="checklistItems">${checklistHtml}</ul><div class="be-ready"><div class="be-ready-label">Be Ready For This Later</div><ul class="be-ready-list"><li>Check your state annual report deadline and add it to your calendar</li><li>Research local business license requirements for your city or county</li><li>Understand sales tax registration if you sell physical goods or SaaS</li><li>Set a reminder for registered agent renewal &mdash; typically annual</li><li>Review state-specific compliance requirements as you grow</li></ul></div><p class="reminder-tease">Coming soon: deadline reminders by email so nothing slips through the cracks.</p></div>
       ${si.next?`<div class="roadmap-next-stage"><strong>Next Stage — ${si.next.name}:</strong> ${si.next.text}</div>`:''}
     </div>
 
@@ -349,49 +328,12 @@ function render(){
     </div>
   `;
 
-  // Auto-sync: roadmap steps drive checklist automatically
-  const syncMap = [
-    ['EIN','EIN'],
-    ['bank account','bank account'],
-    ['bookkeeping','bookkeeping'],
-    ['annual report','annual report'],
-    ['operating agreement','operating agreement'],
-    ['Form 2553','Form 2553'],
-    ['payroll','payroll'],
-    ['estimated tax','estimated tax'],
-    ['cap table','cap table'],
-    ['83(b)','83(b)'],
-    ['business license','business license'],
-    ['registered agent','registered agent']
-  ];
-
-  function autoSyncChecklist(){
-    var donesteps = [];
-    document.querySelectorAll('#actionList li.done').forEach(function(li){
-      donesteps.push(li.textContent.toLowerCase());
-    });
-    document.querySelectorAll('#checklistItems li').forEach(function(cli){
-      var ctext = cli.textContent.toLowerCase();
-      var matched = false;
-      syncMap.forEach(function(pair){
-        var kw = pair[0].toLowerCase();
-        if(ctext.indexOf(kw) > -1){
-          donesteps.forEach(function(ds){
-            if(ds.indexOf(kw) > -1){ matched = true; }
-          });
-        }
-      });
-      if(matched){ cli.classList.add('checked'); } else { cli.classList.remove('checked'); }
-    });
-  }
-
   document.querySelectorAll('#actionList li').forEach(li=>{
     li.addEventListener('click',function(){
       this.classList.toggle('done');
       const done=document.querySelectorAll('#actionList li.done').length;
       document.getElementById('rmBar').style.width=(done/total*100)+'%';
       document.getElementById('rmProgress').textContent=`${done} of ${total} steps complete`;
-      autoSyncChecklist();
     });
   });
 }
