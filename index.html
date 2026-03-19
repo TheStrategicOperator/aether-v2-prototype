@@ -23,7 +23,7 @@ html,body{height:100%;background:#020810;color:#C8DEFF;font-family:'Inter',sans-
 .vignette{position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 20%,rgba(2,8,16,0.65) 100%);pointer-events:none;}
 .bottom-fade{position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,#020810,transparent);pointer-events:none;}
 .wrap{position:relative;z-index:10;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;}
-.logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:0.28em;color:#C9A14A;text-transform:uppercase;margin-bottom:56px;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;letter-spacing:0.38em;color:#C9A14A;text-transform:uppercase;margin-bottom:48px;}
 h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,54px);font-weight:300;line-height:1.15;color:#EEF6FF;margin-bottom:20px;max-width:560px;}
 p.sub{font-size:15px;color:#6A90B8;line-height:1.7;margin-bottom:40px;max-width:360px;}
 .btn{display:inline-block;padding:16px 40px;background:#C9A14A;color:#061729;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;-webkit-appearance:none;transition:background 0.2s;}
@@ -42,7 +42,7 @@ p.sub{font-size:15px;color:#6A90B8;line-height:1.7;margin-bottom:40px;max-width:
   <div class="bottom-fade"></div>
 </div>
 <div class="wrap">
-  <div class="logo">Aether</div>
+  <div class="logo">A E T H E R</div>
   <h1>Find the Right Business Structure in 2 Minutes</h1>
   <p class="sub">Answer a few questions. Get a clear recommendation.</p>
   <a href="scan.html" class="btn">Start Aether Scan</a>
@@ -64,13 +64,28 @@ for(var i=0;i<60;i++){
   s.style.cssText='position:absolute;width:1px;height:1px;background:rgba(201,161,74,0.85);border-radius:50%;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;opacity:'+(0.1+Math.random()*0.6)+';';
   stEl.appendChild(s);
 }
-var TERMS=['LLC','S-Corp','C-Corp','EIN','Formation','Operating Agreement','Equity','Registered Agent','Pass-Through','Cap Table','Compliance','C-Corporation'];
+
+// Fixed grid positions so terms never overlap each other or the center content
+var TERMS=[
+  {t:'LLC',        x:8,  y:8,  size:22, op:0.28},
+  {t:'S-Corp',     x:72, y:6,  size:18, op:0.22},
+  {t:'C-Corp',     x:5,  y:28, size:16, op:0.20},
+  {t:'EIN',        x:82, y:25, size:20, op:0.25},
+  {t:'Formation',  x:10, y:55, size:15, op:0.18},
+  {t:'Registered Agent', x:60, y:52, size:14, op:0.18},
+  {t:'Pass-Through',    x:5,  y:72, size:14, op:0.16},
+  {t:'Operating Agreement', x:55, y:70, size:13, op:0.16},
+  {t:'Equity',     x:78, y:42, size:16, op:0.20},
+  {t:'Cap Table',  x:3,  y:42, size:15, op:0.18},
+  {t:'Compliance', x:68, y:82, size:14, op:0.16},
+  {t:'C-Corporation', x:15, y:85, size:13, op:0.15},
+];
 var tEl=document.getElementById('terms');
-TERMS.forEach(function(t){
+TERMS.forEach(function(item){
   var el=document.createElement('div');
   el.className='sky-term';
-  el.textContent=t;
-  el.style.cssText='left:'+(5+Math.random()*80)+'%;top:'+(5+Math.random()*72)+'%;font-size:'+(13+Math.random()*20)+'px;opacity:'+(0.1+Math.random()*0.28)+';';
+  el.textContent=item.t;
+  el.style.cssText='left:'+item.x+'%;top:'+item.y+'%;font-size:'+item.size+'px;opacity:'+item.op+';';
   tEl.appendChild(el);
 });
 </script>
