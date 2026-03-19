@@ -4,311 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#061729">
-<title>AETHER — Clarity before you file.</title>
+<title>AETHER — Find the Right Business Structure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{background:#061729!important;scroll-behavior:smooth;}
-body{background:#061729!important;color:#C8DEFF;font-family:'Inter',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden;}
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:#040F1E!important;border-bottom:1px solid rgba(255,255,255,0.07);}
-.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;letter-spacing:0.22em;color:#C9A14A;text-decoration:none;text-transform:uppercase;}
-nav{display:flex;gap:32px;align-items:center;}
-nav a{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5A88B0;text-decoration:none;transition:color 0.2s;}
-nav a:hover,nav a.active{color:#C9A14A;}
-.tt{position:relative;display:inline;border-bottom:1px dotted rgba(201,161,74,0.35);color:inherit;cursor:help;white-space:nowrap;}
-.tt-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:240px;padding:10px 14px;background:#0B2240!important;border:1px solid rgba(201,161,74,0.35);color:#C8DEFF;font-family:'Inter',sans-serif;font-size:12px;font-weight:300;line-height:1.5;z-index:999;pointer-events:none;text-align:left;white-space:normal;}
-.tt-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#0B2240;}
-.tt-box::before{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(201,161,74,0.35);margin-top:1px;}
-.tt.active .tt-box,.tt:hover .tt-box{display:block;}
-.tt-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#C9A14A;display:block;margin-bottom:4px;}
-@media(max-width:500px){.tt-box{left:-20px;transform:none;width:210px;}}
-.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:64px;}
-.hero-left{background:#061729!important;display:flex;flex-direction:column;justify-content:center;padding:80px 56px 80px 80px;}
-.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#C9A14A;margin-bottom:18px;opacity:0;animation:fadeUp 0.7s ease 0.1s forwards;}
-.hero-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.2vw,60px);font-weight:300;line-height:1.12;color:#EEF6FF;margin-bottom:22px;opacity:0;animation:fadeUp 0.7s ease 0.2s forwards;}
-.hero-headline em{font-style:italic;color:#C9A14A;}
-.hero-clarity{font-size:13px;color:#A0C0E0;line-height:1.65;max-width:440px;margin-bottom:22px;padding:14px 20px;border-left:2px solid rgba(201,161,74,0.55);background:#0D2038!important;opacity:0;animation:fadeUp 0.7s ease 0.28s forwards;}
-.hero-sub{font-size:14px;color:#6A90B8;line-height:1.8;max-width:440px;margin-bottom:18px;opacity:0;animation:fadeUp 0.7s ease 0.35s forwards;}
-.hero-bullets{list-style:none;max-width:440px;margin-bottom:38px;display:flex;flex-direction:column;gap:9px;opacity:0;animation:fadeUp 0.7s ease 0.42s forwards;}
-.hero-bullets li{font-size:13px;color:#7A9EC0;padding-left:18px;position:relative;line-height:1.5;}
-.hero-bullets li::before{content:'—';position:absolute;left:0;color:rgba(201,161,74,0.7);font-size:12px;}
-.btn-primary{display:inline-flex;align-items:center;gap:12px;padding:16px 36px;background:#C9A14A!important;color:#061729!important;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;-webkit-appearance:none;appearance:none;transition:background 0.2s,transform 0.2s;width:fit-content;opacity:0;animation:fadeUp 0.7s ease 0.5s forwards;}
-.btn-primary:hover{background:#E2C07A!important;transform:translateY(-1px);}
-.btn-primary::after{content:'→';font-size:14px;transition:transform 0.2s;}
-.btn-primary:hover::after{transform:translateX(4px);}
-.hero-note{margin-top:16px;font-size:11px;color:#304F6A;letter-spacing:0.06em;opacity:0;animation:fadeUp 0.7s ease 0.58s forwards;}
-.hero-right{position:relative;overflow:hidden;background:#030C17!important;display:flex;flex-direction:column;justify-content:flex-end;}
-/* Skyline scene */
-.sky-scene{position:absolute;inset:0;}
-.sky-glow{position:absolute;bottom:35%;left:0;right:0;height:220px;background:linear-gradient(to top,rgba(201,161,74,0.13) 0%,rgba(201,161,74,0.04) 50%,transparent 100%);pointer-events:none;}
-.sky-horizon{position:absolute;bottom:37%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,161,74,0.45) 40%,rgba(201,161,74,0.45) 60%,transparent 100%);pointer-events:none;}
-.sky-stars{position:absolute;top:0;left:0;right:0;bottom:38%;}
-.sky-buildings{position:absolute;bottom:0;left:0;right:0;height:38%;display:flex;align-items:flex-end;justify-content:center;}
-.sky-bld{background:linear-gradient(to top,#0a1e34 0%,#061525 60%,#040f1e 100%);flex-shrink:0;position:relative;}
-.sky-bld::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:rgba(201,161,74,0.22);}
-.sky-win{position:absolute;background:rgba(201,161,74,0.28);width:2px;height:3px;}
-.sky-overlay-left{position:absolute;top:0;left:0;bottom:0;width:100px;background:linear-gradient(to right,#030C17,transparent);z-index:2;pointer-events:none;}
-.sky-overlay-top{position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,#030C17,transparent);z-index:2;pointer-events:none;}
-/* Floating terms */
-.sky-terms{position:absolute;inset:0;pointer-events:none;z-index:3;}
-.sky-term{position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9A14A;white-space:nowrap;text-shadow:0 0 16px rgba(201,161,74,0.25);}
-/* Badge */
-.sky-badge{position:relative;z-index:5;align-self:center;margin-bottom:32px;display:flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(4,15,30,0.9);border:1px solid rgba(201,161,74,0.2);white-space:nowrap;opacity:0;animation:fadeUp 0.7s ease 1.0s forwards;}
-.sky-badge-dot{width:5px;height:5px;border-radius:50%;background:#C9A14A;flex-shrink:0;}
-.sky-badge-text{font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,161,74,0.7);}
-.trust-strip{padding:22px 80px;background:#040F1E!important;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;}
-.trust-item{display:flex;align-items:center;gap:9px;}
-.trust-dot{width:3px;height:3px;border-radius:50%;background:#C9A14A;flex-shrink:0;}
-.trust-text{font-size:11px;color:#4A7090;letter-spacing:0.08em;}
-.section-confusion{padding:100px 80px;background:#040F1E!important;border-top:1px solid rgba(255,255,255,0.06);}
-.confusion-header{max-width:640px;margin:0 auto 64px;text-align:center;}
-.section-label{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:16px;}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);font-weight:300;line-height:1.25;color:#EEF6FF;}
-.confusion-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);max-width:1100px;margin:0 auto 56px;}
-.confusion-card{background:#0B2240!important;padding:40px 32px;text-align:center;position:relative;transition:background 0.3s;}
-.confusion-card:hover{background:#112B50!important;}
-.c-top-line{position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background 0.3s;}
-.confusion-card:hover .c-top-line{background:#C9A14A;}
-.confusion-q{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#304F6A;margin-bottom:14px;}
-.confusion-question{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#C8DEFF;line-height:1.35;}
-.confusion-close{text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:#6A90B8;max-width:540px;margin:0 auto;line-height:1.5;}
-.confusion-close em{color:#C9A14A;}
-.section-cards{padding:100px 80px;background:#061729!important;border-top:1px solid rgba(255,255,255,0.06);}
-.section-cards .section-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;line-height:1.2;color:#EEF6FF;margin-bottom:64px;max-width:500px;text-align:left;}
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);}
-.card{background:#061729!important;padding:48px 40px;position:relative;transition:background 0.3s;}
-.card:hover{background:#0B2240!important;}
-.card-line{position:absolute;top:0;left:40px;right:40px;height:1px;background:transparent;transition:background 0.3s;}
-.card:hover .card-line{background:#C9A14A;}
-.card-number{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:rgba(201,161,74,0.14);line-height:1;margin-bottom:24px;}
-.card-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#EEF6FF;margin-bottom:16px;line-height:1.3;}
-.card-desc{font-size:14px;color:#6A90B8;line-height:1.75;}
-.section-roadmap{padding:100px 80px;background:#040F1E!important;border-top:1px solid rgba(255,255,255,0.06);}
-.roadmap-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.roadmap-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;line-height:1.2;color:#EEF6FF;margin-bottom:20px;}
-.roadmap-headline em{font-style:italic;color:#C9A14A;}
-.roadmap-body{font-size:14px;color:#6A90B8;line-height:1.8;margin-bottom:32px;}
-.roadmap-step{padding:22px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;gap:20px;align-items:flex-start;}
-.roadmap-step:last-child{border-bottom:none;}
-.roadmap-step-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:rgba(201,161,74,0.28);line-height:1;flex-shrink:0;min-width:28px;}
-.roadmap-step-title{font-size:13px;font-weight:500;color:#EEF6FF;margin-bottom:4px;letter-spacing:0.03em;}
-.roadmap-step-desc{font-size:12px;color:#4A7090;line-height:1.65;}
-.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:transparent!important;color:#C9A14A!important;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(201,161,74,0.4);cursor:pointer;transition:all 0.2s;width:fit-content;}
-.btn-secondary:hover{border-color:#C9A14A;background:rgba(201,161,74,0.06)!important;}
-.btn-secondary::after{content:'→';transition:transform 0.2s;}
-.btn-secondary:hover::after{transform:translateX(4px);}
-footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
-.footer-copy{font-size:12px;color:#304F6A;letter-spacing:0.06em;}
-.footer-link{font-size:12px;color:#304F6A;text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
-.footer-link:hover{color:#C9A14A;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@media(max-width:1100px){.confusion-grid{grid-template-columns:repeat(2,1fr);}.roadmap-inner{grid-template-columns:1fr;gap:48px;}}
-@media(max-width:900px){header{padding:0 24px;}nav{gap:18px;}.hero{grid-template-columns:1fr;}.hero-left{padding:60px 24px 48px;order:2;}.hero-right{min-height:300px;order:1;}.trust-strip{padding:22px 24px;gap:24px;}.section-confusion,.section-cards,.section-roadmap{padding:72px 24px;}.cards-grid{grid-template-columns:1fr;}footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}}
-@media(max-width:560px){.confusion-grid{grid-template-columns:1fr;}}
+html,body{height:100%;background:#020810;color:#C8DEFF;font-family:'Inter',sans-serif;overflow:hidden;}
+.scene{position:fixed;inset:0;z-index:0;}
+.sky-glow{position:absolute;bottom:33%;left:0;right:0;height:180px;background:linear-gradient(to top,rgba(201,161,74,0.13),rgba(201,161,74,0.04) 50%,transparent);pointer-events:none;}
+.sky-horizon{position:absolute;bottom:35%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,rgba(201,161,74,0.45) 50%,transparent 95%);pointer-events:none;}
+.sky-stars{position:absolute;top:0;left:0;right:0;bottom:36%;}
+.sky-buildings{position:absolute;bottom:0;left:0;right:0;height:35%;display:flex;align-items:flex-end;justify-content:center;}
+.bld{background:linear-gradient(to top,#0c1e34,#050e1d);flex-shrink:0;position:relative;}
+.bld::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:rgba(201,161,74,0.22);}
+.sky-terms{position:absolute;inset:0;pointer-events:none;}
+.sky-term{position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9A14A;white-space:nowrap;text-shadow:0 0 16px rgba(201,161,74,0.2);}
+.vignette{position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 20%,rgba(2,8,16,0.65) 100%);pointer-events:none;}
+.bottom-fade{position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,#020810,transparent);pointer-events:none;}
+.wrap{position:relative;z-index:10;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:0.28em;color:#C9A14A;text-transform:uppercase;margin-bottom:56px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,54px);font-weight:300;line-height:1.15;color:#EEF6FF;margin-bottom:20px;max-width:560px;}
+p.sub{font-size:15px;color:#6A90B8;line-height:1.7;margin-bottom:40px;max-width:360px;}
+.btn{display:inline-block;padding:16px 40px;background:#C9A14A;color:#061729;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;-webkit-appearance:none;transition:background 0.2s;}
+.btn:hover{background:#E2C07A;}
+.note{margin-top:16px;font-size:11px;color:#304F6A;letter-spacing:0.06em;}
 </style>
 </head>
 <body>
-<header>
-  <a class="logo" href="index.html">Aether</a>
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="scan.html">Structure Scan</a>
-    <a href="partners.html">Providers</a>
-    <a href="results.html">Results</a>
-    <a href="legal.html">Legal</a>
-  </nav>
-</header>
-<main>
-  <section class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Formation Intelligence — v2.0</p>
-      <h1 class="hero-headline">Make the right call<br>before you <em>file anything.</em></h1>
-      <p class="hero-clarity">Most founders file before they understand what they're filing for. Wrong structure, wrong state, wrong setup — and it costs them later. AETHER exists to change that.</p>
-      <p class="hero-sub">Answer eight questions. Get a personalized <span class="tt">business structure<span class="tt-box"><span class="tt-label">Business Structure</span>The legal framework your business operates under — LLC, S-Corp, C-Corp, etc. It determines how you're taxed, how liability works, and how you can raise money.</span></span> recommendation with a full formation blueprint — including what to do after you file.</p>
-      <ul class="hero-bullets">
-        <li>No account. No jargon. No upsells.</li>
-        <li>Built for first-time founders who need a decision, not more options.</li>
-        <li>Your answers never leave your device.</li>
-      </ul>
-      <a href="scan.html" class="btn-primary">Start Your Scan</a>
-      <p class="hero-note">Educational guidance only — not legal advice.</p>
-    </div>
-    <div class="hero-right">
-      <div class="sky-scene" id="skyScene">
-        <div class="sky-glow"></div>
-        <div class="sky-horizon"></div>
-        <div class="sky-stars" id="skyStars"></div>
-        <div class="sky-buildings" id="skyBuildings"></div>
-        <div class="sky-overlay-left"></div>
-        <div class="sky-overlay-top"></div>
-        <div class="sky-terms" id="skyTerms"></div>
-      </div>
-      <div class="sky-badge">
-        <div class="sky-badge-dot"></div>
-        <span class="sky-badge-text">Formation Intelligence</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="trust-strip">
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">No account required</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Answers stay on your device</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Educational guidance only</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Built for first-time founders</span></div>
-  </div>
-
-  <section class="section-confusion">
-    <div class="confusion-header">
-      <p class="section-label">Where most founders start</p>
-      <h2 class="section-title">It's not about paperwork.<br>It's about the decisions <em style="color:#C9A14A;font-style:italic;">before</em> the paperwork.</h2>
-    </div>
-    <div class="confusion-grid">
-      <div class="confusion-card"><div class="c-top-line"></div><p class="confusion-q">Question 01</p><p class="confusion-question">What structure should I actually choose?</p></div>
-      <div class="confusion-card"><div class="c-top-line"></div><p class="confusion-q">Question 02</p><p class="confusion-question">Does it matter which state I form in?</p></div>
-      <div class="confusion-card"><div class="c-top-line"></div><p class="confusion-q">Question 03</p><p class="confusion-question">How will my business be taxed?</p></div>
-      <div class="confusion-card"><div class="c-top-line"></div><p class="confusion-q">Question 04</p><p class="confusion-question">What do I do after I file?</p></div>
-    </div>
-    <p class="confusion-close">AETHER answers all four — and gives you <em>one clear path forward.</em></p>
-  </section>
-
-  <section class="section-cards">
-    <p class="section-label">How it works</p>
-    <h2 class="section-title">Three steps to a formation blueprint</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-line"></div>
-        <div class="card-number">01</div>
-        <h3 class="card-title">Tell us your situation</h3>
-        <p class="card-desc">Eight guided questions about your operating state, revenue expectations, ownership structure, and strategic priorities. No personal information required.</p>
-      </div>
-      <div class="card">
-        <div class="card-line"></div>
-        <div class="card-number">02</div>
-        <h3 class="card-title">Get your recommendation</h3>
-        <p class="card-desc">Our decision logic maps your answers to an <span class="tt">entity type<span class="tt-box"><span class="tt-label">Entity Type</span>The official legal category of your business — LLC, S-Corp, C-Corp, etc. Each has different tax rules, liability protections, and administrative requirements.</span></span> — LLC, S-Corp election, Multi-Member, or C-Corporation — with a full classification panel and rationale in plain English.</p>
-      </div>
-      <div class="card">
-        <div class="card-line"></div>
-        <div class="card-number">03</div>
-        <h3 class="card-title">Follow your roadmap</h3>
-        <p class="card-desc">After your recommendation, AETHER gives you a post-formation roadmap — EIN setup, banking, operating agreements, and the steps most first-time founders miss after they file.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-roadmap">
-    <div class="roadmap-inner">
-      <div class="roadmap-left">
-        <p class="section-label">After formation</p>
-        <h2 class="roadmap-headline">Filing is just the beginning.<br><em>What comes next matters more.</em></h2>
-        <p class="roadmap-body">Most formation tools stop at the filing. AETHER gives you a complete post-formation roadmap — the exact operational steps first-time founders get wrong after the paperwork is done. Come back to it whenever you need it.</p>
-        <a href="scan.html" class="btn-secondary">Build My Blueprint</a>
-      </div>
-      <div class="roadmap-right">
-        <div class="roadmap-step">
-          <div class="roadmap-step-num">01</div>
-          <div>
-            <div class="roadmap-step-title">Get your EIN confirmed</div>
-            <div class="roadmap-step-desc">Apply directly with the IRS — not through a third-party service. Your CP-575 letter is your official proof of business existence.</div>
-          </div>
-        </div>
-        <div class="roadmap-step">
-          <div class="roadmap-step-num">02</div>
-          <div>
-            <div class="roadmap-step-title">Open a business bank account</div>
-            <div class="roadmap-step-desc">Banks will ask for your EIN, formation documents, and operating agreement. Know what to bring before you go.</div>
-          </div>
-        </div>
-        <div class="roadmap-step">
-          <div class="roadmap-step-num">03</div>
-          <div>
-            <div class="roadmap-step-title">Connect your payment processor</div>
-            <div class="roadmap-step-desc">Stripe, PayPal, and Square require proof of business activity. Your AETHER blueprint tells you exactly what each one needs.</div>
-          </div>
-        </div>
-        <div class="roadmap-step">
-          <div class="roadmap-step-num">04</div>
-          <div>
-            <div class="roadmap-step-title">Stay compliant from day one</div>
-            <div class="roadmap-step-desc">Annual reports, registered agent requirements, and state-specific deadlines — all covered in your formation roadmap.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-<footer>
-  <span class="footer-copy">© 2026 AETHER. Educational guidance only — not legal advice.</span>
-  <a href="legal.html" class="footer-link">Privacy &amp; Terms</a>
-</footer>
+<div class="scene" id="scene">
+  <div class="sky-glow"></div>
+  <div class="sky-horizon"></div>
+  <div class="sky-stars" id="stars"></div>
+  <div class="sky-buildings" id="buildings"></div>
+  <div class="sky-terms" id="terms"></div>
+  <div class="vignette"></div>
+  <div class="bottom-fade"></div>
+</div>
+<div class="wrap">
+  <div class="logo">Aether</div>
+  <h1>Find the Right Business Structure in 2 Minutes</h1>
+  <p class="sub">Answer a few questions. Get a clear recommendation.</p>
+  <a href="scan.html" class="btn">Start Aether Scan</a>
+  <p class="note">No account required. Free.</p>
+</div>
 <script>
-document.querySelectorAll('.tt').forEach(function(el){
-  el.addEventListener('click',function(e){
-    e.stopPropagation();
-    document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classList.remove('active');});
-    el.classList.toggle('active');
-  });
+var BW=[14,20,26,16,38,24,18,32,20,14,28,22,16,40,14,24,18,14,26,20,32,16,24,20,14,18,28,22,36,18];
+var BH=[70,110,160,120,220,190,140,250,200,100,150,120,85,240,75,135,100,65,175,125,220,80,150,110,68,90,170,130,200,80];
+var bldEl=document.getElementById('buildings');
+BW.forEach(function(w,i){
+  var b=document.createElement('div');
+  b.className='bld';
+  b.style.cssText='width:'+w+'px;height:'+BH[i]+'px;';
+  bldEl.appendChild(b);
 });
-document.addEventListener('click',function(){
-  document.querySelectorAll('.tt.active').forEach(function(el){el.classList.remove('active');});
+var stEl=document.getElementById('stars');
+for(var i=0;i<60;i++){
+  var s=document.createElement('div');
+  s.style.cssText='position:absolute;width:1px;height:1px;background:rgba(201,161,74,0.85);border-radius:50%;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;opacity:'+(0.1+Math.random()*0.6)+';';
+  stEl.appendChild(s);
+}
+var TERMS=['LLC','S-Corp','C-Corp','EIN','Formation','Operating Agreement','Equity','Registered Agent','Pass-Through','Cap Table','Compliance','C-Corporation'];
+var tEl=document.getElementById('terms');
+TERMS.forEach(function(t){
+  var el=document.createElement('div');
+  el.className='sky-term';
+  el.textContent=t;
+  el.style.cssText='left:'+(5+Math.random()*80)+'%;top:'+(5+Math.random()*72)+'%;font-size:'+(13+Math.random()*20)+'px;opacity:'+(0.1+Math.random()*0.28)+';';
+  tEl.appendChild(el);
 });
-
-// ── SKYLINE BUILD ──
-(function(){
-  var BW=[14,20,26,16,38,24,18,32,20,14,28,22,16,40,14,24,18,14,26,20,32,16,24,20,14];
-  var BH=[70,110,160,120,220,190,140,250,200,100,150,120,85,240,75,135,100,65,175,125,220,80,150,110,68];
-
-  // Stars
-  var starsEl = document.getElementById('skyStars');
-  if(starsEl){
-    for(var i=0;i<60;i++){
-      var s=document.createElement('div');
-      s.style.cssText='position:absolute;width:1px;height:1px;background:rgba(201,161,74,0.8);border-radius:50%;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;opacity:'+(0.1+Math.random()*0.6)+';';
-      starsEl.appendChild(s);
-    }
-  }
-
-  // Buildings
-  var bldEl = document.getElementById('skyBuildings');
-  if(bldEl){
-    BW.forEach(function(w,i){
-      var b=document.createElement('div');
-      b.className='sky-bld';
-      b.style.cssText='width:'+w+'px;height:'+BH[i]+'px;';
-      // windows
-      if(i%2===0){
-        var w1=document.createElement('div');
-        w1.className='sky-win';
-        w1.style.cssText='left:4px;bottom:'+(Math.floor(BH[i]*0.3))+'px;';
-        b.appendChild(w1);
-      }
-      if(i%3===0){
-        var w2=document.createElement('div');
-        w2.className='sky-win';
-        w2.style.cssText='right:4px;bottom:'+(Math.floor(BH[i]*0.5))+'px;';
-        b.appendChild(w2);
-      }
-      bldEl.appendChild(b);
-    });
-  }
-
-  // Floating terms
-  var TERMS=['LLC','S-Corp','C-Corp','EIN','Formation','Operating Agreement','Equity','Registered Agent','Pass-Through','Cap Table','Compliance','C-Corporation','Articles'];
-  var termsEl = document.getElementById('skyTerms');
-  if(termsEl){
-    TERMS.forEach(function(t,i){
-      var el=document.createElement('div');
-      el.className='sky-term';
-      var size=13+Math.random()*20;
-      el.textContent=t;
-      el.style.cssText='left:'+(5+Math.random()*78)+'%;top:'+(5+Math.random()*68)+'%;font-size:'+size+'px;opacity:'+(0.12+Math.random()*0.32)+';';
-      termsEl.appendChild(el);
-    });
-  }
-})();
 </script>
 </body>
 </html>
