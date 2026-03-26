@@ -61,6 +61,11 @@ select option{background:#0B2240;color:#C8DEFF;}
 .btn-next{padding:14px 36px;background:#C9A14A!important;border:none;color:#061729!important;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;}
 .btn-next:hover{background:#E2C07A!important;}
 .btn-next:disabled{opacity:0.3;cursor:default;}
+.got-it{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(201,161,74,0.15);border:1px solid rgba(201,161,74,0.4);color:#C9A14A;font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:10px 24px;z-index:200;pointer-events:none;}
+.got-it.show{display:block;animation:gotItAnim 0.7s ease forwards;}
+@keyframes gotItAnim{0%{opacity:0;transform:translate(-50%,-54%);}20%{opacity:1;transform:translate(-50%,-50%);}80%{opacity:1;}100%{opacity:0;transform:translate(-50%,-46%);}}
+.scan-intro{text-align:center;font-size:13px;color:rgba(201,161,74,0.6);letter-spacing:0.1em;margin-bottom:20px;font-style:italic;}
+.step-why{font-size:12px;color:#4A7090;line-height:1.6;margin-top:-18px;margin-bottom:24px;text-align:center;letter-spacing:0.02em;}
 footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
 .footer-copy{font-size:12px;color:#304F6A;letter-spacing:0.06em;}
 .footer-link{font-size:12px;color:#304F6A;text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
@@ -81,6 +86,7 @@ footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(
 </header>
 <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:12.5%"></div></div>
 <div class="stage-strip"><span class="stage-strip-text" id="stageStripText">Location Strategy</span></div>
+<div class="got-it" id="gotIt">Got it</div>
 <div class="scan-wrap">
   <div class="step-counter" id="stepCounter">Step 1 of 8</div>
   <div class="step-dots" id="stepDots"></div>
@@ -131,6 +137,7 @@ var steps = [
       text: "You have two real options. Option one: form in your home state — simple, no extra fees, no foreign entity registration required. Option two: form in Wyoming or Delaware for privacy or investor reasons, but you will likely still need to register in your home state too, meaning fees in both places. For most first-time founders, forming at home is the smarter move."
     },
     title: "Where do you want to form?",
+    why: "Your formation state affects your fees, privacy, and compliance requirements.",
     type: "options", cols: 2, key: "formationState",
     options: [
       { label: "My Home State", sub: "Simplest path. One filing, one set of fees, no dual registration. Best for most first-time founders who want to move fast and keep overhead low." },
@@ -147,6 +154,7 @@ var steps = [
       text: "You can form your LLC in Wyoming but run your business from Texas — completely legal. However, you may need to register as a foreign entity in your home state, which means paying fees there too. Knowing this upfront saves surprises at tax time."
     },
     title: "What state do you actually operate in?",
+    why: "This tells us if you will need to register in two states instead of one.",
     type: "select", key: "operatingState", placeholder: "Select your home state..."
   },
   {
@@ -156,6 +164,7 @@ var steps = [
       text: "Different business models carry different liability exposure and tax treatment. A software company selling subscriptions has different structural needs than a consultant billing hourly. This helps us tailor the recommendation to how your money actually flows."
     },
     title: "What is your primary business focus?",
+    why: "Different business types carry different tax treatment and liability needs.",
     type: "options", cols: 2, key: "businessFocus",
     options: [
       { label: "Products", sub: "Physical goods, e-commerce, or manufacturing. Product businesses benefit from clear liability separation due to inventory and returns exposure." },
@@ -172,6 +181,7 @@ var steps = [
       text: "Revenue projections help us determine whether pass-through taxation is enough or whether a more optimized structure like an S-Corp election would save you real money. Be honest about where you realistically expect to land in year one — there is no wrong answer."
     },
     title: "What is your expected first-year revenue?",
+    why: "Your revenue range determines which tax structure will actually save you money.",
     type: "options", cols: 2, key: "revenue",
     options: [
       { label: "Under $50K", sub: "Early stage or pre-revenue. A simple LLC keeps overhead low while giving you full legal protection. Do not over-engineer it yet." },
@@ -187,6 +197,7 @@ var steps = [
       text: "Whether you are building alone or with partners fundamentally affects your structure. A single-member LLC and a multi-member LLC are taxed completely differently. If partners are involved, your operating agreement becomes the most critical document you will draft — more important than the filing itself."
     },
     title: "How many owners will the business have?",
+    why: "Sole ownership and partnerships are taxed and governed completely differently.",
     type: "options", cols: 2, key: "owners",
     options: [
       { label: "Just me", sub: "Solo founder. Single-member structures are simpler, give you full control, and have clean pass-through taxation. No partnership complexities." },
@@ -202,6 +213,7 @@ var steps = [
       text: "There is no universally correct priority. Early-stage founders often prioritize simplicity. Profitable solo founders often want to minimize self-employment tax. Founders in high-risk industries prioritize liability protection above all else."
     },
     title: "What is your top priority at this stage?",
+    why: "Knowing what matters most shapes which structure actually fits your situation.",
     type: "options", cols: 1, key: "priority",
     options: [
       { label: "Minimize taxes", sub: "You want to reduce the self-employment and pass-through tax burden as your income grows. Tax efficiency is the main lens right now." },
@@ -216,6 +228,7 @@ var steps = [
       text: "If you plan to raise outside capital — angels, VCs, or institutional investors — your entity choice is largely decided for you. Most institutional investors require a C-Corporation in Delaware. If you are bootstrapping, you have full flexibility to choose what fits your tax and liability goals."
     },
     title: "Are outside investors part of your plan?",
+    why: "Whether you plan to raise outside money changes everything about your structure.",
     type: "options", cols: 2, key: "investors",
     options: [
       { label: "Bootstrapped", sub: "Self-funded. No outside capital planned. You have full flexibility to choose the structure that fits your tax and liability situation." },
@@ -228,12 +241,13 @@ var steps = [
       label: "One last check-in",
       text: "This helps us calibrate how much context to include in your blueprint. Whether you are completely new to this or have done some research already, AETHER will give you the same recommendation — just with the right level of explanation for where you are at."
     },
-    title: "How confident are you about your structure choice?",
+    title: "How clear do you feel about your business direction right now?",
+    why: "This helps us set the right level of detail in your recommendation.",
     type: "options", cols: 1, key: "confidence",
     options: [
-      { label: "Very confident", sub: "I know the basics and have a clear direction. I mostly need validation and help with the execution steps after formation." },
-      { label: "Somewhat confident", sub: "I have done some reading and understand the options, but want a second opinion and a clear recommendation I can trust." },
-      { label: "Still figuring it out", sub: "I am new to this. I need education, clarity, and a framework that walks me through the decision and what comes next." }
+      { label: "Very clear", sub: "I know where I am headed and what I am building. I mostly need validation and the right execution steps." },
+      { label: "Somewhat clear", sub: "I have a direction but still have open questions. I want a clear recommendation I can trust." },
+      { label: "Still figuring it out", sub: "I am new to this. I need education, clarity, and a framework that walks me through what to do and when." }
     ]
   }
 ];
@@ -254,7 +268,7 @@ function renderDots() {
 
 function renderStep() {
   var step = steps[current];
-  document.getElementById('stepCounter').textContent = 'Step ' + (current + 1) + ' of ' + steps.length;
+  document.getElementById('stepCounter').textContent = 'Step ' + (current + 1) + ' of ' + steps.length + ' — about 60 seconds';
   document.getElementById('progressBar').style.width = (((current + 1) / steps.length) * 100) + '%';
   document.getElementById('stageStripText').textContent = step.stage;
   renderDots();
@@ -263,9 +277,11 @@ function renderStep() {
   container.offsetHeight;
   container.style.animation = 'stepIn 0.4s ease forwards';
 
+  var introHtml = current === 0 ? '<p class="scan-intro">Let\'s understand your situation first.</p>' : '';
   var guideText = applyGlossary(step.guide.text);
-  var html = '<div class="step-guide"><div class="step-guide-label">' + step.guide.label + '</div><p class="step-guide-text">' + guideText + '</p></div>';
+  var html = introHtml + '<div class="step-guide"><div class="step-guide-label">' + step.guide.label + '</div><p class="step-guide-text">' + guideText + '</p></div>';
   html += '<h2 class="step-title">' + step.title + '</h2>';
+  if (step.why) html += '<p class="step-why">' + step.why + '</p>';
 
   if (step.type === 'options') {
     var grid = step.cols === 2 ? 'cols-2' : '';
@@ -316,6 +332,13 @@ function selectOption(key, value, el) {
   if (el) {
     document.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
     el.classList.add('selected');
+    var toast = document.getElementById('gotIt');
+    if (toast) {
+      toast.classList.remove('show');
+      void toast.offsetWidth;
+      toast.classList.add('show');
+      setTimeout(function(){ toast.classList.remove('show'); }, 700);
+    }
   }
   var nb = document.getElementById('nextBtn');
   if (nb) nb.disabled = false;
