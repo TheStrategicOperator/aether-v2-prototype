@@ -111,6 +111,25 @@ nav a:hover,nav a.active{color:#C9A14A;}
 .be-ready-list li{font-size:12px;color:#4A6A8A;padding-left:16px;position:relative;line-height:1.55;}
 .be-ready-list li::before{content:'›';position:absolute;left:0;color:#C9A14A;}
 .reminder-tease{margin-top:12px;font-size:11px;color:#304F6A;letter-spacing:0.05em;font-style:italic;}
+/* SITUATION + WHY FITS */
+.situation-card{margin-bottom:36px;padding:28px 32px;background:#0A1F38!important;border:1px solid rgba(201,161,74,0.25);border-left:3px solid #C9A14A;opacity:0;animation:fadeUp 0.6s ease 0.05s forwards;}
+.situation-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;margin-bottom:14px;}
+.situation-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;line-height:1.5;color:#EEF6FF;}
+.why-fits-card{margin-bottom:36px;padding:28px 32px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.07);opacity:0;animation:fadeUp 0.6s ease 0.15s forwards;}
+.why-fits-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;margin-bottom:16px;}
+.why-fits-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.why-fits-list li{font-size:14px;color:#C8DEFF;padding-left:20px;position:relative;line-height:1.55;}
+.why-fits-list li::before{content:'✓';position:absolute;left:0;color:#C9A14A;font-size:12px;top:2px;}
+.next-steps-card{margin-bottom:36px;padding:28px 32px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.07);opacity:0;animation:fadeUp 0.6s ease 0.25s forwards;}
+.next-steps-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;margin-bottom:16px;}
+.next-steps-list{list-style:none;counter-reset:ns;display:flex;flex-direction:column;gap:10px;}
+.next-steps-list li{counter-increment:ns;font-size:14px;color:#C8DEFF;padding:14px 18px 14px 52px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);position:relative;line-height:1.5;}
+.next-steps-list li::before{content:counter(ns,decimal-leading-zero);position:absolute;left:16px;top:14px;font-family:'Cormorant Garamond',serif;font-size:18px;color:#C9A14A;font-weight:500;}
+.detail-toggle{margin-bottom:12px;font-size:12px;color:#4A7090;cursor:pointer;letter-spacing:0.06em;display:flex;align-items:center;gap:8px;}
+.detail-toggle::before{content:'▸';color:#C9A14A;font-size:11px;}
+.detail-toggle.open::before{content:'▾';}
+.detail-sections{display:none;}
+.detail-sections.open{display:block;}
 /* V3 HOLD / EDGE CASE */
 .verdict-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:24px;}
 .verdict-badge.hold{border-color:rgba(201,161,74,0.5);color:#C9A14A;background:rgba(201,161,74,0.07);}
@@ -237,6 +256,59 @@ const CHECKLIST_MAP={
   'C-Corporation':['Apply for your EIN as a C-Corporation','File 83(b) elections for all founding shareholders within 30 days','Set up a cap table tool like Carta immediately','Register as a foreign entity in your home state if formed in Delaware','Consult a CPA on QSBS eligibility to preserve your Section 1202 window','Open a business bank account with your EIN and CP-575 letter']
 };
 
+function buildSituation(a, entity){
+  var parts = [];
+  // Ownership
+  if(a.owners==='Just me') parts.push("You're building this solo");
+  else if(a.owners==='2 owners') parts.push("You're building this with a co-founder");
+  else if(a.owners==='3 – 4'||a.owners==='3 - 4') parts.push("You have a small founding team");
+  else if(a.owners==='5+') parts.push("You have a larger ownership group");
+  // Stage
+  if(a.revenue==='Under $50K') parts.push("at an early stage");
+  else if(a.revenue==='$50K – $125K'||a.revenue==='$50K - $125K') parts.push("gaining early traction");
+  else if(a.revenue==='$125K – $500K'||a.revenue==='$125K - $500K') parts.push("at a scaling stage");
+  else if(a.revenue==='$500K+') parts.push("at an established revenue level");
+  // Investors
+  if(a.investors==='Yes, investors') parts.push("planning to raise outside capital");
+  else parts.push("not raising outside funding");
+  // Priority
+  var priorityLine = '';
+  if(a.priority==='Minimize taxes') priorityLine = 'Your priority is reducing your tax burden as you grow.';
+  else if(a.priority==='Limit liability') priorityLine = 'Your priority is protecting your personal assets from business risk.';
+  else if(a.priority==='Administrative simplicity') priorityLine = 'Your priority is keeping things lean and manageable while you build.';
+  var sentence = parts.join(', ') + '.';
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1) + (priorityLine ? ' ' + priorityLine : '');
+}
+
+function buildWhyFits(a, entity){
+  var points = [];
+  if(a.owners==='Just me') points.push('You are the only owner — a single-member structure is the cleanest fit');
+  else if(a.owners==='2 owners') points.push('You have a co-founder — a multi-member structure is required');
+  else if(a.owners==='3 – 4'||a.owners==='3 - 4') points.push('You have multiple founders — a multi-member structure governs this correctly');
+  else if(a.owners==='5+') points.push('You have five or more owners — structure and governance are critical at this size');
+  if(a.investors==='Yes, investors') points.push('You plan to raise outside capital — a C-Corp is the investor-standard structure');
+  else points.push('You are not raising outside capital — an LLC keeps maximum flexibility');
+  if(a.revenue==='Under $50K') points.push('Your revenue is early stage — simplicity and low overhead are the right priorities now');
+  else if(a.revenue==='$50K – $125K'||a.revenue==='$50K - $125K') points.push('Your revenue is building — a solid structure now sets the right foundation');
+  else if(a.revenue==='$125K – $500K'||a.revenue==='$125K - $500K') points.push('Your revenue justifies tax optimization — an S-Corp election is worth evaluating');
+  else if(a.revenue==='$500K+') points.push('Your revenue level makes structure optimization a significant financial lever');
+  if(a.priority==='Minimize taxes') points.push('You prioritized tax efficiency — your recommendation reflects this');
+  else if(a.priority==='Limit liability') points.push('You prioritized protection — your structure maximizes personal asset separation');
+  else if(a.priority==='Administrative simplicity') points.push('You prioritized simplicity — your structure keeps compliance requirements minimal');
+  if(a.businessFocus==='Software'&&entity==='C-Corporation') points.push('Software businesses targeting VC funding are expected to be Delaware C-Corps');
+  return points;
+}
+
+function buildNextSteps(entity){
+  var steps = {
+    'Single-Member LLC':['Form your LLC in your chosen state','Apply for your EIN at irs.gov — free and instant','Open a dedicated business bank account','Draft a single-member operating agreement','Set up basic bookkeeping from day one'],
+    'Multi-Member LLC':['Agree on ownership percentages in writing before filing','Form your LLC listing all members','Apply for your EIN — required for multi-member entities','Open a business bank account with capital accounts for each member','Draft your multi-member operating agreement — get legal review'],
+    'LLC with S-Corp Election':['Form the LLC first','File Form 2553 with the IRS within 75 days of formation','Set up payroll and pay yourself a reasonable salary','Apply for your EIN immediately','Engage a CPA for your first tax year under the S-Corp election'],
+    'C-Corporation':['Engage a startup attorney before filing anything','Form in Delaware and register as a foreign entity in your home state','Apply for your EIN as a C-Corporation','File 83(b) elections for all founders within 30 days of share issuance','Set up a cap table tool like Carta from day one']
+  };
+  return steps[entity]||steps['Single-Member LLC'];
+}
+
 function renderBlueprint(wrap, entity, isOverride){
   const bp=BP[entity];
   const si=STAGE_MAP[entity];
@@ -248,11 +320,37 @@ function renderBlueprint(wrap, entity, isOverride){
   const checklistHtml=(CHECKLIST_MAP[entity]||[]).map(i=>`<li>${i}</li>`).join('');
   const total=bp.actions.length;
 
+  var situationText = buildSituation(answers, entity);
+  var whyFitsPoints = buildWhyFits(answers, entity);
+  var whyFitsHtml = whyFitsPoints.map(function(p){return '<li>'+p+'</li>';}).join('');
+  var nextStepsArr = buildNextSteps(entity);
+  var nextStepsHtml = nextStepsArr.map(function(s){return '<li>'+s+'</li>';}).join('');
+
   wrap.innerHTML=`
     ${isOverride?`<div style="margin-bottom:24px;padding:12px 20px;background:rgba(201,161,74,0.07);border:1px solid rgba(201,161,74,0.25);border-left:3px solid #C9A14A;"><p style="font-size:12px;color:#C9A14A;font-weight:500;letter-spacing:0.06em;">You chose to proceed — AETHER respects that. Here is your formation blueprint.</p></div>`:''}
-    <p class="result-eyebrow">Formation Blueprint — ${isOverride?'Founder Override':'Based on your scan'}</p>
-    <h1 class="result-headline">Recommended:<br><span>${entity}</span></h1>
+
+    <div class="situation-card">
+      <div class="situation-label">Your Situation</div>
+      <p class="situation-text">${situationText}</p>
+    </div>
+
+    <p class="result-eyebrow">Recommended Structure</p>
+    <h1 class="result-headline"><span>${entity}</span></h1>
     <p class="result-sub">${bp.subhead}</p>
+
+    <div class="why-fits-card">
+      <div class="why-fits-label">Why This Fits You</div>
+      <ul class="why-fits-list">${whyFitsHtml}</ul>
+    </div>
+
+    <div class="next-steps-card">
+      <div class="next-steps-label">What To Do Next</div>
+      <ol class="next-steps-list">${nextStepsHtml}</ol>
+    </div>
+
+    <div class="detail-toggle" onclick="this.classList.toggle('open');document.getElementById('detailSections').classList.toggle('open')">See full breakdown — structure details, roadmap, and compliance</div>
+    <div class="detail-sections" id="detailSections">
+
     <div class="stage-panel">
       <div class="stage-hdr"><span class="stage-hdr-label">Your Current Founder Stage</span></div>
       <div class="stage-body">
@@ -316,6 +414,8 @@ function renderBlueprint(wrap, entity, isOverride){
       <div class="phase2-head">What comes after formation</div>
       <ul class="phase2-list">${p2Html}</ul>
     </div>
+    </div><!-- /detail-sections -->
+
     <div class="action-row">
       <a href="partners.html" class="btn-primary">View Formation Providers →</a>
       <button class="btn-secondary" onclick="resetScan()">&#8592; Update My Scan</button>
