@@ -171,25 +171,25 @@ const ENTITY_DATA = {
     sub: "Based on your answers, this gives you the right balance of protection and simplicity at your current stage.",
     means: "A Single-Member LLC creates a legal wall between your personal assets and your business. If the business gets sued or owes money, your personal bank account, car, and home stay protected. You file business taxes on your personal return — no separate corporate tax return needed. It's the simplest formal structure that actually protects you.",
     tax: [
-      {label:"How you're taxed", text:"Business income flows to your personal tax return (Schedule C). You pay income tax + self-employment tax (15.3%) on net profit."},
-      {label:"When to upgrade", text:"Once net profit consistently hits ~$80K/year, an S-Corp election can save you thousands in self-employment taxes."},
+      {label:"How you're taxed", text:"Business income flows to your personal tax return (${tt('Schedule C','A form attached to your personal tax return (Form 1040) where you report business income and expenses. Most single-member LLC owners use this.')}). You pay income tax + ${tt('self-employment tax','A 15.3% tax that solo business owners pay to cover Social Security and Medicare. Unlike employees, you pay both the employee and employer share. This is separate from your regular income tax.')} (15.3%) on net profit."},
+      {label:"When to upgrade", text:"Once net profit consistently hits ~$80K/year, an ${tt('S-Corp election','A tax status you apply for with the IRS that lets your LLC be taxed differently — you pay yourself a salary and take the rest as ${tt('distributions','Money paid out to business owners from profits. In an S-Corp, distributions are not subject to self-employment tax — only your salary is. This is the key tax advantage.')}, which avoids some self-employment tax.')} can save you thousands in self-employment taxes."},
       {label:"What you avoid", text:"Double taxation that C-Corps face. Corporate filing complexity. The overhead of a multi-member structure you don't need yet."},
-      {label:"Annual cost", text:"State filing fee + registered agent (~$100–$300/yr depending on your state). No federal minimum."}
+      {label:"Annual cost", text:"State filing fee + ${tt('registered agent','A person or service with a physical address in your formation state who receives official legal documents on behalf of your business. Required in every state.')} (~$100–$300/yr depending on your state). No federal minimum."}
     ],
     notFit: [
       {e:"C-Corporation", r:"Only necessary if you're raising institutional investment. Adds complexity and cost without benefit at this stage."},
       {e:"S-Corp Election", r:"Not needed until net profit is consistently above $80K. The payroll requirements add overhead that isn't worth it yet."},
       {e:"Multi-Member LLC", r:"You're the only owner. This structure is for two or more co-founders with shared ownership."}
     ],
-    steps: ["Choose your formation state — your home state is almost always the right move to start","File your Articles of Organization with your state","Apply for your EIN at irs.gov — free and takes 10 minutes online","Open a dedicated business bank account using your EIN","Draft a single-member operating agreement — even solo, this protects you","Set up basic bookkeeping from day one — never mix personal and business funds"]
+    steps: ["Choose your formation state — your home state is almost always the right move to start","File your ${tt('Articles of Organization','The official document you file with your state to legally create your LLC. It\'s the actual formation filing — includes your business name, registered agent, and basic structure.')} with your state","Apply for your ${tt('EIN','Employer Identification Number — a 9-digit number from the IRS that identifies your business for tax purposes. Like a Social Security number for your company. Required to open a business bank account.')} at irs.gov — free and takes 10 minutes online","Open a dedicated business bank account using your EIN","Draft a single-member ${tt('operating agreement','The internal rulebook for your LLC. Defines ownership, how decisions get made, what happens if you dissolve, and more. Even for solo LLCs, having one protects you.')} — even solo, this protects you","Set up basic bookkeeping from day one — never mix personal and business funds"]
   },
   'Multi-Member LLC': {
     sub: "You're building with others. This structure covers shared ownership cleanly while keeping taxes simple.",
     means: "A Multi-Member LLC creates liability protection for all owners while allowing flexible profit sharing. Each member pays taxes on their share through their personal return — no corporate tax. The most important document you'll create is your operating agreement, which defines ownership splits, decision-making, and what happens if someone leaves.",
     tax: [
-      {label:"How you're taxed", text:"The LLC files a Form 1065 partnership return. Each partner gets a K-1 showing their share of profits to report personally."},
+      {label:"How you're taxed", text:"The LLC files a ${tt('Form 1065','A partnership tax return that multi-member LLCs must file each year. The business itself doesn\'t pay tax — each partner receives a ${tt('K-1','A tax document each partner in a multi-member LLC receives showing their share of business income, losses, and deductions to report on their personal return.')} showing their share.')} partnership return. Each partner gets a K-1 showing their share of profits to report personally."},
       {label:"Profit splits", text:"Distributions do not have to match ownership percentages — your operating agreement controls this."},
-      {label:"What you avoid", text:"Corporate double taxation. The inflexibility of a corporation when you just need shared ownership covered cleanly."},
+      {label:"What you avoid", text:"Corporate ${tt('double taxation','When a C-Corporation pays corporate income tax on profits, AND shareholders also pay personal income tax on dividends — the same money taxed twice.')}. The inflexibility of a corporation when you just need shared ownership covered cleanly."},
       {label:"When to upgrade", text:"If you pursue institutional investment, a C-Corp conversion will likely be required by investors at that stage."}
     ],
     notFit: [
@@ -213,23 +213,23 @@ const ENTITY_DATA = {
       {e:"C-Corporation", r:"No institutional investors in your plan. C-Corps add double taxation and complexity without the capital-raise benefit."},
       {e:"Multi-Member LLC", r:"You're the primary owner. Multi-member structures add governance complexity that this situation doesn't require."}
     ],
-    steps: ["Form the LLC in your chosen state first","File Form 2553 with the IRS within 75 days of formation (or by March 15 for existing entities)","Draft an operating agreement that reflects your S-Corp structure","Set up payroll — you must pay yourself a documented, reasonable salary","Apply for your EIN immediately if not already done","Engage a CPA before your first full tax year under the S-Corp election"]
+    steps: ["Form the LLC in your chosen state first","File ${tt('Form 2553','The IRS form you file to request S-Corporation tax treatment for your LLC. Must be filed within 75 days of formation or by March 15 for existing LLCs.')} with the IRS within 75 days of formation (or by March 15 for existing entities)","Draft an operating agreement that reflects your S-Corp structure","Set up payroll — you must pay yourself a documented, reasonable salary","Apply for your EIN immediately if not already done","Engage a CPA before your first full tax year under the S-Corp election"]
   },
   'C-Corporation': {
     sub: "You're building for outside investment. This is the structure that makes institutional capital possible.",
     means: "A C-Corporation — especially formed in Delaware — is the standard structure for startups raising venture capital or angel investment. It supports multiple share classes, stock-based compensation, and investor mechanics that LLCs simply can't replicate cleanly. Investors will expect this.",
     tax: [
       {label:"How you're taxed", text:"The corporation pays 21% federal income tax on profits. Shareholders pay personal tax on dividends — called double taxation. For growth companies reinvesting profits, this rarely matters."},
-      {label:"QSBS benefit", text:"Founders and early investors may qualify to exclude up to $10M in capital gains under Section 1202 if shares are held 5+ years."},
+      {label:"${tt('QSBS','Qualified Small Business Stock. A powerful tax benefit where early C-Corp investors and founders can exclude up to $10M in gains from federal tax if shares are held for 5+ years.')} benefit", text:"Founders and early investors may qualify to exclude up to $10M in capital gains under Section 1202 if shares are held 5+ years."},
       {label:"Stock compensation", text:"C-Corps have the most developed legal framework for issuing stock options to employees and advisors."},
       {label:"83(b) election", text:"File within 30 days of share issuance. Missing this window is one of the most expensive startup mistakes. The deadline cannot be extended."}
     ],
     notFit: [
       {e:"Single-Member LLC", r:"Doesn't support the share classes and investor mechanics that institutional capital requires."},
-      {e:"Multi-Member LLC", r:"LLCs can't cleanly issue preferred stock or support the cap table structures investors expect."},
+      {e:"Multi-Member LLC", r:"LLCs can't cleanly issue preferred stock or support the ${tt('cap table','Capitalization table — a record of who owns what percentage of your company, at what price, and what type of ownership. Essential for any company raising investment.')} structures investors expect."},
       {e:"S-Corp Election", r:"S-Corps can't have more than 100 shareholders or institutional investors. Not compatible with the capital-raise path."}
     ],
-    steps: ["Engage a startup attorney before filing — formation decisions here have long-term downstream implications","File in Delaware for investor compatibility","Register as a foreign entity in your home state if you operate outside Delaware","Draft bylaws, shareholder agreements, and a founders' stock purchase agreement simultaneously","Apply for your EIN as a C-Corporation","File 83(b) elections for all founders within 30 days of share issuance — no exceptions","Set up a cap table tool like Carta from day one"]
+    steps: ["Engage a startup attorney before filing — formation decisions here have long-term downstream implications","File in Delaware for investor compatibility","Register as a foreign entity in your home state if you operate outside Delaware","Draft bylaws, shareholder agreements, and a founders' stock purchase agreement simultaneously","Apply for your EIN as a C-Corporation","File ${tt('83(b) elections','An IRS election filed within 30 days of receiving restricted stock. It locks in your tax basis at the current low value instead of paying taxes later when it\'s worth more. Missing this 30-day window is one of the most expensive startup mistakes.')} for all founders within 30 days of share issuance — no exceptions","Set up a cap table tool like Carta from day one"]
   }
 };
 
@@ -320,11 +320,11 @@ function renderHold(wrap){
     <div class="hold-panel" style="animation-delay:0.3s">
       <div class="hold-panel-hdr"><span class="hold-panel-title">Why Forming Now Could Hurt You</span></div>
       <div class="hold-panel-body">
-        <p>An LLC is not a prerequisite for making money. Filing before you have revenue, a clear model, or validated demand creates annual fees and compliance obligations — with no business to justify it yet.</p>
+        <p>An LLC is not required before you can make money. Filing before you have revenue, a clear model, or validated demand creates annual state fees and ${tt('compliance obligations','The ongoing legal requirements to keep your business active — things like annual reports, registered agent fees, and state filings. These apply every year whether your business made money or not.')} — with no business to justify it yet.</p>
         <ul class="hold-list">
           <li>Every state charges annual fees and report requirements regardless of whether you made a dollar.</li>
           <li>A premature structure can complicate future changes — wrong state, wrong entity, wrong ownership splits are expensive to fix.</li>
-          <li>Most clients and payment processors will work with a sole proprietor. You don't need an LLC to get started.</li>
+          <li>Most clients and payment processors will work with a ${tt('sole proprietor','The simplest business setup — you operate under your own name with no formal legal entity. No filing required, but your personal assets are not legally separated from the business.')}. You do not need an LLC to get started.</li>
           <li>Formation signals permanence. Right now your priority should be proving the model, not formalizing it.</li>
         </ul>
       </div>
