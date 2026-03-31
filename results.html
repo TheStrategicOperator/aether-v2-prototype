@@ -17,6 +17,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64p
 nav{display:flex;gap:32px;align-items:center;}
 nav a{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5A88B0;text-decoration:none;transition:color 0.2s;}
 nav a:hover,nav a.active{color:#C9A14A;}
+
+/* TOOLTIPS */
 .tt{position:relative;display:inline;border-bottom:1px dotted rgba(201,161,74,0.35);color:inherit;cursor:help;white-space:nowrap;}
 .tt-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:250px;padding:10px 14px;background:#0B2240!important;border:1px solid rgba(201,161,74,0.35);color:#C8DEFF;font-family:'Inter',sans-serif;font-size:12px;font-weight:300;line-height:1.55;z-index:999;pointer-events:none;text-align:left;white-space:normal;}
 .tt-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#0B2240;}
@@ -26,98 +28,94 @@ nav a:hover,nav a.active{color:#C9A14A;}
 @media(max-width:500px){.tt-box{left:-20px;transform:none;width:210px;}}
 
 /* LAYOUT */
-.results-wrap{max-width:800px;margin:0 auto;padding:120px 40px 80px;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.results-wrap{max-width:780px;margin:0 auto;padding:108px 40px 80px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 
 /* PRIMARY DECISION */
-.decision-block{margin-bottom:40px;opacity:0;animation:fadeUp 0.5s ease 0.05s forwards;}
-.decision-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#C9A14A;margin-bottom:16px;}
-.decision-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,68px);font-weight:300;line-height:1.1;color:#EEF6FF;margin-bottom:16px;}
-.decision-headline span{color:#C9A14A;font-style:italic;}
-.decision-sub{font-size:15px;color:#6A90B8;line-height:1.7;max-width:580px;}
+.decision-wrap{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.07);opacity:0;animation:fadeUp 0.5s ease 0.05s forwards;}
+.decision-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#C9A14A;margin-bottom:16px;}
+.decision-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.5vw,64px);font-weight:300;line-height:1.08;color:#EEF6FF;margin-bottom:18px;}
+.decision-headline em{color:#C9A14A;font-style:italic;}
+.decision-balance{font-size:15px;color:#A0C0E0;line-height:1.7;margin-bottom:10px;}
+.decision-timing{font-size:13px;color:#4A7090;font-style:italic;letter-spacing:0.02em;}
 
 /* SECTION BLOCKS */
-.r-block{margin-bottom:28px;padding:28px 32px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.07);opacity:0;animation:fadeUp 0.5s ease forwards;}
-.r-block-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:16px;}
+.r-section{margin-bottom:28px;opacity:0;animation:fadeUp 0.5s ease forwards;}
+.r-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:14px;}
+.r-body{padding:24px 28px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.07);}
+.r-body.gold-left{border-left:2px solid rgba(201,161,74,0.45);background:#0A1F38!important;}
 
-/* WHY THIS FITS */
-.fit-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.fit-list li{font-size:14px;color:#C8DEFF;padding-left:22px;position:relative;line-height:1.55;}
-.fit-list li::before{content:'✓';position:absolute;left:0;color:#C9A14A;font-size:12px;top:2px;}
+/* SITUATION */
+.situation-text{font-size:15px;color:#C8DEFF;line-height:1.8;}
+
+/* WHY FITS */
+.fit-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.fit-list li{font-size:14px;color:#C8DEFF;padding-left:24px;position:relative;line-height:1.6;}
+.fit-list li::before{content:'✓';position:absolute;left:0;color:#C9A14A;font-size:12px;top:3px;font-weight:700;}
 
 /* WHAT THIS MEANS */
 .means-text{font-size:15px;color:#A0C0E0;line-height:1.8;}
 
-/* MONEY & TAX */
-.tax-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;}
-.tax-item{padding:16px 18px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);border-left:2px solid rgba(201,161,74,0.4);}
-.tax-item-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#C9A14A;margin-bottom:6px;}
-.tax-item-text{font-size:13px;color:#7A9EC0;line-height:1.55;}
-
-/* WHAT NOT TO DO */
-.not-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.not-item{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);}
-.not-entity{font-size:13px;font-weight:600;color:#EEF6FF;min-width:110px;flex-shrink:0;}
-.not-reason{font-size:13px;color:#4A7090;line-height:1.5;}
+/* TAX + UPGRADE + NOT TO DO — all use simple rows */
+.simple-text{font-size:14px;color:#A0C0E0;line-height:1.8;margin-bottom:10px;}
+.simple-text:last-child{margin-bottom:0;}
+.simple-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+.simple-list li{font-size:14px;color:#7A9EC0;padding-left:20px;position:relative;line-height:1.6;}
+.simple-list li::before{content:'—';position:absolute;left:0;color:rgba(201,161,74,0.5);}
+.contrast-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.contrast-item{display:flex;gap:14px;padding:13px 16px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);}
+.contrast-label{font-size:13px;font-weight:500;color:#EEF6FF;min-width:120px;flex-shrink:0;}
+.contrast-reason{font-size:13px;color:#4A7090;line-height:1.5;}
 
 /* NEXT STEPS */
 .steps-list{list-style:none;counter-reset:ns;display:flex;flex-direction:column;gap:8px;}
-.steps-list li{counter-increment:ns;font-size:14px;color:#C8DEFF;padding:14px 18px 14px 52px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);position:relative;line-height:1.5;cursor:pointer;transition:all 0.2s;}
-.steps-list li:hover{border-color:rgba(201,161,74,0.3);background:#0B2240!important;}
+.steps-list li{counter-increment:ns;font-size:14px;color:#C8DEFF;padding:13px 16px 13px 48px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);position:relative;line-height:1.5;cursor:pointer;transition:all 0.18s;}
+.steps-list li:hover{border-color:rgba(201,161,74,0.3);}
 .steps-list li.done{color:#C9A14A;border-color:rgba(201,161,74,0.3);}
-.steps-list li.done::after{content:'✓';position:absolute;right:16px;top:14px;color:#C9A14A;}
-.steps-list li::before{content:counter(ns,decimal-leading-zero);position:absolute;left:16px;top:14px;font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(201,161,74,0.5);font-weight:500;}
-.steps-hint{margin-top:10px;font-size:11px;color:#304F6A;}
+.steps-list li.done::after{content:'✓';position:absolute;right:14px;top:13px;color:#C9A14A;font-size:13px;}
+.steps-list li::before{content:counter(ns,decimal-leading-zero);position:absolute;left:14px;top:13px;font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(201,161,74,0.45);font-weight:500;}
+.steps-hint{margin-top:8px;font-size:11px;color:#304F6A;}
 
-/* FORMATION HELP */
-.provider-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;}
-.provider-card{padding:20px 22px;background:#061729!important;border:1px solid rgba(255,255,255,0.08);}
-.provider-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:#EEF6FF;margin-bottom:4px;}
-.provider-price{font-size:12px;color:#4A7090;margin-bottom:12px;}
-.provider-link{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C9A14A;text-decoration:none;padding:8px 16px;border:1px solid rgba(201,161,74,0.3);transition:all 0.2s;}
-.provider-link:hover{background:rgba(201,161,74,0.08);}
-
-/* ACTION ROW */
-.action-row{display:flex;gap:14px;margin-top:36px;opacity:0;animation:fadeUp 0.5s ease 1.0s forwards;flex-wrap:wrap;}
+/* FINAL CTA */
+.cta-block{margin-top:40px;padding:32px;background:#0A1F38!important;border:1px solid rgba(201,161,74,0.2);text-align:center;opacity:0;animation:fadeUp 0.5s ease 0.9s forwards;}
+.cta-text{font-size:14px;color:#6A90B8;margin-bottom:20px;line-height:1.7;}
 .btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#C9A14A!important;color:#061729!important;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;}
 .btn-primary:hover{background:#E2C07A!important;}
-.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:transparent!important;border:1px solid rgba(255,255,255,0.10);color:#6A90B8;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;}
-.btn-secondary:hover{border-color:#6A90B8;color:#C8DEFF;}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:transparent!important;border:1px solid rgba(255,255,255,0.10);color:#5A88B0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;margin-top:14px;}
+.btn-secondary:hover{border-color:#5A88B0;color:#C8DEFF;}
 
 /* NO DATA */
 .no-data{text-align:center;padding:80px 40px;}
 .no-data h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#EEF6FF;margin-bottom:16px;}
 .no-data p{color:#6A90B8;margin-bottom:32px;}
 
-/* V3 HOLD / EDGE */
+/* HOLD / EDGE */
 .verdict-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:24px;}
 .verdict-badge.hold{border-color:rgba(201,161,74,0.5);color:#C9A14A;background:rgba(201,161,74,0.07);}
 .verdict-badge.edge{border-color:rgba(90,136,176,0.5);color:#7AAED4;background:rgba(90,136,176,0.07);}
-.hold-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,58px);font-weight:300;line-height:1.1;color:#EEF6FF;margin-bottom:12px;opacity:0;animation:fadeUp 0.6s ease 0.1s forwards;}
-.hold-headline span{color:#C9A14A;font-style:italic;}
-.hold-sub{font-size:15px;color:#6A90B8;margin-bottom:36px;opacity:0;animation:fadeUp 0.6s ease 0.2s forwards;}
-.hold-panel{border:1px solid rgba(201,161,74,0.28);background:#0A1F38!important;margin-bottom:24px;opacity:0;animation:fadeUp 0.6s ease forwards;}
-.hold-panel-hdr{padding:14px 28px;border-bottom:1px solid rgba(255,255,255,0.07);}
+.hold-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,56px);font-weight:300;line-height:1.1;color:#EEF6FF;margin-bottom:12px;opacity:0;animation:fadeUp 0.5s ease 0.1s forwards;}
+.hold-headline em{color:#C9A14A;font-style:italic;}
+.hold-sub{font-size:15px;color:#6A90B8;margin-bottom:32px;opacity:0;animation:fadeUp 0.5s ease 0.2s forwards;}
+.hold-panel{border:1px solid rgba(201,161,74,0.22);background:#0A1F38!important;margin-bottom:20px;opacity:0;animation:fadeUp 0.5s ease forwards;}
+.hold-panel-hdr{padding:13px 24px;border-bottom:1px solid rgba(255,255,255,0.07);}
 .hold-panel-title{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;}
-.hold-panel-body{padding:24px 28px;}
-.hold-panel-body p{font-size:14px;color:#7A9EC0;line-height:1.75;margin-bottom:14px;}
+.hold-panel-body{padding:22px 24px;}
 .hold-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
-.hold-list li{font-size:14px;color:#7A9EC0;padding-left:18px;position:relative;line-height:1.6;}
-.hold-list li::before{content:'—';position:absolute;left:0;color:#C9A14A;}
+.hold-list li{font-size:14px;color:#7A9EC0;padding-left:18px;position:relative;line-height:1.65;}
+.hold-list li::before{content:'—';position:absolute;left:0;color:rgba(201,161,74,0.5);}
 .trigger-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.trigger-item{padding:14px 16px;background:#061729!important;border:1px solid rgba(255,255,255,0.08);border-left:2px solid rgba(201,161,74,0.4);}
-.trigger-num{font-family:'Cormorant Garamond',serif;font-size:20px;color:rgba(201,161,74,0.3);margin-bottom:5px;}
+.trigger-item{padding:14px 16px;background:#061729!important;border:1px solid rgba(255,255,255,0.08);border-left:2px solid rgba(201,161,74,0.35);}
+.trigger-num{font-family:'Cormorant Garamond',serif;font-size:20px;color:rgba(201,161,74,0.28);margin-bottom:5px;}
 .trigger-text{font-size:12px;color:#6A90B8;line-height:1.5;}
 .trigger-text strong{color:#C8DEFF;font-weight:500;display:block;margin-bottom:2px;}
-.hold-action-row{display:flex;gap:12px;margin-top:32px;opacity:0;animation:fadeUp 0.6s ease 0.8s forwards;flex-wrap:wrap;}
-.override-note{margin-top:14px;font-size:11px;color:#304F6A;line-height:1.6;}
+.hold-btns{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+.override-note{margin-top:12px;font-size:11px;color:#304F6A;line-height:1.6;}
 
 footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
 .footer-copy{font-size:12px;color:#304F6A;letter-spacing:0.06em;}
 .footer-link{font-size:12px;color:#304F6A;text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
 .footer-link:hover{color:#C9A14A;}
-@media(max-width:768px){header{padding:0 24px;}nav{gap:18px;}.results-wrap{padding:100px 20px 60px;}.tax-grid,.provider-row{grid-template-columns:1fr;}.action-row,.hold-action-row{flex-direction:column;}footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}}
-@media(max-width:600px){.trigger-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){header{padding:0 24px;}nav{gap:16px;}.results-wrap{padding:96px 20px 60px;}.trigger-grid{grid-template-columns:1fr;}.hold-btns,.action-btns{flex-direction:column;}footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}}
 </style>
 </head>
 <body>
@@ -137,295 +135,456 @@ footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(
   <a href="legal.html" class="footer-link">Privacy &amp; Terms</a>
 </footer>
 <script>
-function tt(term,def){return`<span class="tt">${term}<span class="tt-box"><span class="tt-label">${term}</span>${def}</span></span>`;}
+// ── GLOSSARY ──
+var GLOSSARY = {
+  "pass-through taxation": "Your business income goes directly to your personal tax return and is only taxed once at your personal rate. The business itself pays no separate federal income tax.",
+  "self-employment tax": "A 15.3% tax solo business owners pay to cover Social Security and Medicare. Unlike a regular employee who splits this with their employer, you pay the full amount yourself.",
+  "EIN": "Employer Identification Number — a free 9-digit number from the IRS that identifies your business for tax purposes. Like a Social Security number for your company. Required to open a business bank account.",
+  "operating agreement": "The internal rulebook for your LLC. Defines ownership, how decisions get made, profit splits, and what happens if you dissolve. Even solo founders should have one.",
+  "registered agent": "A person or service with a physical address in your formation state who receives official legal documents on behalf of your business. Required in every state.",
+  "Articles of Organization": "The official document you file with your state to legally create your LLC. This is the actual formation filing.",
+  "S-Corp election": "A tax status you apply for with the IRS. You pay yourself a salary and take the rest as profit distributions — which avoids some self-employment tax. Saves real money once your net profit consistently exceeds about $80,000 per year.",
+  "double taxation": "When a C-Corporation pays income tax on its profits, and then shareholders also pay personal income tax on any dividends they receive. The same money gets taxed twice.",
+  "Form 2553": "The IRS form you file to request S-Corporation tax treatment for your LLC. Must be filed within 75 days of forming your LLC, or by March 15 for an existing LLC.",
+  "83(b) election": "An IRS filing made within 30 days of receiving company shares. It locks in your tax basis at today's low value rather than paying taxes later when shares are worth more. Missing this deadline is one of the most expensive startup mistakes.",
+  "cap table": "A record of who owns what percentage of your company, at what price, and what type of ownership. Essential for any business raising investment.",
+  "QSBS": "Qualified Small Business Stock. A powerful tax benefit — early investors and founders in a C-Corp may be able to exclude up to $10 million in gains from federal tax if shares are held for five or more years.",
+  "sole proprietor": "Operating a business under your own name with no formal legal entity. Simple to start, but your personal assets are not legally separated from business debts.",
+  "distributions": "Money paid out to business owners from profits. In an S-Corp, distributions above your salary are not subject to self-employment tax — this is the core tax advantage.",
+  "bookkeeping": "Tracking every dollar your business earns and spends. Even basic bookkeeping — a simple spreadsheet or free app — keeps you ready for taxes and protects you if you're ever audited.",
+  "K-1": "A tax document each partner in a multi-member LLC receives, showing their share of business income and losses to report on their personal tax return.",
+  "Schedule C": "A form attached to your personal tax return where you report your business income and expenses. Most single-member LLC owners use this.",
+  "foreign entity": "When your company is formed in one state but you operate in another, you must register as a foreign entity in your home state and pay filing fees there too.",
+  "capital accounts": "Individual records tracking each member's contributions, profit shares, and withdrawals in a multi-member LLC.",
+  "par value": "The minimum nominal price per share set in a corporation's charter. Usually $0.0001 per share. Issuing shares at low par value at formation is standard practice."
+};
 
-const answers=JSON.parse(localStorage.getItem('aether_answers')||'{}');
+function applyGlossary() {
+  var wrap = document.getElementById('resultsWrap');
+  if (!wrap) return;
+  function walk(node) {
+    if (node.nodeType === 3) {
+      var text = node.textContent;
+      var lower = text.toLowerCase();
+      var hit = false;
+      Object.keys(GLOSSARY).forEach(function(term){ if(lower.indexOf(term.toLowerCase())>-1) hit=true; });
+      if (!hit) return;
+      var html = text;
+      Object.keys(GLOSSARY).sort(function(a,b){return b.length-a.length;}).forEach(function(term){
+        var def = GLOSSARY[term];
+        var esc = term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+        var re = new RegExp('(?<![\\w>-])('+esc+')(?![\\w<])', 'i');
+        html = html.replace(re, '<span class="tt">$1<span class="tt-box"><span class="tt-label">'+term+'</span>'+def+'</span></span>');
+      });
+      if (html !== text) {
+        var span = document.createElement('span');
+        span.innerHTML = html;
+        node.parentNode.replaceChild(span, node);
+      }
+    } else if (node.nodeType===1 && node.tagName!=='SCRIPT' && !node.classList.contains('tt-box') && !node.classList.contains('tt')) {
+      Array.from(node.childNodes).forEach(walk);
+    }
+  }
+  Array.from(wrap.childNodes).forEach(walk);
+  bindTooltips();
+}
 
-// ── DECISION ENGINE ──
+function bindTooltips() {
+  document.getElementById('resultsWrap').querySelectorAll('.tt').forEach(function(el){
+    if(!el._ttBound){
+      el._ttBound=true;
+      el.addEventListener('click',function(e){
+        e.stopPropagation();
+        document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classList.remove('active');});
+        el.classList.toggle('active');
+      });
+    }
+  });
+}
+
+document.addEventListener('click',function(){document.querySelectorAll('.tt.active').forEach(function(el){el.classList.remove('active');});});
+
+// ── READINESS ──
+var answers = JSON.parse(localStorage.getItem('aether_answers')||'{}');
+
 function readiness(a){
-  if(a.investors==='Yes, investors')return'FORM_NOW';
-  if(a.revenue==='$500K+')return'FORM_NOW';
-  if(a.revenue==='$125K \u2013 $500K'||a.revenue==='$125K - $500K')return'FORM_NOW';
-  if(a.owners==='Just me'&&a.businessFocus==='Services'&&a.revenue==='Under $50K'&&a.confidence==='Still figuring it out')return'EDGE_CASE';
+  if(a.investors==='Yes, investors') return 'FORM_NOW';
+  if(a.revenue==='$500K+') return 'FORM_NOW';
+  if(a.revenue==='$125K \u2013 $500K'||a.revenue==='$125K - $500K') return 'FORM_NOW';
+  if(a.owners==='Just me'&&a.businessFocus==='Services'&&a.revenue==='Under $50K'&&a.confidence==='Still figuring it out') return 'EDGE_CASE';
   var hold=0;
-  if(a.revenue==='Under $50K')hold++;
-  if(a.confidence==='Still figuring it out')hold++;
-  if(a.businessFocus==='Other')hold++;
-  if(a.priority==='Administrative simplicity'&&a.revenue==='Under $50K')hold++;
-  if(hold>=2)return'HOLD';
-  return'FORM_NOW';
+  if(a.revenue==='Under $50K') hold++;
+  if(a.confidence==='Still figuring it out') hold++;
+  if(a.businessFocus==='Other') hold++;
+  if(a.priority==='Administrative simplicity'&&a.revenue==='Under $50K') hold++;
+  if(hold>=2) return 'HOLD';
+  return 'FORM_NOW';
 }
 
 function decide(a){
-  if(!a.revenue&&!a.owners)return null;
-  const owners=a.owners||'',investors=a.investors||'',rev=a.revenue||'',priority=a.priority||'';
-  if(investors==='Yes, investors')return'C-Corporation';
-  if(owners==='2 owners'||owners==='3 \u2013 4'||owners==='5+')return'Multi-Member LLC';
-  if((rev==='$125K \u2013 $500K'||rev==='$500K+')&&priority==='Minimize taxes')return'LLC with S-Corp Election';
-  return'Single-Member LLC';
+  if(!a.revenue&&!a.owners) return null;
+  var owners=a.owners||'', investors=a.investors||'', rev=a.revenue||'', priority=a.priority||'';
+  if(investors==='Yes, investors') return 'C-Corporation';
+  if(owners==='2 owners'||owners==='3 \u2013 4'||owners==='5+') return 'Multi-Member LLC';
+  if((rev==='$125K \u2013 $500K'||rev==='$500K+')&&priority==='Minimize taxes') return 'LLC with S-Corp Election';
+  return 'Single-Member LLC';
 }
 
-// ── CONTENT DATA ──
-const ENTITY_DATA = {
+// ── CONTENT ──
+var CONTENT = {
   'Single-Member LLC': {
-    sub: "Based on your answers, this gives you the right balance of protection and simplicity at your current stage.",
-    means: "A Single-Member LLC creates a legal wall between your personal assets and your business. If the business gets sued or owes money, your personal bank account, car, and home stay protected. You file business taxes on your personal return — no separate corporate tax return needed. It's the simplest formal structure that actually protects you.",
+    balance: "protection and simplicity",
+    means: "A Single-Member LLC puts a legal wall between your personal life and your business. If the business gets sued or owes money, your personal bank account, savings, and home stay protected. You report business income on your personal tax return — no separate corporate tax filing needed. It is the simplest formal structure that actually protects you.",
     tax: [
-      {label:"How you're taxed", text:"Business income flows to your personal tax return (${tt('Schedule C','A form attached to your personal tax return (Form 1040) where you report business income and expenses. Most single-member LLC owners use this.')}). You pay income tax + ${tt('self-employment tax','A 15.3% tax that solo business owners pay to cover Social Security and Medicare. Unlike employees, you pay both the employee and employer share. This is separate from your regular income tax.')} (15.3%) on net profit."},
-      {label:"When to upgrade", text:"Once net profit consistently hits ~$80K/year, an ${tt('S-Corp election','A tax status you apply for with the IRS that lets your LLC be taxed differently — you pay yourself a salary and take the rest as ${tt('distributions','Money paid out to business owners from profits. In an S-Corp, distributions are not subject to self-employment tax — only your salary is. This is the key tax advantage.')}, which avoids some self-employment tax.')} can save you thousands in self-employment taxes."},
-      {label:"What you avoid", text:"Double taxation that C-Corps face. Corporate filing complexity. The overhead of a multi-member structure you don't need yet."},
-      {label:"Annual cost", text:"State filing fee + ${tt('registered agent','A person or service with a physical address in your formation state who receives official legal documents on behalf of your business. Required in every state.')} (~$100–$300/yr depending on your state). No federal minimum."}
+      "Your business income passes directly to your personal tax return — this is called pass-through taxation. The business itself pays no separate federal income tax.",
+      "You will pay income tax plus self-employment tax on your net profit. Self-employment tax covers Social Security and Medicare — 15.3% on top of your regular income tax.",
+      "You report business income and expenses on a Schedule C attached to your personal return. Track everything — your deductions reduce your taxable profit."
+    ],
+    upgrade: [
+      "An S-Corp election becomes worth looking at once your net profit is consistently above about $80,000 per year.",
+      "At that point, the self-employment tax savings from splitting income into salary and distributions can exceed the cost of running payroll.",
+      "Below that threshold, the complexity is not worth it. You are making the right call by starting here."
     ],
     notFit: [
-      {e:"C-Corporation", r:"Only necessary if you're raising institutional investment. Adds complexity and cost without benefit at this stage."},
-      {e:"S-Corp Election", r:"Not needed until net profit is consistently above $80K. The payroll requirements add overhead that isn't worth it yet."},
-      {e:"Multi-Member LLC", r:"You're the only owner. This structure is for two or more co-founders with shared ownership."}
+      {l:"S-Corp Election", r:"Adds payroll requirements and complexity without meaningful savings at your current revenue level."},
+      {l:"C-Corporation", r:"Unnecessary without outside investors. Adds double taxation and significant legal overhead."},
+      {l:"Multi-Member LLC", r:"You are the only owner. This structure is for businesses with two or more co-founders."}
     ],
-    steps: ["Choose your formation state — your home state is almost always the right move to start","File your ${tt('Articles of Organization','The official document you file with your state to legally create your LLC. It\'s the actual formation filing — includes your business name, registered agent, and basic structure.')} with your state","Apply for your ${tt('EIN','Employer Identification Number — a 9-digit number from the IRS that identifies your business for tax purposes. Like a Social Security number for your company. Required to open a business bank account.')} at irs.gov — free and takes 10 minutes online","Open a dedicated business bank account using your EIN","Draft a single-member ${tt('operating agreement','The internal rulebook for your LLC. Defines ownership, how decisions get made, what happens if you dissolve, and more. Even for solo LLCs, having one protects you.')} — even solo, this protects you","Set up basic bookkeeping from day one — never mix personal and business funds"]
+    steps: [
+      "Choose your formation state — your home state is almost always the right move to start",
+      "File your Articles of Organization with your state",
+      "Apply for your EIN at irs.gov — free and takes about 10 minutes online",
+      "Open a dedicated business bank account using your EIN",
+      "Draft a single-member operating agreement — even as a solo founder, this protects you",
+      "Set up basic bookkeeping from day one — never mix personal and business funds"
+    ]
   },
   'Multi-Member LLC': {
-    sub: "You're building with others. This structure covers shared ownership cleanly while keeping taxes simple.",
-    means: "A Multi-Member LLC creates liability protection for all owners while allowing flexible profit sharing. Each member pays taxes on their share through their personal return — no corporate tax. The most important document you'll create is your operating agreement, which defines ownership splits, decision-making, and what happens if someone leaves.",
+    balance: "shared ownership and operational flexibility",
+    means: "A Multi-Member LLC creates liability protection for all owners while keeping taxes straightforward. Each member pays taxes on their share of profits through their personal return — no corporate-level tax. The most important document you will create is your operating agreement, which defines ownership splits, decision-making authority, and what happens if a partner wants out.",
     tax: [
-      {label:"How you're taxed", text:"The LLC files a ${tt('Form 1065','A partnership tax return that multi-member LLCs must file each year. The business itself doesn\'t pay tax — each partner receives a ${tt('K-1','A tax document each partner in a multi-member LLC receives showing their share of business income, losses, and deductions to report on their personal return.')} showing their share.')} partnership return. Each partner gets a K-1 showing their share of profits to report personally."},
-      {label:"Profit splits", text:"Distributions do not have to match ownership percentages — your operating agreement controls this."},
-      {label:"What you avoid", text:"Corporate ${tt('double taxation','When a C-Corporation pays corporate income tax on profits, AND shareholders also pay personal income tax on dividends — the same money taxed twice.')}. The inflexibility of a corporation when you just need shared ownership covered cleanly."},
-      {label:"When to upgrade", text:"If you pursue institutional investment, a C-Corp conversion will likely be required by investors at that stage."}
+      "The LLC itself does not pay federal income tax. Instead, each partner pays taxes on their share of profits through their personal return.",
+      "The business files a Form 1065 each year — an informational return. Each member then receives a K-1 showing their share of income and losses.",
+      "Unlike a standard employee, each member owes self-employment tax on their share of profits. Work with a CPA to model estimated quarterly payments before year-end."
+    ],
+    upgrade: [
+      "An S-Corp election may become worth evaluating once your combined net profit is consistently high enough that the payroll complexity is justified.",
+      "If you pursue institutional investment down the road, investors will likely require converting to a C-Corporation.",
+      "For now, this structure covers your ownership situation cleanly without unnecessary complexity."
     ],
     notFit: [
-      {e:"Single-Member LLC", r:"You have co-founders. Single-member structures don't cover shared ownership or governance between partners."},
-      {e:"C-Corporation", r:"No institutional investors in the plan right now. C-Corps add complexity and cost that this stage doesn't need."},
-      {e:"S-Corp Election", r:"Available later, but the payroll and governance requirements add overhead you don't need at the formation stage."}
+      {l:"Single-Member LLC", r:"You have co-founders. A single-member structure does not cover shared ownership or multi-partner governance."},
+      {l:"C-Corporation", r:"No institutional investors in the plan right now. Adds significant legal cost and complexity without the capital-raise benefit."},
+      {l:"S-Corp Election", r:"Available later, but the payroll requirements add overhead that is not justified at this stage."}
     ],
-    steps: ["Agree on ownership percentages in writing before you file anything","File your Articles of Organization listing all members","Apply for your EIN — required for multi-member entities even without employees","Draft a comprehensive operating agreement — get legal review, not a template","Open a business bank account with capital accounts tracked for each member","Set a calendar reminder for your state annual report deadline"]
+    steps: [
+      "Agree on ownership percentages in writing before you file anything",
+      "File your Articles of Organization listing all members",
+      "Apply for your EIN — required for multi-member entities even without employees",
+      "Draft a comprehensive operating agreement — get legal review, not a template",
+      "Open a business bank account with capital accounts tracked for each member",
+      "Set up basic bookkeeping and calendar your state annual report deadline"
+    ]
   },
   'LLC with S-Corp Election': {
-    sub: "Your revenue level makes tax optimization worth the structure. This is how you keep more of what you earn.",
-    means: "You form an LLC, then file an S-Corp election with the IRS. This splits your income into two parts: a salary (taxed normally) and distributions (not subject to self-employment tax). At your revenue level, this structure can save thousands per year compared to a standard LLC.",
+    balance: "tax efficiency and operational simplicity",
+    means: "You form an LLC first, then file an election with the IRS to have it taxed like an S-Corporation. This splits your income into two parts: a salary you pay yourself, and distributions of the remaining profit. Only the salary portion is subject to self-employment tax — the distributions are not. At your revenue level, this difference is significant.",
     tax: [
-      {label:"How you're taxed", text:"You pay yourself a reasonable salary (payroll taxes apply), then take remaining profit as distributions — which aren't subject to self-employment tax."},
-      {label:"The savings", text:"Self-employment tax is 15.3%. On $200K net profit, an S-Corp election could save $8,000–$15,000/year depending on your salary split."},
-      {label:"The requirement", text:"You must pay yourself a defensible, market-rate salary before taking distributions. Too low triggers IRS scrutiny."},
-      {label:"When it makes sense", text:"Most CPAs recommend this structure once net profit is consistently above $80K annually."}
+      "You pay yourself a reasonable salary. Payroll taxes apply to that salary — Social Security and Medicare are split between you and the business.",
+      "Profits above your salary are taken as distributions and are not subject to self-employment tax. This is where the savings come from.",
+      "The IRS requires your salary to be defensible — roughly what the market would pay someone doing your job. Too low triggers scrutiny. A CPA should help you set this correctly."
+    ],
+    upgrade: [
+      "You are already at the stage where this upgrade makes sense. The S-Corp election is the upgrade.",
+      "If your net profit eventually exceeds $500,000 or you pursue institutional investment, a C-Corporation conversion may become necessary.",
+      "For now, this is the right structure for where you are."
     ],
     notFit: [
-      {e:"Standard LLC", r:"You're leaving real money on the table. At your revenue level, the S-Corp structure pays for itself quickly."},
-      {e:"C-Corporation", r:"No institutional investors in your plan. C-Corps add double taxation and complexity without the capital-raise benefit."},
-      {e:"Multi-Member LLC", r:"You're the primary owner. Multi-member structures add governance complexity that this situation doesn't require."}
+      {l:"Standard LLC", r:"At your revenue level, staying with a standard LLC means leaving real money on the table in self-employment taxes every year."},
+      {l:"C-Corporation", r:"No institutional investors in your plan. C-Corps add double taxation and legal complexity without the capital-raise benefit."},
+      {l:"Multi-Member LLC", r:"You are the primary owner. Multi-member governance adds complexity your situation does not require."}
     ],
-    steps: ["Form the LLC in your chosen state first","File ${tt('Form 2553','The IRS form you file to request S-Corporation tax treatment for your LLC. Must be filed within 75 days of formation or by March 15 for existing LLCs.')} with the IRS within 75 days of formation (or by March 15 for existing entities)","Draft an operating agreement that reflects your S-Corp structure","Set up payroll — you must pay yourself a documented, reasonable salary","Apply for your EIN immediately if not already done","Engage a CPA before your first full tax year under the S-Corp election"]
+    steps: [
+      "Form the LLC in your chosen state first",
+      "File Form 2553 with the IRS within 75 days of formation — or by March 15 for an existing LLC",
+      "Set up payroll and pay yourself a documented, reasonable salary before taking distributions",
+      "Apply for your EIN immediately if you have not already done so",
+      "Open separate accounts for operating funds and owner distributions",
+      "Engage a CPA before your first full tax year under the S-Corp election"
+    ]
   },
   'C-Corporation': {
-    sub: "You're building for outside investment. This is the structure that makes institutional capital possible.",
-    means: "A C-Corporation — especially formed in Delaware — is the standard structure for startups raising venture capital or angel investment. It supports multiple share classes, stock-based compensation, and investor mechanics that LLCs simply can't replicate cleanly. Investors will expect this.",
+    balance: "investor compatibility and equity flexibility",
+    means: "A C-Corporation — especially formed in Delaware — is the standard structure for companies raising outside investment. It supports multiple share classes, stock-based compensation, and the equity mechanics that institutional investors require. If you plan to raise from angels or venture capital, this is not optional — investors will expect it.",
     tax: [
-      {label:"How you're taxed", text:"The corporation pays 21% federal income tax on profits. Shareholders pay personal tax on dividends — called double taxation. For growth companies reinvesting profits, this rarely matters."},
-      {label:"${tt('QSBS','Qualified Small Business Stock. A powerful tax benefit where early C-Corp investors and founders can exclude up to $10M in gains from federal tax if shares are held for 5+ years.')} benefit", text:"Founders and early investors may qualify to exclude up to $10M in capital gains under Section 1202 if shares are held 5+ years."},
-      {label:"Stock compensation", text:"C-Corps have the most developed legal framework for issuing stock options to employees and advisors."},
-      {label:"83(b) election", text:"File within 30 days of share issuance. Missing this window is one of the most expensive startup mistakes. The deadline cannot be extended."}
+      "The corporation pays federal income tax on its profits at a flat 21% rate. Shareholders then pay personal income tax on any dividends received — this is called double taxation.",
+      "For growth-stage companies that reinvest profits rather than paying dividends, double taxation rarely matters in practice.",
+      "Early investors and founders may qualify for QSBS tax treatment — potentially excluding up to $10 million in gains from federal tax if shares are held for five or more years."
+    ],
+    upgrade: [
+      "You are already in the right structure for the path you have described.",
+      "As you grow, focus on maintaining a clean cap table, issuing shares properly, and staying current on Delaware and home-state compliance.",
+      "If you ever shift away from the institutional investment path, the structure can be revisited — but most founders who start here stay here."
     ],
     notFit: [
-      {e:"Single-Member LLC", r:"Doesn't support the share classes and investor mechanics that institutional capital requires."},
-      {e:"Multi-Member LLC", r:"LLCs can't cleanly issue preferred stock or support the ${tt('cap table','Capitalization table — a record of who owns what percentage of your company, at what price, and what type of ownership. Essential for any company raising investment.')} structures investors expect."},
-      {e:"S-Corp Election", r:"S-Corps can't have more than 100 shareholders or institutional investors. Not compatible with the capital-raise path."}
+      {l:"Single-Member LLC", r:"Cannot support the share classes and investor mechanics that institutional capital requires."},
+      {l:"Multi-Member LLC", r:"LLCs cannot cleanly issue preferred stock or support the equity structures investors expect."},
+      {l:"S-Corp Election", r:"S-Corps cannot have more than 100 shareholders or institutional investors. Not compatible with the capital-raise path you described."}
     ],
-    steps: ["Engage a startup attorney before filing — formation decisions here have long-term downstream implications","File in Delaware for investor compatibility","Register as a foreign entity in your home state if you operate outside Delaware","Draft bylaws, shareholder agreements, and a founders' stock purchase agreement simultaneously","Apply for your EIN as a C-Corporation","File ${tt('83(b) elections','An IRS election filed within 30 days of receiving restricted stock. It locks in your tax basis at the current low value instead of paying taxes later when it\'s worth more. Missing this 30-day window is one of the most expensive startup mistakes.')} for all founders within 30 days of share issuance — no exceptions","Set up a cap table tool like Carta from day one"]
+    steps: [
+      "Engage a startup attorney before filing — decisions made at formation affect fundraising for years",
+      "File in Delaware for investor compatibility",
+      "Register as a foreign entity in your home state if you operate outside Delaware",
+      "Apply for your EIN as a C-Corporation",
+      "Issue founders shares at a low par value immediately after formation",
+      "File 83(b) elections for all founders within 30 days of share issuance — this deadline cannot be extended",
+      "Set up a cap table tool like Carta from day one"
+    ]
   }
 };
 
-function buildFitPoints(a, entity){
+// ── SITUATION BUILDER ──
+function buildSituation(a, entity) {
+  var parts = [];
+  // Ownership
+  if(a.owners==='Just me') parts.push("You are starting as a solo founder");
+  else if(a.owners==='2 owners') parts.push("You are building this with a co-founder");
+  else if(a.owners==='3 \u2013 4'||a.owners==='3 - 4') parts.push("You have a small founding team");
+  else if(a.owners==='5+') parts.push("You have a larger ownership group");
+  else parts.push("You are starting out");
+  // Investors
+  if(a.investors==='Yes, investors') parts.push("planning to raise outside investment");
+  else parts.push("not raising outside capital");
+  // Revenue
+  if(a.revenue==='Under $50K') parts.push("and your expected revenue is still in the early stage");
+  else if(a.revenue==='$50K \u2013 $125K'||a.revenue==='$50K - $125K') parts.push("and your revenue is in the early traction range");
+  else if(a.revenue==='$125K \u2013 $500K'||a.revenue==='$125K - $500K') parts.push("and your revenue is at a scaling stage");
+  else if(a.revenue==='$500K+') parts.push("and your revenue is at an established level");
+  var sentence = parts.join(', ') + '.';
+  // Priority
+  if(a.priority==='Minimize taxes') sentence += ' You prioritized reducing your tax burden as you grow.';
+  else if(a.priority==='Limit liability') sentence += ' You prioritized protecting your personal assets from business risk.';
+  else if(a.priority==='Administrative simplicity') sentence += ' You prioritized keeping things simple and manageable while you build.';
+  // State
+  if(a.operatingState) sentence += ' You are operating in ' + a.operatingState + '.';
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+}
+
+// ── FIT BULLETS BUILDER ──
+function buildFit(a, entity) {
   var pts = [];
-  if(a.operatingState) pts.push('You\'re operating in ' + a.operatingState);
-  if(a.owners==='Just me') pts.push('You\'re the only owner');
-  else if(a.owners==='2 owners') pts.push('You\'re building with a co-founder');
-  else if(a.owners==='3 \u2013 4'||a.owners==='3 - 4') pts.push('You have a small founding team');
-  else if(a.owners==='5+') pts.push('You have five or more owners');
-  if(a.revenue) pts.push('Your expected revenue is ' + a.revenue);
-  if(a.investors==='Yes, investors') pts.push('You plan to raise outside investment');
-  else pts.push('You\'re not raising outside capital');
-  if(a.priority==='Minimize taxes') pts.push('You prioritized minimizing your tax burden');
-  else if(a.priority==='Limit liability') pts.push('You prioritized protecting your personal assets');
-  else if(a.priority==='Administrative simplicity') pts.push('You prioritized keeping things simple and lean');
-  if(a.businessFocus) pts.push('Your business focus is ' + a.businessFocus.toLowerCase());
+  if(a.owners==='Just me') pts.push("You are the only owner, which makes a single-member structure the cleanest and simplest option");
+  else if(a.owners==='2 owners') pts.push("You have a co-founder, which requires a multi-member structure that covers shared ownership and governance");
+  else if(a.owners==='3 \u2013 4'||a.owners==='3 - 4') pts.push("You have a small founding team, which requires a structure that covers shared ownership and defines how decisions get made");
+  else if(a.owners==='5+') pts.push("You have five or more owners, which requires a structure with clear governance and ownership documentation");
+  if(a.investors==='Yes, investors') pts.push("You plan to raise outside investment, which makes a C-Corporation the expected and necessary structure");
+  else pts.push("You are not raising outside capital, which means you do not need the complexity of a corporation");
+  if(a.revenue==='Under $50K') pts.push("Your current revenue range does not justify more complex structures yet — simplicity and low overhead are the right priorities");
+  else if(a.revenue==='$50K \u2013 $125K'||a.revenue==='$50K - $125K') pts.push("Your revenue is building — this structure creates a solid foundation without unnecessary complexity");
+  else if(a.revenue==='$125K \u2013 $500K'||a.revenue==='$125K - $500K') pts.push("Your revenue level justifies the tax optimization that this structure provides");
+  else if(a.revenue==='$500K+') pts.push("Your revenue level makes structure optimization a meaningful financial decision, not just a formality");
+  if(a.priority==='Minimize taxes') pts.push("You prioritized minimizing taxes, and this structure aligns with that goal at your current stage");
+  else if(a.priority==='Limit liability') pts.push("You prioritized protecting your personal assets, and this structure creates the legal separation you need");
+  else if(a.priority==='Administrative simplicity') pts.push("You prioritized keeping things simple, and this structure has the lowest ongoing administrative requirements");
+  if(a.businessFocus==='Software'&&entity==='C-Corporation') pts.push("Software businesses pursuing investment are expected by investors to be Delaware C-Corporations");
   return pts;
 }
 
 // ── RENDER BLUEPRINT ──
-function renderBlueprint(wrap, entity, isOverride){
-  const d = ENTITY_DATA[entity];
-  if(!d) return;
-  const fitPoints = buildFitPoints(answers, entity);
-  const fitHtml = fitPoints.map(p=>`<li>${p}</li>`).join('');
-  const taxHtml = d.tax.map(t=>`<div class="tax-item"><div class="tax-item-label">${t.label}</div><div class="tax-item-text">${t.text}</div></div>`).join('');
-  const notHtml = d.notFit.map(n=>`<div class="not-item"><div class="not-entity">${n.e}</div><div class="not-reason">${n.r}</div></div>`).join('');
-  const stepsHtml = d.steps.map(s=>`<li>${s}</li>`).join('');
+function renderBlueprint(wrap, entity, isOverride) {
+  var d = CONTENT[entity];
+  if (!d) return;
+  var situation = buildSituation(answers, entity);
+  var fitPts = buildFit(answers, entity);
+  var fitHtml = fitPts.map(function(p){return '<li>'+p+'</li>';}).join('');
+  var taxHtml = d.tax.map(function(t){return '<p class="simple-text">'+t+'</p>';}).join('');
+  var upgradeHtml = d.upgrade.map(function(u){return '<li>'+u+'</li>';}).join('');
+  var notHtml = d.notFit.map(function(n){return '<div class="contrast-item"><div class="contrast-label">'+n.l+'</div><div class="contrast-reason">'+n.r+'</div></div>';}).join('');
+  var stepsHtml = d.steps.map(function(s){return '<li>'+s+'</li>';}).join('');
 
-  wrap.innerHTML=`
-    ${isOverride?`<div style="margin-bottom:28px;padding:12px 20px;background:rgba(201,161,74,0.07);border:1px solid rgba(201,161,74,0.25);border-left:3px solid #C9A14A;"><p style="font-size:12px;color:#C9A14A;font-weight:500;letter-spacing:0.06em;">You chose to proceed — AETHER respects that. Here is your formation blueprint.</p></div>`:''}
+  wrap.innerHTML =
+    (isOverride ? '<div style="margin-bottom:28px;padding:12px 20px;background:rgba(201,161,74,0.07);border:1px solid rgba(201,161,74,0.25);border-left:3px solid #C9A14A;"><p style="font-size:12px;color:#C9A14A;font-weight:500;letter-spacing:0.04em;">You chose to proceed — AETHER respects that. Your blueprint is below.</p></div>' : '') +
 
-    <div class="decision-block">
-      <div class="decision-eyebrow">Your Recommendation</div>
-      <h1 class="decision-headline">You should form a<br><span>${entity}</span></h1>
-      <p class="decision-sub">${d.sub}</p>
-    </div>
+    '<div class="decision-wrap">' +
+      '<div class="decision-eyebrow">Your Recommendation</div>' +
+      '<h1 class="decision-headline">You should form a<br><em>' + entity + '</em></h1>' +
+      '<p class="decision-balance">This structure gives you the best balance of ' + d.balance + ' at your current stage.</p>' +
+      '<p class="decision-timing">This is the most efficient structure for where you are right now — not forever, just right now.</p>' +
+    '</div>' +
 
-    <div class="r-block" style="animation-delay:0.15s">
-      <div class="r-block-label">Why This Fits You</div>
-      <ul class="fit-list">${fitHtml}</ul>
-    </div>
+    '<div class="r-section" style="animation-delay:0.15s">' +
+      '<div class="r-label">Your Situation</div>' +
+      '<div class="r-body gold-left"><p class="situation-text">' + situation + '</p></div>' +
+    '</div>' +
 
-    <div class="r-block" style="animation-delay:0.25s">
-      <div class="r-block-label">What This Means</div>
-      <p class="means-text">${d.means}</p>
-    </div>
+    '<div class="r-section" style="animation-delay:0.22s">' +
+      '<div class="r-label">Why This Fits You</div>' +
+      '<div class="r-body"><ul class="fit-list">' + fitHtml + '</ul></div>' +
+    '</div>' +
 
-    <div class="r-block" style="animation-delay:0.35s">
-      <div class="r-block-label">Money &amp; Tax Clarity</div>
-      <div class="tax-grid">${taxHtml}</div>
-    </div>
+    '<div class="r-section" style="animation-delay:0.29s">' +
+      '<div class="r-label">What This Means</div>' +
+      '<div class="r-body"><p class="means-text">' + d.means + '</p></div>' +
+    '</div>' +
 
-    <div class="r-block" style="animation-delay:0.45s">
-      <div class="r-block-label">Why The Other Options Don't Fit Right Now</div>
-      <div class="not-list">${notHtml}</div>
-    </div>
+    '<div class="r-section" style="animation-delay:0.36s">' +
+      '<div class="r-label">How You\'re Taxed</div>' +
+      '<div class="r-body">' + taxHtml + '</div>' +
+    '</div>' +
 
-    <div class="r-block" style="animation-delay:0.55s">
-      <div class="r-block-label">Next Steps</div>
-      <ol class="steps-list" id="stepsList">${stepsHtml}</ol>
-      <p class="steps-hint">Tap any step to mark it complete</p>
-    </div>
+    '<div class="r-section" style="animation-delay:0.43s">' +
+      '<div class="r-label">When To Upgrade</div>' +
+      '<div class="r-body"><ul class="simple-list">' + upgradeHtml + '</ul></div>' +
+    '</div>' +
 
-    <div class="r-block" style="animation-delay:0.65s;text-align:center;padding:36px 32px;">
-      <div class="r-block-label" style="margin-bottom:12px;">When You're Ready To Set This Up</div>
-      <p style="font-size:15px;color:#6A90B8;margin-bottom:28px;line-height:1.7;">You can move forward using a formation provider or handle it yourself.</p>
-      <a href="partners.html" class="btn-primary">View Formation Options &rarr;</a>
-    </div>
+    '<div class="r-section" style="animation-delay:0.5s">' +
+      '<div class="r-label">Why The Other Options Don\'t Fit Right Now</div>' +
+      '<div class="r-body"><div class="contrast-list">' + notHtml + '</div></div>' +
+    '</div>' +
 
-    <div class="action-row">
-      <button class="btn-secondary" onclick="resetScan()">&#8592; Update My Answers</button>
-    </div>
-  `;
+    '<div class="r-section" style="animation-delay:0.57s">' +
+      '<div class="r-label">What To Do Next</div>' +
+      '<div class="r-body">' +
+        '<ol class="steps-list" id="stepsList">' + stepsHtml + '</ol>' +
+        '<p class="steps-hint">Tap any step to mark it complete</p>' +
+      '</div>' +
+    '</div>' +
 
-  document.querySelectorAll('#stepsList li').forEach(li=>{
-    li.addEventListener('click',function(){this.classList.toggle('done');});
+    '<div class="cta-block">' +
+      '<p class="cta-text">When you\'re ready to set this up, you can view trusted formation options.</p>' +
+      '<a href="partners.html" class="btn-primary">View Formation Options \u2192</a>' +
+    '</div>' +
+
+    '<div style="text-align:center;margin-top:20px;">' +
+      '<button class="btn-secondary" onclick="resetScan()">\u2190 Update My Answers</button>' +
+    '</div>';
+
+  document.querySelectorAll('#stepsList li').forEach(function(li){
+    li.addEventListener('click', function(){ this.classList.toggle('done'); });
   });
+
+  applyGlossary();
 }
 
 // ── HOLD SCREEN ──
-function renderHold(wrap){
-  wrap.innerHTML=`
-    <div class="verdict-badge hold">Formation Intelligence — Hold Signal</div>
-    <h1 class="hold-headline">Not yet.<br><span>But you're closer than you think.</span></h1>
-    <p class="hold-sub">Based on your answers, forming right now adds cost and complexity before the business is ready to carry it.</p>
-    <div class="hold-panel" style="animation-delay:0.3s">
-      <div class="hold-panel-hdr"><span class="hold-panel-title">Why Forming Now Could Hurt You</span></div>
-      <div class="hold-panel-body">
-        <p>An LLC is not required before you can make money. Filing before you have revenue, a clear model, or validated demand creates annual state fees and ${tt('compliance obligations','The ongoing legal requirements to keep your business active — things like annual reports, registered agent fees, and state filings. These apply every year whether your business made money or not.')} — with no business to justify it yet.</p>
-        <ul class="hold-list">
-          <li>Every state charges annual fees and report requirements regardless of whether you made a dollar.</li>
-          <li>A premature structure can complicate future changes — wrong state, wrong entity, wrong ownership splits are expensive to fix.</li>
-          <li>Most clients and payment processors will work with a ${tt('sole proprietor','The simplest business setup — you operate under your own name with no formal legal entity. No filing required, but your personal assets are not legally separated from the business.')}. You do not need an LLC to get started.</li>
-          <li>Formation signals permanence. Right now your priority should be proving the model, not formalizing it.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="hold-panel" style="animation-delay:0.45s">
-      <div class="hold-panel-hdr"><span class="hold-panel-title">What To Do Instead</span></div>
-      <div class="hold-panel-body">
-        <ul class="hold-list">
-          <li><strong style="color:#C8DEFF;font-weight:500;">Land your first paying customer.</strong> Revenue is the only real proof of concept.</li>
-          <li><strong style="color:#C8DEFF;font-weight:500;">Define your revenue model clearly.</strong> Know exactly how you make money before formalizing anything.</li>
-          <li><strong style="color:#C8DEFF;font-weight:500;">Get a simple written agreement in place.</strong> A basic contract protects you before an LLC does.</li>
-          <li><strong style="color:#C8DEFF;font-weight:500;">Open a separate bank account now.</strong> As a sole proprietor — free, instant, no LLC needed. Keep money separate from day one.</li>
-          <li><strong style="color:#C8DEFF;font-weight:500;">Validate before you formalize.</strong> Talk to 10 real potential customers before building the legal shell around it.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="hold-panel" style="animation-delay:0.6s">
-      <div class="hold-panel-hdr"><span class="hold-panel-title">Come Back When You Hit These</span></div>
-      <div class="hold-panel-body">
-        <div class="trigger-grid">
-          <div class="trigger-item"><div class="trigger-num">01</div><div class="trigger-text"><strong>First paid revenue</strong>Once someone pays you — you're ready to evaluate structure seriously.</div></div>
-          <div class="trigger-item"><div class="trigger-num">02</div><div class="trigger-text"><strong>Consistent income</strong>$2,000+/month with reasonable confidence.</div></div>
-          <div class="trigger-item"><div class="trigger-num">03</div><div class="trigger-text"><strong>A partner joins</strong>The moment you share ownership, you need formal structure immediately.</div></div>
-          <div class="trigger-item"><div class="trigger-num">04</div><div class="trigger-text"><strong>Liability exposure</strong>Working with clients, handling money, or creating products.</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="hold-action-row">
-      <button class="btn-primary" onclick="resetScan()">Update My Scan</button>
-      <button class="btn-secondary" onclick="formAnyway()">I want to form anyway &rarr;</button>
-    </div>
-    <p class="override-note">AETHER recommends waiting — but the decision is yours. Your blueprint is ready if you choose to proceed.</p>
-  `;
+function renderHold(wrap) {
+  wrap.innerHTML =
+    '<div class="verdict-badge hold">Formation Intelligence \u2014 Hold Signal</div>' +
+    '<h1 class="hold-headline">Not yet.<br><em>But you\'re closer than you think.</em></h1>' +
+    '<p class="hold-sub">Based on your answers, forming right now adds cost and complexity before the business is ready to carry it. Here is what to do instead.</p>' +
+
+    '<div class="hold-panel" style="animation-delay:0.25s">' +
+      '<div class="hold-panel-hdr"><span class="hold-panel-title">Why Forming Now Could Hurt You</span></div>' +
+      '<div class="hold-panel-body">' +
+        '<ul class="hold-list">' +
+          '<li>Filing creates annual fees and compliance requirements in every state — whether or not your business made any money that year.</li>' +
+          '<li>A premature structure can be expensive to undo — wrong state, wrong entity type, or wrong ownership splits all cost time and money to fix.</li>' +
+          '<li>Most clients and payment processors will work with a sole proprietor. You do not need an LLC to start earning.</li>' +
+          '<li>Formation signals permanence. Right now your priority should be proving the business works, not formalizing it.</li>' +
+        '</ul>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="hold-panel" style="animation-delay:0.35s">' +
+      '<div class="hold-panel-hdr"><span class="hold-panel-title">What To Do Instead</span></div>' +
+      '<div class="hold-panel-body">' +
+        '<ul class="hold-list">' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">Land your first paying customer.</strong> Revenue is the only real proof your business works.</li>' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">Define how you make money.</strong> Know exactly what you sell, at what price, and who pays before you formalize anything around it.</li>' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">Get a basic written agreement in place.</strong> A simple contract protects you from non-paying clients before an LLC does.</li>' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">Open a separate bank account now.</strong> You can do this as a sole proprietor today — free, no LLC needed. Keeping money separate is the most important habit to build before formation.</li>' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">Validate before you formalize.</strong> Talk to real potential customers first. Make sure people will actually pay before you build the legal structure around it.</li>' +
+        '</ul>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="hold-panel" style="animation-delay:0.45s">' +
+      '<div class="hold-panel-hdr"><span class="hold-panel-title">Come Back When You Hit These</span></div>' +
+      '<div class="hold-panel-body">' +
+        '<div class="trigger-grid">' +
+          '<div class="trigger-item"><div class="trigger-num">01</div><div class="trigger-text"><strong>First paid revenue</strong>Once a real customer has paid you, you are ready to evaluate structure seriously.</div></div>' +
+          '<div class="trigger-item"><div class="trigger-num">02</div><div class="trigger-text"><strong>Consistent income</strong>When you can reasonably project $2,000 or more per month.</div></div>' +
+          '<div class="trigger-item"><div class="trigger-num">03</div><div class="trigger-text"><strong>A partner joins</strong>The moment you share ownership with anyone, formal structure is needed immediately.</div></div>' +
+          '<div class="trigger-item"><div class="trigger-num">04</div><div class="trigger-text"><strong>Liability exposure</strong>Working with clients, handling their money, or creating physical products.</div></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="hold-btns">' +
+      '<button class="btn-primary" onclick="resetScan()">Update My Scan</button>' +
+      '<button class="btn-secondary" onclick="formAnyway()">I want to form anyway \u2192</button>' +
+    '</div>' +
+    '<p class="override-note">AETHER recommends waiting — but the decision is always yours.</p>';
+
+  applyGlossary();
 }
 
 // ── EDGE CASE SCREEN ──
-function renderEdge(wrap){
-  wrap.innerHTML=`
-    <div class="verdict-badge edge">Formation Intelligence — Not Yet</div>
-    <h1 class="hold-headline">A few things before<br><span>structure matters.</span></h1>
-    <p class="hold-sub">You're at a stage where the right moves are operational, not structural. Here's what actually protects you right now.</p>
-    <div class="hold-panel" style="animation-delay:0.3s">
-      <div class="hold-panel-hdr"><span class="hold-panel-title">What You Actually Need Right Now</span></div>
-      <div class="hold-panel-body">
-        <ul class="hold-list">
-          <li><strong style="color:#C8DEFF;font-weight:500;">A written service agreement.</strong> A basic contract protects you today — an LLC does not protect you from a client who won't pay.</li>
-          <li><strong style="color:#C8DEFF;font-weight:500;">A separate bank account.</strong> Open one as a sole proprietor — free, no LLC needed. Keeping money separate is the most important financial habit before formation.</li>
-          <li><strong style="color:#C8DEFF;font-weight:500;">A basic online presence.</strong> Payment processors and clients will look you up. Give them something to find.</li>
-          <li><strong style="color:#C8DEFF;font-weight:500;">Your first paying client.</strong> One real customer paying real money changes the entire equation.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="hold-panel" style="animation-delay:0.45s">
-      <div class="hold-panel-hdr"><span class="hold-panel-title">When To Come Back</span></div>
-      <div class="hold-panel-body">
-        <ul class="hold-list">
-          <li>You have at least one paying client or a clear first customer in sight.</li>
-          <li>You know what service you're offering and at what price.</li>
-          <li>Someone else is involved — a partner, investor, or collaborator.</li>
-          <li>You're approaching $2,000–$3,000/month or have a realistic path to it.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="hold-action-row">
-      <button class="btn-primary" onclick="resetScan()">Update My Scan</button>
-      <button class="btn-secondary" onclick="formAnyway()">I want to form anyway &rarr;</button>
-    </div>
-    <p class="override-note">AETHER recommends getting a few things in place first — but the decision is yours.</p>
-  `;
+function renderEdge(wrap) {
+  wrap.innerHTML =
+    '<div class="verdict-badge edge">Formation Intelligence \u2014 Not Yet</div>' +
+    '<h1 class="hold-headline">A few things before<br><em>structure matters.</em></h1>' +
+    '<p class="hold-sub">You are at a stage where the right moves are operational, not structural. These steps will protect you more than an LLC right now.</p>' +
+
+    '<div class="hold-panel" style="animation-delay:0.25s">' +
+      '<div class="hold-panel-hdr"><span class="hold-panel-title">What You Actually Need Right Now</span></div>' +
+      '<div class="hold-panel-body">' +
+        '<ul class="hold-list">' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">A written service agreement.</strong> A basic contract defines the work, the payment terms, and what happens if things go wrong. An LLC does not protect you from a client who refuses to pay — a contract does.</li>' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">A separate bank account.</strong> Open one today as a sole proprietor — free, instant, no LLC needed. Keeping business money separate from personal money is the most important financial habit before formation.</li>' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">A basic online presence.</strong> A simple page or profile creates legitimacy. Payment processors and potential clients will look you up — give them something to find.</li>' +
+          '<li><strong style="color:#C8DEFF;font-weight:500;">Your first paying client.</strong> One real customer paying real money changes everything. It clarifies your model and tells you exactly what structure needs to support.</li>' +
+        '</ul>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="hold-panel" style="animation-delay:0.35s">' +
+      '<div class="hold-panel-hdr"><span class="hold-panel-title">When To Come Back</span></div>' +
+      '<div class="hold-panel-body">' +
+        '<ul class="hold-list">' +
+          '<li>You have at least one paying client, or a clear first customer you are actively working toward.</li>' +
+          '<li>You know specifically what service you are offering and at what price.</li>' +
+          '<li>Someone else is involved — a partner, investor, or collaborator with shared ownership.</li>' +
+          '<li>You are approaching $2,000 to $3,000 per month in revenue, or have a realistic path to get there.</li>' +
+        '</ul>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="hold-btns">' +
+      '<button class="btn-primary" onclick="resetScan()">Update My Scan</button>' +
+      '<button class="btn-secondary" onclick="formAnyway()">I want to form anyway \u2192</button>' +
+    '</div>' +
+    '<p class="override-note">AETHER recommends getting a few things in place first — but the decision is always yours.</p>';
+
+  applyGlossary();
 }
 
-function formAnyway(){
-  const wrap=document.getElementById('resultsWrap');
-  const entity=decide(answers)||'Single-Member LLC';
-  renderBlueprint(wrap,entity,true);
+function formAnyway() {
+  var wrap = document.getElementById('resultsWrap');
+  var entity = decide(answers) || 'Single-Member LLC';
+  renderBlueprint(wrap, entity, true);
 }
 
-function resetScan(){
+function resetScan() {
   localStorage.setItem('aether_step','0');
-  window.location.href='scan.html';
+  window.location.href = 'scan.html';
 }
 
-function render(){
-  const wrap=document.getElementById('resultsWrap');
-  if(!answers.revenue&&!answers.owners){
-    wrap.innerHTML=`<div class="no-data"><h2>No scan data found.</h2><p>Complete the Structure Scan to generate your recommendation.</p><a href="scan.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#C9A14A!important;color:#061729!important;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;-webkit-appearance:none;">Begin Scan &rarr;</a></div>`;
+// ── RENDER ──
+function render() {
+  var wrap = document.getElementById('resultsWrap');
+  if (!answers.revenue && !answers.owners) {
+    wrap.innerHTML = '<div class="no-data"><h2>No scan data found.</h2><p>Complete the Structure Scan to generate your recommendation.</p><a href="scan.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#C9A14A!important;color:#061729!important;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;-webkit-appearance:none;">Begin Scan \u2192</a></div>';
     return;
   }
-  const verdict=readiness(answers);
-  if(verdict==='HOLD'){renderHold(wrap);return;}
-  if(verdict==='EDGE_CASE'){renderEdge(wrap);return;}
-  const entity=decide(answers)||'Single-Member LLC';
-  renderBlueprint(wrap,entity,false);
+  var verdict = readiness(answers);
+  if (verdict === 'HOLD') { renderHold(wrap); return; }
+  if (verdict === 'EDGE_CASE') { renderEdge(wrap); return; }
+  var entity = decide(answers) || 'Single-Member LLC';
+  renderBlueprint(wrap, entity, false);
 }
 
 render();
-
-document.querySelectorAll('.tt').forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classList.remove('active');});el.classList.toggle('active');});});
-document.addEventListener('click',function(){document.querySelectorAll('.tt.active').forEach(function(el){el.classList.remove('active');});});
-const obs=new MutationObserver(function(){document.querySelectorAll('.tt').forEach(function(el){if(!el._ttBound){el._ttBound=true;el.addEventListener('click',function(e){e.stopPropagation();document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classList.remove('active');});el.classList.toggle('active');});}});});
-obs.observe(document.getElementById('resultsWrap'),{childList:true,subtree:true});
 </script>
 </body>
 </html>
