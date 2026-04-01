@@ -33,7 +33,7 @@ nav a:hover,nav a.active{color:#C9A14A;}
 .disclosure{padding:16px 80px;background:rgba(201,161,74,0.07);border-bottom:1px solid rgba(255,255,255,0.06);}
 .disclosure p{font-size:12px;color:#7A9EC0;}
 .providers-section{padding:80px;flex:1;background:#061729!important;}
-.providers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);margin-bottom:80px;}
+.providers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);margin-bottom:80px;}
 .provider-card{background:#061729!important;padding:48px 40px;display:flex;flex-direction:column;position:relative;transition:background 0.3s;}
 .provider-card:hover{background:#0B2240!important;}
 .provider-accent{position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background 0.3s;}
@@ -51,9 +51,9 @@ nav a:hover,nav a.active{color:#C9A14A;}
 .compare-section{border:1px solid rgba(255,255,255,0.07);width:100%;}
 .compare-header{padding:20px 32px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;background:#0B2240!important;}
 .compare-wrap{overflow-x:scroll;-webkit-overflow-scrolling:touch;width:100%;display:block;}
-.compare-grid{display:grid;grid-template-columns:140px 1fr 1fr 1fr;background:#061729!important;min-width:580px;}
+.compare-grid{display:grid;grid-template-columns:140px 1fr 1fr;background:#061729!important;min-width:420px;}
 .compare-cell{padding:18px 24px;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);color:#6A90B8;line-height:1.4;background:#061729!important;}
-.compare-cell:nth-child(4n){border-right:none;}
+.compare-cell:nth-child(3n){border-right:none;}
 .compare-cell.label{color:#304F6A;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
 .compare-cell.head{font-family:'Cormorant Garamond',serif;font-size:16px;color:#EEF6FF;font-weight:400;background:#0B2240!important;}
 .compare-cell.gold{color:#C9A14A;}
@@ -82,9 +82,9 @@ footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(
 <section class="page-hero">
   <div>
     <p class="page-eyebrow">Vetted Formation Services</p>
-    <h1 class="page-title">Three providers.<br>Evaluated on price,<br>privacy, and process.</h1>
+    <h1 class="page-title">Two providers.<br>Selected for quality,<br>price, and trust.</h1>
   </div>
-  <p class="page-desc">Each service below has been selected for reliability and transparency. Review their differences, then file with the one that matches your priorities.</p>
+  <p class="page-desc">Both services have been selected for reliability and transparency. Choose based on what matters most to you — privacy or cost.</p>
 </section>
 <div class="disclosure">
   <p><strong style="color:#C9A14A;font-weight:500;">Affiliate Disclosure:</strong> AETHER receives compensation when you use the links below. This does not affect our recommendations — providers were selected independently based on quality criteria.</p>
@@ -122,21 +122,6 @@ footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(
       <a href="https://bizee.com" target="_blank" rel="noopener" class="provider-cta">Visit Bizee <span class="provider-cta-arrow">→</span></a>
     </div>
 
-    <div class="provider-card">
-      <div class="provider-accent"></div>
-      <div class="provider-tag">Provider 03 — Full-Service</div>
-      <h2 class="provider-name">Laughlin Associates</h2>
-      <p class="provider-price">$99 + state fees</p>
-      <ul class="provider-features">
-        <li>Over 50 years in the formation services industry</li>
-        <li>Specializes in Nevada and Wyoming <span class="tt">asset protection<span class="tt-box"><span class="tt-label">Asset Protection</span>Legal strategies that make it harder for creditors or lawsuits to reach your personal assets — savings, home, investments. Strong in Nevada and Wyoming due to their LLC statutes.</span></span> strategies</li>
-        <li>Comprehensive compliance tracking and <span class="tt">annual report<span class="tt-box"><span class="tt-label">Annual Report</span>A yearly state filing that keeps your LLC or corporation in "good standing." Costs vary by state ($0–$500+). Missing it can result in your business being administratively dissolved.</span></span> reminders</li>
-        <li>Business consulting services available alongside formation</li>
-        <li>Preferred by founders seeking a long-term compliance partner</li>
-      </ul>
-      <a href="https://laughlinassociates.com" target="_blank" rel="noopener" class="provider-cta">Visit Laughlin <span class="provider-cta-arrow">→</span></a>
-    </div>
-
   </div>
 
   <div class="compare-section">
@@ -145,32 +130,26 @@ footer{padding:32px 80px;background:#030C17!important;border-top:1px solid rgba(
       <div class="compare-cell label"></div>
       <div class="compare-cell head">Northwest</div>
       <div class="compare-cell head">Bizee</div>
-      <div class="compare-cell head">Laughlin</div>
 
       <div class="compare-cell label">Base Price</div>
       <div class="compare-cell">$39 + <span class="tt">state fees<span class="tt-box"><span class="tt-label">State Fees</span>The mandatory fee your state charges to file the Articles of Organization. Varies widely — Wyoming is ~$100, Delaware is ~$90, California is $70 (plus $800/yr minimum franchise tax). These are separate from the formation service fee.</span></span></div>
       <div class="compare-cell gold">$0 + state fees</div>
-      <div class="compare-cell">$99 + state fees</div>
 
       <div class="compare-cell label">Privacy Focus</div>
       <div class="compare-cell gold">High — address shielding</div>
       <div class="compare-cell">Standard</div>
-      <div class="compare-cell">High — NV/WY specialist</div>
 
       <div class="compare-cell label"><span class="tt">Registered Agent<span class="tt-box"><span class="tt-label">Registered Agent</span>Required in every state. Receives your official government and legal mail. Must have a physical address in your formation state and be available during business hours.</span></span></div>
       <div class="compare-cell gold">Included (1 year)</div>
       <div class="compare-cell">Available add-on</div>
-      <div class="compare-cell">Included</div>
 
       <div class="compare-cell label">Best For</div>
       <div class="compare-cell">Privacy-conscious founders</div>
       <div class="compare-cell">Budget-first early stage</div>
-      <div class="compare-cell">Long-term compliance</div>
 
       <div class="compare-cell label compare-row-last" style="border-bottom:none;"></div>
       <div class="compare-cell compare-row-last" style="border-bottom:none;"><a href="https://northwestregisteredagent.com" target="_blank" rel="noopener" style="color:#C9A14A;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Visit →</a></div>
       <div class="compare-cell compare-row-last" style="border-bottom:none;"><a href="https://bizee.com" target="_blank" rel="noopener" style="color:#C9A14A;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Visit →</a></div>
-      <div class="compare-cell compare-row-last" style="border-bottom:none;"><a href="https://laughlinassociates.com" target="_blank" rel="noopener" style="color:#C9A14A;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Visit →</a></div>
     </div>
   </div>
 </div>
