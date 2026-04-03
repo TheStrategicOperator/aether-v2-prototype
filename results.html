@@ -26,6 +26,12 @@ nav a:hover,nav a.active{color:#C9A14A;}
 @media(max-width:500px){.tt-box{left:-20px;transform:none;width:210px;}}
 .results-wrap{max-width:780px;margin:0 auto;padding:108px 40px 80px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.headsup-section{margin-bottom:24px;padding:20px 24px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);border-left:2px solid rgba(201,161,74,0.35);opacity:0;animation:fadeUp 0.5s ease 0.12s forwards;}
+.headsup-title{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:4px;}
+.headsup-sub{font-size:11px;color:#304F6A;margin-bottom:14px;letter-spacing:0.04em;}
+.headsup-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.headsup-list li{font-size:13px;color:#7A9EC0;padding-left:16px;position:relative;line-height:1.55;}
+.headsup-list li::before{content:'4';position:absolute;left:0;color:rgba(201,161,74,0.3);}
 .echo-bar{font-size:11px;color:#304F6A;letter-spacing:0.04em;margin-bottom:28px;opacity:0;animation:fadeUp 0.4s ease 0.02s forwards;}
 .decision-wrap{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.07);opacity:0;animation:fadeUp 0.5s ease 0.06s forwards;}
 .decision-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#C9A14A;margin-bottom:14px;}
@@ -291,6 +297,7 @@ function renderBlueprint(wrap,entity,isOverride){
   var notHtml=d.notFit.map(function(n){return'<div class="not-item"><div class="not-label">'+n.l+'</div><div class="not-reason">'+n.r+'</div></div>';}).join('');
   var stepsHtml=d.steps.map(function(s){return'<li>'+s+'</li>';}).join('');
 
+  var headsUpTips=buildHeadsUp(answers, entity);
   wrap.innerHTML=
     (isOverride?'<div style="margin-bottom:24px;padding:11px 18px;background:rgba(201,161,74,0.07);border:1px solid rgba(201,161,74,0.25);border-left:3px solid #C9A14A;"><p style="font-size:12px;color:#C9A14A;font-weight:500;">You chose to proceed — your blueprint is below.</p></div>':'')+
 
@@ -303,6 +310,7 @@ function renderBlueprint(wrap,entity,isOverride){
       '<p class="decision-qualifier">'+d.qualifier+'</p>'+
     '</div>'+
 
+    (headsUpTips.length ? '<div class="headsup-section"><div class="headsup-title">Before You Move Forward</div><div class="headsup-sub">Watch for this</div><ul class="headsup-list">'+headsUpTips.map(function(t){return'<li>'+t+'</li>';}).join('')+'</ul></div>' : '')+
     '<div class="r-section" style="animation-delay:0.18s">'+
       '<div class="r-label">Your Situation</div>'+
       '<div class="r-body accent"><p class="situation-text">'+situation+'</p></div>'+
@@ -469,6 +477,58 @@ function formAnyway(){
 function resetScan(){
   localStorage.setItem('aether_step','0');
   window.location.href='scan.html';
+}
+
+function buildHeadsUp(a, entity){
+  var tips = [];
+
+  // Formation state mismatch
+  if(a.formationState && a.formationState !== 'My Home State' && a.operatingState){
+    tips.push("Forming outside your home state usually means filing in two places — worth confirming the cost difference before you decide.");
+  }
+
+  // Multi-member with no mention of agreement
+  if(a.owners && a.owners !== 'Just me'){
+    tips.push("Whatever you agree on with your co-founders now, writing it down early is a lot easier than trying to remember it later.");
+  }
+
+  // Solo service founder — no separate account habit
+  if(a.owners === 'Just me' && a.businessFocus === 'Services'){
+    tips.push("Keeping business and personal money in separate accounts from day one makes tax time a lot less complicated.");
+  }
+
+  // Pre-revenue but forming — gentle nudge
+  if(a.revenue === 'Under $50K' && entity === 'Single-Member LLC'){
+    tips.push("Most states charge an annual fee to keep your LLC active — good to know before you file so there are no surprises.");
+  }
+
+  // S-Corp path — payroll heads up
+  if(entity === 'LLC with S-Corp Election'){
+    tips.push("The S-Corp election requires running payroll for yourself — not complicated, but it's a step people sometimes miss until tax season.");
+  }
+
+  // C-Corp path — 83b heads up
+  if(entity === 'C-Corporation'){
+    tips.push("If you issue shares at formation, the 83(b) election window is 30 days. It's one of those things that's easy to miss and hard to fix.");
+  }
+
+  // Investor path — Delaware foreign entity
+  if(a.investors === 'Yes, investors' && a.operatingState && a.operatingState !== 'Delaware'){
+    tips.push("Forming in Delaware and operating in "+a.operatingState+" means registering in both — just something to factor into your setup budget.");
+  }
+
+  // Priority is simplicity but has partners
+  if(a.priority === 'Administrative simplicity' && a.owners !== 'Just me'){
+    tips.push("Multi-member LLCs have a few more annual requirements than solo ones — still manageable, just worth knowing upfront.");
+  }
+
+  // Confidence is low — general reassurance
+  if(a.confidence === 'Still figuring it out'){
+    tips.push("The fact that you're thinking about structure before filing puts you ahead of most first-time founders.");
+  }
+
+  // Return max 3, most relevant
+  return tips.slice(0, 3);
 }
 
 function render(){
