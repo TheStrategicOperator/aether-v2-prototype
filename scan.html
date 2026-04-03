@@ -14,63 +14,61 @@ html{background:#061729!important;}
 body{background:#061729!important;color:#C8DEFF;font-family:'Inter',sans-serif;font-weight:300;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
 header{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:#040F1E!important;border-bottom:1px solid rgba(255,255,255,0.07);}
 .logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;letter-spacing:0.22em;color:#C9A14A;text-decoration:none;text-transform:uppercase;}
-nav{display:flex;gap:32px;align-items:center;}
+nav{display:flex;gap:28px;align-items:center;}
 nav a{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5A88B0;text-decoration:none;transition:color 0.2s;}
 nav a:hover,nav a.active{color:#C9A14A;}
 .tt{position:relative;display:inline;border-bottom:1px dotted rgba(201,161,74,0.35);color:inherit;cursor:help;white-space:nowrap;}
 .tt-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:240px;padding:10px 14px;background:#0B2240!important;border:1px solid rgba(201,161,74,0.35);color:#C8DEFF;font-family:'Inter',sans-serif;font-size:12px;font-weight:300;line-height:1.5;z-index:999;pointer-events:none;text-align:left;white-space:normal;}
 .tt-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#0B2240;}
-.tt-box::before{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(201,161,74,0.35);margin-top:1px;}
 .tt.active .tt-box,.tt:hover .tt-box{display:block;}
 .tt-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#C9A14A;display:block;margin-bottom:4px;}
 @media(max-width:500px){.tt-box{left:-20px;transform:none;width:210px;}}
 .progress-wrap{position:fixed;top:64px;left:0;right:0;height:3px;background:rgba(255,255,255,0.05);z-index:99;}
 .progress-bar{height:100%;background:linear-gradient(90deg,#C9A14A,#E2C07A);transition:width 0.5s cubic-bezier(0.4,0,0.2,1);box-shadow:0 0 14px rgba(201,161,74,0.45);}
-.stage-strip{position:fixed;top:67px;left:0;right:0;z-index:98;display:flex;align-items:center;justify-content:center;padding:5px 24px;background:#040F1E!important;border-bottom:1px solid rgba(255,255,255,0.04);}
+.stage-strip{position:fixed;top:67px;left:0;right:0;z-index:98;display:flex;align-items:center;justify-content:space-between;padding:5px 24px;background:#040F1E!important;border-bottom:1px solid rgba(255,255,255,0.04);}
 .stage-strip-text{font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,161,74,0.55);}
+.stage-strip-counter{font-size:10px;color:#304F6A;letter-spacing:0.06em;}
 .scan-wrap{flex:1;padding:120px 0 80px;display:flex;flex-direction:column;align-items:center;background:#061729!important;}
-.step-counter{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:10px;text-align:center;}
-.step-dots{display:flex;gap:8px;justify-content:center;margin-bottom:36px;}
+.step-counter{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:8px;text-align:center;}
+.step-dots{display:flex;gap:8px;justify-content:center;margin-bottom:32px;}
 .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.08);transition:all 0.3s;}
 .dot.done{background:rgba(201,161,74,0.38);}
 .dot.active{background:#C9A14A;width:22px;border-radius:3px;}
-.step-container{width:100%;max-width:660px;padding:0 24px;animation:stepIn 0.4s ease forwards;}
-@keyframes stepIn{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
-.step-guide{margin-bottom:22px;padding:16px 20px;background:#0D2038!important;border-left:2px solid rgba(201,161,74,0.45);}
-.step-guide-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;margin-bottom:7px;}
+.step-container{width:100%;max-width:640px;padding:0 24px;animation:stepIn 0.35s ease forwards;}
+@keyframes stepIn{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:translateX(0);}}
+.scan-intro{text-align:center;font-size:13px;color:rgba(201,161,74,0.55);letter-spacing:0.08em;margin-bottom:18px;font-style:italic;}
+.step-guide{margin-bottom:20px;padding:14px 18px;background:#0D2038!important;border-left:2px solid rgba(201,161,74,0.4);}
+.step-guide-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#C9A14A;margin-bottom:6px;}
 .step-guide-text{font-size:13px;color:#7A9EC0;line-height:1.65;}
-.step-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;line-height:1.2;color:#EEF6FF;margin-bottom:28px;text-align:center;}
+.step-why{font-size:12px;color:#4A7090;line-height:1.6;margin-top:-12px;margin-bottom:22px;text-align:center;font-style:italic;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1.2;color:#EEF6FF;margin-bottom:8px;text-align:center;}
+.micro-signal{font-size:11px;color:rgba(201,161,74,0.7);text-align:center;margin-bottom:20px;letter-spacing:0.06em;min-height:16px;transition:opacity 0.3s;}
 .options-grid{display:grid;gap:10px;}
 .options-grid.cols-2{grid-template-columns:1fr 1fr;}
-.option-btn{padding:18px 22px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.08);color:#A0C0E0;font-family:'Inter',sans-serif;font-size:14px;font-weight:400;text-align:left;cursor:pointer;transition:all 0.2s;position:relative;display:flex;flex-direction:column;gap:6px;-webkit-appearance:none;appearance:none;width:100%;}
-.option-btn:hover{border-color:rgba(201,161,74,0.55);background:#112B50!important;color:#EEF6FF;}
-.option-btn.selected{border-color:#C9A14A;background:rgba(201,161,74,0.12)!important;color:#EEF6FF;}
+.option-btn{padding:16px 20px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.08);color:#A0C0E0;font-family:'Inter',sans-serif;font-size:14px;font-weight:400;text-align:left;cursor:pointer;transition:all 0.2s;position:relative;display:flex;flex-direction:column;gap:5px;-webkit-appearance:none;appearance:none;width:100%;}
+.option-btn:hover{border-color:rgba(201,161,74,0.5);background:#112B50!important;color:#EEF6FF;}
+.option-btn.selected{border-color:#C9A14A;background:rgba(201,161,74,0.1)!important;color:#EEF6FF;}
 .option-btn.selected::after{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:#C9A14A;}
 .option-label{font-size:15px;font-weight:500;color:inherit;}
 .option-sub{font-size:12px;color:#5A88B0;font-weight:300;line-height:1.5;}
 .option-btn.selected .option-sub,.option-btn:hover .option-sub{color:#8AAECE;}
 .select-wrap{position:relative;}
-select{width:100%;padding:16px 48px 16px 20px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.08);color:#C8DEFF;font-family:'Inter',sans-serif;font-size:15px;font-weight:300;-webkit-appearance:none;appearance:none;cursor:pointer;transition:border-color 0.2s;outline:none;}
+select{width:100%;padding:15px 48px 15px 18px;background:#0B2240!important;border:1px solid rgba(255,255,255,0.08);color:#C8DEFF;font-family:'Inter',sans-serif;font-size:15px;font-weight:300;-webkit-appearance:none;appearance:none;cursor:pointer;transition:border-color 0.2s;outline:none;}
 select:focus{border-color:#C9A14A;}
 select option{background:#0B2240;color:#C8DEFF;}
-.select-arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:#C9A14A;font-size:12px;pointer-events:none;}
-.nav-buttons{display:flex;align-items:center;justify-content:space-between;margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.07);}
-.btn-back{padding:12px 28px;background:transparent!important;border:1px solid rgba(255,255,255,0.10);color:#5A88B0;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;}
+.select-arrow{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#C9A14A;font-size:12px;pointer-events:none;}
+.nav-buttons{display:flex;align-items:center;justify-content:space-between;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);}
+.btn-back{padding:11px 24px;background:transparent!important;border:1px solid rgba(255,255,255,0.10);color:#5A88B0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;}
 .btn-back:hover{border-color:#5A88B0;color:#C8DEFF;}
 .btn-back:disabled{opacity:0.2;cursor:default;}
-.btn-next{padding:14px 36px;background:#C9A14A!important;border:none;color:#061729!important;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;}
+.btn-next{padding:13px 32px;background:#C9A14A!important;border:none;color:#061729!important;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;}
 .btn-next:hover{background:#E2C07A!important;}
 .btn-next:disabled{opacity:0.3;cursor:default;}
-.got-it{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(201,161,74,0.15);border:1px solid rgba(201,161,74,0.4);color:#C9A14A;font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:10px 24px;z-index:200;pointer-events:none;}
-.got-it.show{display:block;animation:gotItAnim 0.7s ease forwards;}
-@keyframes gotItAnim{0%{opacity:0;transform:translate(-50%,-54%);}20%{opacity:1;transform:translate(-50%,-50%);}80%{opacity:1;}100%{opacity:0;transform:translate(-50%,-46%);}}
-.scan-intro{text-align:center;font-size:13px;color:rgba(201,161,74,0.6);letter-spacing:0.1em;margin-bottom:20px;font-style:italic;}
-.step-why{font-size:12px;color:#4A7090;line-height:1.6;margin-top:-18px;margin-bottom:24px;text-align:center;letter-spacing:0.02em;}
-footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
+footer{padding:24px 80px;background:#030C17!important;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
 .footer-copy{font-size:12px;color:#304F6A;letter-spacing:0.06em;}
-.footer-link{font-size:12px;color:#304F6A;text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
+.footer-link{font-size:12px;color:#304F6A;text-decoration:none;}
 .footer-link:hover{color:#C9A14A;}
-@media(max-width:768px){header{padding:0 24px;}nav{gap:18px;}.options-grid.cols-2{grid-template-columns:1fr;}footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}}
+@media(max-width:768px){header{padding:0 20px;}nav{gap:16px;}.options-grid.cols-2{grid-template-columns:1fr;}footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}}
 </style>
 </head>
 <body>
@@ -79,16 +77,17 @@ footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(
   <nav>
     <a href="index.html">Home</a>
     <a href="scan.html" class="active">Structure Scan</a>
-    <a href="partners.html">Providers</a>
     <a href="results.html">Results</a>
+    <a href="partners.html">Providers</a>
     <a href="legal.html">Legal</a>
   </nav>
 </header>
 <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:12.5%"></div></div>
-<div class="stage-strip"><span class="stage-strip-text" id="stageStripText">Location Strategy</span></div>
-<div class="got-it" id="gotIt">Got it</div>
+<div class="stage-strip">
+  <span class="stage-strip-text" id="stageStripText">Location Strategy</span>
+  <span class="stage-strip-counter" id="stepCounter">Step 1 of 8</span>
+</div>
 <div class="scan-wrap">
-  <div class="step-counter" id="stepCounter">Step 1 of 8</div>
   <div class="step-dots" id="stepDots"></div>
   <div class="step-container" id="stepContainer"></div>
 </div>
@@ -97,280 +96,251 @@ footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(
   <a href="legal.html" class="footer-link">Privacy &amp; Terms</a>
 </footer>
 <script>
-const STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
+var STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
 
-// Glossary — applied after render so step data stays as plain strings
-var GLOSSARY = {
-  "foreign entity registration": "When you form in one state but operate in another, that second state often requires you to register there too and pay their fees annually.",
-  "LLC": "Limited Liability Company. A flexible business structure that separates your personal assets from business debts and lawsuits, while keeping taxes simpler than a corporation.",
-  "asset protection": "Legal barriers that make it harder for creditors or lawsuits to reach your personal savings, home, or other assets.",
-  "raising capital": "Getting investment money from outside sources like angel investors or venture capitalists in exchange for equity in your company.",
-  "charging order protections": "A legal mechanism that limits what creditors can take from an LLC. In Nevada and Wyoming, creditors cannot seize your membership interest.",
-  "VC funding": "Venture Capital — professional investors who give startups large amounts of money in exchange for equity. They expect high growth and an eventual exit.",
-  "liability exposure": "How much personal financial risk you carry if your business gets sued or cannot pay its debts.",
-  "pass-through taxation": "Business income flows directly to your personal tax return and is taxed once at your individual rate. No separate corporate tax.",
-  "S-Corp election": "A tax status you apply for with the IRS that lets your LLC be taxed like an S-Corporation, potentially saving thousands in self-employment taxes.",
-  "self-employment tax": "A 15.3% tax on net business income that solo founders pay to cover Social Security and Medicare. An S-Corp election can significantly reduce this.",
-  "multi-member LLC": "An LLC with two or more owners. Taxed as a partnership by default — each owner pays taxes on their share through their personal return.",
-  "operating agreement": "The internal rulebook for your LLC. Defines ownership percentages, decision-making, profit splits, and what happens if a partner leaves. More important than the filing itself.",
-  "C-Corporation": "A standard corporation taxed separately from its owners. Required for VC funding and stock-based compensation.",
-  "Delaware C-Corporation": "Delaware is the preferred state for corporations because its corporate law is the most developed and investor-friendly in the country.",
-  "VCs": "Venture Capitalists. Firms that invest large amounts into startups in exchange for equity. They typically require Delaware C-Corps."
+var GLOSSARY={
+  "foreign entity registration":"When you form in one state but operate in another, that second state often requires you to register there too — and pay fees there annually.",
+  "LLC":"Limited Liability Company. A structure that separates your personal assets from your business legally — if the business owes money or gets sued, your personal savings and home are protected.",
+  "asset protection":"Legal barriers that make it harder for creditors or lawsuits to reach your personal savings, home, or other assets.",
+  "pass-through taxation":"Business income goes directly to your personal tax return and is taxed once at your personal rate. The business itself pays no separate federal tax.",
+  "S-Corp election":"A tax status you apply for with the IRS. You pay yourself a salary and take remaining profit as distributions — distributions aren't subject to self-employment tax, which saves real money above ~$80K net profit.",
+  "self-employment tax":"A 15.3% tax solo business owners pay for Social Security and Medicare. Unlike employees who split this with an employer, you pay the full amount yourself.",
+  "multi-member LLC":"An LLC with two or more owners. Taxed as a partnership by default — each owner pays taxes on their share through their personal return.",
+  "operating agreement":"The rulebook for your LLC. Defines ownership, decision-making, profit splits, and what happens if someone leaves. More important than the filing itself.",
+  "C-Corporation":"A standard corporation taxed separately from its owners. Required for VC funding and institutional investment. Not needed without those plans.",
+  "VCs":"Venture Capitalists — firms that invest large amounts in startups in exchange for equity. They expect high growth and a future exit.",
+  "raising capital":"Getting investment money from outside sources like angels or VCs in exchange for equity in your company.",
+  "charging order protections":"A legal mechanism limiting what creditors can take from an LLC member. Wyoming and Nevada have the strongest protections.",
+  "liability exposure":"How much personal financial risk you carry if your business gets sued or can't pay its debts."
 };
 
-function applyGlossary(html) {
-  Object.keys(GLOSSARY).forEach(function(term) {
-    var def = GLOSSARY[term];
-    var escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var re = new RegExp('(?<![>\\w])(' + escaped + ')(?![\\w<])', 'i');
-    var replacement = '<span class="tt">$1<span class="tt-box"><span class="tt-label">' + term + '</span>' + def + '</span></span>';
-    html = html.replace(re, replacement);
+function applyGlossary(html){
+  Object.keys(GLOSSARY).sort(function(a,b){return b.length-a.length;}).forEach(function(term){
+    var def=GLOSSARY[term];
+    var esc=term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    var re=new RegExp('(?<![>\\w])('+esc+')(?![\\w<])','i');
+    html=html.replace(re,'<span class="tt">$1<span class="tt-box"><span class="tt-label">'+term+'</span>'+def+'</span></span>');
   });
   return html;
 }
 
-var steps = [
+// Micro-signals: shown after specific answer selections
+var MICRO={
+  revenue:{"Under $50K":"That changes what we prioritize.","$50K \u2013 $125K":"That narrows it down.","$125K \u2013 $500K":"That actually matters here.","$500K+":"That changes how your taxes work."},
+  owners:{"Just me":"That shapes the structure.","2 owners":"That changes things significantly.","3 \u2013 4":"Good to know before filing anything.","5+":"That narrows it down."},
+  investors:{"Yes, investors":"That narrows it down considerably.","Bootstrapped":"Got it. More flexibility here."}
+};
+
+var steps=[
   {
-    stage: "Location Strategy",
-    guide: {
-      label: "Here's the truth about formation states",
-      text: "You have two real options. Option one: form in your home state — simple, no extra fees, no foreign entity registration required. Option two: form in Wyoming or Delaware for privacy or investor reasons, but you will likely still need to register in your home state too, meaning fees in both places. For most first-time founders, forming at home is the smarter move."
-    },
-    title: "Where do you want to form?",
-    why: "Your formation state affects your fees, privacy, and compliance requirements.",
-    type: "options", cols: 2, key: "formationState",
-    options: [
-      { label: "My Home State", sub: "Simplest path. One filing, one set of fees, no dual registration. Best for most first-time founders who want to move fast and keep overhead low." },
-      { label: "Wyoming", sub: "Best for privacy. Strong asset protection laws, no state income tax, low fees. Worth the dual-registration cost if keeping your name off public records matters." },
-      { label: "Delaware", sub: "Best for raising capital. The VC and investor standard. Required if you plan to raise institutional money — most investors will ask for it." },
-      { label: "Nevada", sub: "Strong charging order protections and asset shielding. Similar to Wyoming but slightly higher cost. Often used for holding structures." },
-      { label: "Florida", sub: "Good fit if Florida is your home state. No personal state income tax is a genuine advantage for residents. One filing, no dual-state complexity." }
+    stage:"Location Strategy",
+    guide:{label:"The truth about formation states",text:"You have two real options. Form in your home state — simple, one set of fees, no foreign entity registration. Or form in Wyoming or Delaware for privacy or investor reasons, but you'll likely still need to register in your home state too. For most early-stage founders, home state is the smarter move."},
+    why:"Where you form affects your fees, privacy, and annual requirements.",
+    title:"Where do you want to form?",
+    type:"options",cols:2,key:"formationState",
+    options:[
+      {label:"My Home State",sub:"Simplest path. One filing, one set of fees. Right for most first-time founders."},
+      {label:"Wyoming",sub:"Best for privacy. Strong asset protection, no state income tax. Worth the dual-registration cost if your name off public records matters."},
+      {label:"Delaware",sub:"The VC and investor standard. Required if you plan to raise institutional money."},
+      {label:"Nevada",sub:"Strong charging order protections. Similar to Wyoming but slightly higher cost."},
+      {label:"Florida",sub:"Good fit if Florida is your home state. No personal state income tax for residents."}
     ]
   },
   {
-    stage: "Operating State",
-    guide: {
-      label: "Formation state vs. operating state",
-      text: "You can form your LLC in Wyoming but run your business from Texas — completely legal. However, you may need to register as a foreign entity in your home state, which means paying fees there too. Knowing this upfront saves surprises at tax time."
-    },
-    title: "What state do you actually operate in?",
-    why: "This tells us if you will need to register in two states instead of one.",
-    type: "select", key: "operatingState", placeholder: "Select your home state..."
+    stage:"Operating State",
+    guide:{label:"Formation state vs. operating state",text:"You can form in Wyoming and run your business from Texas — completely legal. But you may need to register as a foreign entity in your home state, which means fees in both places. Knowing this upfront saves surprises at tax time."},
+    why:"This tells us if you'll need to file in two states instead of one.",
+    title:"What state do you actually operate in?",
+    type:"select",key:"operatingState",placeholder:"Select your home state..."
   },
   {
-    stage: "Business Model",
-    guide: {
-      label: "Why your business type matters",
-      text: "Different business models carry different liability exposure and tax treatment. A software company selling subscriptions has different structural needs than a consultant billing hourly. This helps us tailor the recommendation to how your money actually flows."
-    },
-    title: "What is your primary business focus?",
-    why: "Different business types carry different tax treatment and liability needs.",
-    type: "options", cols: 2, key: "businessFocus",
-    options: [
-      { label: "Products", sub: "Physical goods, e-commerce, or manufacturing. Product businesses benefit from clear liability separation due to inventory and returns exposure." },
-      { label: "Services", sub: "Consulting, freelancing, agencies, coaching. The most common starting point for solo founders — and one of the simplest to structure correctly." },
-      { label: "Software", sub: "SaaS, apps, or digital products. If VC funding is anywhere in your future, this path typically points toward a C-Corp in Delaware." },
-      { label: "Real Estate", sub: "Rentals, flips, or development. Real estate often uses separate LLCs per property to isolate risk. Your formation state matters a lot here." },
-      { label: "Other", sub: "Mixed revenue streams, early-stage exploration, or an unlisted category. We will still generate a strong recommendation based on your other answers." }
+    stage:"Business Model",
+    guide:{label:"Why your business type matters",text:"Different models carry different liability exposure and tax treatment. A software company selling subscriptions has different structural needs than a consultant billing hourly. This helps us tailor the recommendation to how your money actually flows."},
+    why:"Different business types carry different tax and liability needs.",
+    title:"What is your primary business focus?",
+    type:"options",cols:2,key:"businessFocus",
+    options:[
+      {label:"Products",sub:"Physical goods, e-commerce, or manufacturing. Product businesses benefit from clear liability separation."},
+      {label:"Services",sub:"Consulting, freelancing, agencies, coaching. The most common starting point for solo founders."},
+      {label:"Software",sub:"SaaS, apps, or digital products. If VC funding is in your future, this typically points toward a C-Corp."},
+      {label:"Real Estate",sub:"Rentals, flips, or development. Often uses separate LLCs per property to isolate risk."},
+      {label:"Other",sub:"Mixed revenue streams or early-stage exploration. We'll still generate a strong recommendation."}
     ]
   },
   {
-    stage: "Revenue Projection",
-    guide: {
-      label: "This shapes your tax path",
-      text: "Revenue projections help us determine whether pass-through taxation is enough or whether a more optimized structure like an S-Corp election would save you real money. Be honest about where you realistically expect to land in year one — there is no wrong answer."
-    },
-    title: "What is your expected first-year revenue?",
-    why: "Your revenue range determines which tax structure will actually save you money.",
-    type: "options", cols: 2, key: "revenue",
-    options: [
-      { label: "Under $50K", sub: "Early stage or pre-revenue. A simple LLC keeps overhead low while giving you full legal protection. Do not over-engineer it yet." },
-      { label: "$50K – $125K", sub: "Getting traction. You are generating real income. A Single-Member LLC still works well here but start tracking everything carefully." },
-      { label: "$125K – $500K", sub: "Scaling operations. At this range, an S-Corp election often starts making sense for the self-employment tax savings alone." },
-      { label: "$500K+", sub: "Established or high growth. At this level, structure optimization is worth serious attention. Tax efficiency becomes a major strategic lever." }
+    stage:"Revenue Projection",
+    guide:{label:"This shapes your tax path",text:"Revenue projections help us determine whether pass-through taxation is enough or whether an S-Corp election would save you real money. Be honest about where you realistically expect to land in year one — there's no wrong answer."},
+    why:"Your revenue range determines which tax structure actually saves you money.",
+    title:"What is your expected first-year revenue?",
+    type:"options",cols:2,key:"revenue",
+    options:[
+      {label:"Under $50K",sub:"Early stage or pre-revenue. A simple LLC keeps overhead low with full legal protection."},
+      {label:"$50K \u2013 $125K",sub:"Getting traction. A Single-Member LLC works well here. Track everything carefully."},
+      {label:"$125K \u2013 $500K",sub:"Scaling. At this range, an S-Corp election often starts making financial sense."},
+      {label:"$500K+",sub:"Established or high growth. Structure optimization is a major strategic lever at this level."}
     ]
   },
   {
-    stage: "Ownership Structure",
-    guide: {
-      label: "Ownership changes everything",
-      text: "Whether you are building alone or with partners fundamentally affects your structure. A single-member LLC and a multi-member LLC are taxed completely differently. If partners are involved, your operating agreement becomes the most critical document you will draft — more important than the filing itself."
-    },
-    title: "How many owners will the business have?",
-    why: "Sole ownership and partnerships are taxed and governed completely differently.",
-    type: "options", cols: 2, key: "owners",
-    options: [
-      { label: "Just me", sub: "Solo founder. Single-member structures are simpler, give you full control, and have clean pass-through taxation. No partnership complexities." },
-      { label: "2 owners", sub: "Co-founder setup. A multi-member LLC applies. Your operating agreement defining roles and equity splits is non-negotiable — document everything." },
-      { label: "3 – 4", sub: "Small founding team. Same multi-member rules apply, but governance clarity becomes even more important. Write it all down before launch." },
-      { label: "5+", sub: "Larger ownership group. More members means more complexity. Consider whether a corporate structure might be more appropriate long-term." }
+    stage:"Ownership Structure",
+    guide:{label:"Ownership changes everything",text:"A single-member LLC and a multi-member LLC are taxed completely differently. If partners are involved, your operating agreement becomes the most critical document you'll draft — more important than the filing itself."},
+    why:"This is the one answer that most directly shapes your recommendation.",
+    title:"How many owners will the business have?",
+    type:"options",cols:2,key:"owners",
+    options:[
+      {label:"Just me",sub:"Solo founder. Simpler structure, full control, clean pass-through taxation."},
+      {label:"2 owners",sub:"Co-founder setup. Multi-member rules apply. Your operating agreement is non-negotiable."},
+      {label:"3 \u2013 4",sub:"Small founding team. Governance clarity becomes even more important here."},
+      {label:"5+",sub:"Larger ownership group. Consider whether a corporate structure may be more appropriate long-term."}
     ]
   },
   {
-    stage: "Strategic Priority",
-    guide: {
-      label: "What matters most right now",
-      text: "There is no universally correct priority. Early-stage founders often prioritize simplicity. Profitable solo founders often want to minimize self-employment tax. Founders in high-risk industries prioritize liability protection above all else."
-    },
-    title: "What is your top priority at this stage?",
-    why: "Knowing what matters most shapes which structure actually fits your situation.",
-    type: "options", cols: 1, key: "priority",
-    options: [
-      { label: "Minimize taxes", sub: "You want to reduce the self-employment and pass-through tax burden as your income grows. Tax efficiency is the main lens right now." },
-      { label: "Limit liability", sub: "You want maximum separation between your personal assets and business risk. Protection is the priority over tax optimization." },
-      { label: "Administrative simplicity", sub: "You want minimal filings, meetings, and record-keeping requirements. Keep it lean and manageable while you build." }
+    stage:"Strategic Priority",
+    guide:{label:"What matters most right now",text:"There's no universally correct priority. Early-stage founders often prioritize simplicity. Profitable solo founders often want to minimize self-employment tax. Founders in high-risk industries prioritize liability protection above all else."},
+    why:"Knowing your top priority shapes which structure actually fits.",
+    title:"What is your top priority at this stage?",
+    type:"options",cols:1,key:"priority",
+    options:[
+      {label:"Minimize taxes",sub:"You want to reduce the self-employment and pass-through tax burden as income grows."},
+      {label:"Limit liability",sub:"You want maximum separation between personal assets and business risk."},
+      {label:"Administrative simplicity",sub:"You want minimal filings and record-keeping requirements. Keep it lean while you build."}
     ]
   },
   {
-    stage: "Capital Strategy",
-    guide: {
-      label: "Investors change your structure options",
-      text: "If you plan to raise outside capital — angels, VCs, or institutional investors — your entity choice is largely decided for you. Most institutional investors require a C-Corporation in Delaware. If you are bootstrapping, you have full flexibility to choose what fits your tax and liability goals."
-    },
-    title: "Are outside investors part of your plan?",
-    why: "Whether you plan to raise outside money changes everything about your structure.",
-    type: "options", cols: 2, key: "investors",
-    options: [
-      { label: "Bootstrapped", sub: "Self-funded. No outside capital planned. You have full flexibility to choose the structure that fits your tax and liability situation." },
-      { label: "Yes, investors", sub: "Angels, VCs, or institutional capital. Investors will almost always require a Delaware C-Corporation. This narrows the decision significantly." }
+    stage:"Capital Strategy",
+    guide:{label:"Investors change your structure options",text:"If you plan to raise outside capital — angels, VCs, or institutional investors — your entity choice is largely decided for you. Most institutional investors require a C-Corporation in Delaware. If you're bootstrapping, you have full flexibility."},
+    why:"Whether you plan to raise outside money changes everything about your structure.",
+    title:"Are outside investors part of your plan?",
+    type:"options",cols:2,key:"investors",
+    options:[
+      {label:"Bootstrapped",sub:"Self-funded. No outside capital planned. Full flexibility to choose what fits your tax and liability situation."},
+      {label:"Yes, investors",sub:"Angels, VCs, or institutional capital. Investors will almost always require a Delaware C-Corporation."}
     ]
   },
   {
-    stage: "Confidence Check",
-    guide: {
-      label: "One last check-in",
-      text: "This helps us calibrate how much context to include in your blueprint. Whether you are completely new to this or have done some research already, AETHER will give you the same recommendation — just with the right level of explanation for where you are at."
-    },
-    title: "How clear do you feel about your business direction right now?",
-    why: "This helps us set the right level of detail in your recommendation.",
-    type: "options", cols: 1, key: "confidence",
-    options: [
-      { label: "Very clear", sub: "I know where I am headed and what I am building. I mostly need validation and the right execution steps." },
-      { label: "Somewhat clear", sub: "I have a direction but still have open questions. I want a clear recommendation I can trust." },
-      { label: "Still figuring it out", sub: "I am new to this. I need education, clarity, and a framework that walks me through what to do and when." }
+    stage:"Confidence Check",
+    guide:{label:"One last check-in",text:"This helps us set the right level of detail in your recommendation. Whether you're completely new to this or have done some research, AETHER gives you the same recommendation — just calibrated to where you are."},
+    why:"This helps us give you the right level of detail, not more than you need.",
+    title:"How clear do you feel about your business direction right now?",
+    type:"options",cols:1,key:"confidence",
+    options:[
+      {label:"Very clear",sub:"I know where I'm headed. I mostly need validation and the right execution steps."},
+      {label:"Somewhat clear",sub:"I have a direction but still have open questions. I want a clear recommendation I can trust."},
+      {label:"Still figuring it out",sub:"I'm new to this. I need clarity and a framework that walks me through what to do and when."}
     ]
   }
 ];
 
-var current = 0;
-var answers = JSON.parse(localStorage.getItem('aether_answers') || '{}');
-// Always start at step 0 — previous answers stay pre-filled so returning users just change what's different
+var current=0;
+var answers=JSON.parse(localStorage.getItem('aether_answers')||'{}');
 
-function renderDots() {
-  var wrap = document.getElementById('stepDots');
-  wrap.innerHTML = '';
-  steps.forEach(function(_, i) {
-    var d = document.createElement('div');
-    d.className = 'dot' + (i < current ? ' done' : '') + (i === current ? ' active' : '');
+function renderDots(){
+  var wrap=document.getElementById('stepDots');
+  wrap.innerHTML='';
+  steps.forEach(function(_,i){
+    var d=document.createElement('div');
+    d.className='dot'+(i<current?' done':'')+(i===current?' active':'');
     wrap.appendChild(d);
   });
 }
 
-function renderStep() {
-  var step = steps[current];
-  document.getElementById('stepCounter').textContent = 'Step ' + (current + 1) + ' of ' + steps.length + ' — about 60 seconds';
-  document.getElementById('progressBar').style.width = (((current + 1) / steps.length) * 100) + '%';
-  document.getElementById('stageStripText').textContent = step.stage;
+function renderStep(){
+  var step=steps[current];
+  document.getElementById('stepCounter').textContent='Step '+(current+1)+' of '+steps.length+' \u2014 about 60 seconds';
+  document.getElementById('progressBar').style.width=(((current+1)/steps.length)*100)+'%';
+  document.getElementById('stageStripText').textContent=step.stage;
   renderDots();
-  var container = document.getElementById('stepContainer');
-  container.style.animation = 'none';
+  var container=document.getElementById('stepContainer');
+  container.style.animation='none';
   container.offsetHeight;
-  container.style.animation = 'stepIn 0.4s ease forwards';
-
-  var introHtml = current === 0 ? '<p class="scan-intro">Let\'s understand your situation first.</p>' : '';
-  var guideText = applyGlossary(step.guide.text);
-  var html = introHtml + '<div class="step-guide"><div class="step-guide-label">' + step.guide.label + '</div><p class="step-guide-text">' + guideText + '</p></div>';
-  html += '<h2 class="step-title">' + step.title + '</h2>';
-  if (step.why) html += '<p class="step-why">' + step.why + '</p>';
-
-  if (step.type === 'options') {
-    var grid = step.cols === 2 ? 'cols-2' : '';
-    html += '<div class="options-grid ' + grid + '">';
-    step.options.forEach(function(opt) {
-      var sel = answers[step.key] === opt.label;
-      var subHtml = opt.sub ? '<span class="option-sub">' + applyGlossary(opt.sub) + '</span>' : '';
-      html += '<button class="option-btn' + (sel ? ' selected' : '') + '" onclick="selectOption(\'' + step.key + '\',\'' + opt.label.replace(/'/g, "\\'") + '\',this)">';
-      html += '<span class="option-label">' + opt.label + '</span>' + subHtml + '</button>';
+  container.style.animation='stepIn 0.35s ease forwards';
+  var introHtml=current===0?'<p class="scan-intro">Let\'s understand your situation first.</p>':'';
+  var guideText=applyGlossary(step.guide.text);
+  var html=introHtml+'<div class="step-guide"><div class="step-guide-label">'+step.guide.label+'</div><p class="step-guide-text">'+guideText+'</p></div>';
+  html+='<h2 class="step-title">'+step.title+'</h2>';
+  if(step.why) html+='<p class="step-why">'+step.why+'</p>';
+  html+='<div class="micro-signal" id="microSignal"></div>';
+  if(step.type==='options'){
+    var grid=step.cols===2?'cols-2':'';
+    html+='<div class="options-grid '+grid+'">';
+    step.options.forEach(function(opt){
+      var sel=answers[step.key]===opt.label;
+      var subHtml=opt.sub?'<span class="option-sub">'+applyGlossary(opt.sub)+'</span>':'';
+      html+='<button class="option-btn'+(sel?' selected':'')+'" onclick="selectOption(\''+step.key+'\',\''+opt.label.replace(/'/g,"\\'")+'\'  ,this)">';
+      html+='<span class="option-label">'+opt.label+'</span>'+subHtml+'</button>';
     });
-    html += '</div>';
-  } else if (step.type === 'select') {
-    html += '<div class="select-wrap"><select onchange="selectOption(\'' + step.key + '\',this.value,null)">';
-    html += '<option value="">— ' + step.placeholder + ' —</option>';
-    STATES.forEach(function(s) {
-      html += '<option value="' + s + '"' + (answers[step.key] === s ? ' selected' : '') + '>' + s + '</option>';
-    });
-    html += '</select><span class="select-arrow">&#9662;</span></div>';
+    html+='</div>';
+  } else if(step.type==='select'){
+    html+='<div class="select-wrap"><select onchange="selectOption(\''+step.key+'\',this.value,null)">';
+    html+='<option value="">\u2014 '+step.placeholder+' \u2014</option>';
+    STATES.forEach(function(s){html+='<option value="'+s+'"'+(answers[step.key]===s?' selected':'')+'>'+s+'</option>';});
+    html+='</select><span class="select-arrow">&#9662;</span></div>';
   }
-
-  var isLast = current === steps.length - 1;
-  var hasAnswer = !!answers[step.key];
-  html += '<div class="nav-buttons">';
-  html += '<button class="btn-back" onclick="prevStep()"' + (current === 0 ? ' disabled' : '') + '>&#8592; Back</button>';
-  html += '<button class="btn-next" id="nextBtn" onclick="' + (isLast ? 'finish()' : 'nextStep()') + '"' + (hasAnswer ? '' : ' disabled') + '>' + (isLast ? 'See My Results &#8594;' : 'Next &#8594;') + '</button>';
-  html += '</div>';
-
-  container.innerHTML = html;
+  var isLast=current===steps.length-1;
+  var hasAnswer=!!answers[step.key];
+  html+='<div class="nav-buttons">';
+  html+='<button class="btn-back" onclick="prevStep()"'+(current===0?' disabled':'')+'>&#8592; Back</button>';
+  html+='<button class="btn-next" id="nextBtn" onclick="'+(isLast?'finish()':'nextStep()')+'"'+(hasAnswer?'':' disabled')+'>'+(isLast?'See My Results &#8594;':'Next &#8594;')+'</button>';
+  html+='</div>';
+  container.innerHTML=html;
   bindTooltips(container);
+  // Pre-fill micro signal if already answered
+  if(answers[step.key]&&MICRO[step.key]&&MICRO[step.key][answers[step.key]]){
+    var ms=document.getElementById('microSignal');
+    if(ms) ms.textContent=MICRO[step.key][answers[step.key]];
+  }
 }
 
-function bindTooltips(root) {
-  root.querySelectorAll('.tt').forEach(function(el) {
-    if (!el._ttBound) {
-      el._ttBound = true;
-      el.addEventListener('click', function(e) {
+function bindTooltips(root){
+  root.querySelectorAll('.tt').forEach(function(el){
+    if(!el._ttBound){
+      el._ttBound=true;
+      el.addEventListener('click',function(e){
         e.stopPropagation();
-        document.querySelectorAll('.tt.active').forEach(function(o) { if (o !== el) o.classList.remove('active'); });
+        document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classList.remove('active');});
         el.classList.toggle('active');
       });
     }
   });
 }
 
-function selectOption(key, value, el) {
-  answers[key] = value;
-  localStorage.setItem('aether_answers', JSON.stringify(answers));
-  if (el) {
-    document.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+function selectOption(key,value,el){
+  answers[key]=value;
+  localStorage.setItem('aether_answers',JSON.stringify(answers));
+  if(el){
+    document.querySelectorAll('.option-btn').forEach(function(b){b.classList.remove('selected');});
     el.classList.add('selected');
-    var toast = document.getElementById('gotIt');
-    if (toast) {
-      toast.classList.remove('show');
-      void toast.offsetWidth;
-      toast.classList.add('show');
-      setTimeout(function(){ toast.classList.remove('show'); }, 700);
-    }
   }
-  var nb = document.getElementById('nextBtn');
-  if (nb) nb.disabled = false;
+  var nb=document.getElementById('nextBtn');
+  if(nb) nb.disabled=false;
+  // Show micro signal
+  var ms=document.getElementById('microSignal');
+  if(ms&&MICRO[key]&&MICRO[key][value]){
+    ms.style.opacity='0';
+    ms.textContent=MICRO[key][value];
+    setTimeout(function(){ms.style.opacity='1';},50);
+  }
 }
 
-function nextStep() {
-  if (!answers[steps[current].key]) return;
+function nextStep(){
+  if(!answers[steps[current].key]) return;
   current++;
-  localStorage.setItem('aether_step', current);
+  localStorage.setItem('aether_step',current);
   renderStep();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function prevStep() {
-  if (current > 0) {
-    current--;
-    localStorage.setItem('aether_step', current);
-    renderStep();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+function prevStep(){
+  if(current>0){current--;localStorage.setItem('aether_step',current);renderStep();window.scrollTo({top:0,behavior:'smooth'});}
 }
 
-function finish() {
-  if (!answers[steps[current].key]) return;
-  localStorage.setItem('aether_step', 0);
-  window.location.href = 'results.html';
+function finish(){
+  if(!answers[steps[current].key]) return;
+  localStorage.setItem('aether_step',0);
+  window.location.href='results.html';
 }
 
 renderStep();
-document.addEventListener('click', function() {
-  document.querySelectorAll('.tt.active').forEach(function(el) { el.classList.remove('active'); });
-});
+document.addEventListener('click',function(){document.querySelectorAll('.tt.active').forEach(function(el){el.classList.remove('active');});});
 </script>
 </body>
 </html>
