@@ -69,6 +69,21 @@ footer{padding:24px 80px;background:#030C17!important;border-top:1px solid rgba(
 .footer-link{font-size:12px;color:#304F6A;text-decoration:none;}
 .footer-link:hover{color:#C9A14A;}
 @media(max-width:768px){header{padding:0 20px;}nav{gap:16px;}.options-grid.cols-2{grid-template-columns:1fr;}footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}}
+
+@media(max-width:768px){
+  .tt-box{
+    position:fixed;
+    bottom:auto;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:calc(100vw - 40px);
+    max-width:300px;
+    z-index:9999;
+    pointer-events:none;
+  }
+  .tt-box::after,.tt-box::before{display:none;}
+}
 </style>
 </head>
 <body>
