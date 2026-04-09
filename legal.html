@@ -47,6 +47,21 @@ footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(
 .footer-link{font-size:12px;color:#304F6A;text-decoration:none;}
 .footer-link:hover{color:#C9A14A;}
 @media(max-width:768px){header{padding:0 20px;}nav{gap:16px;}.legal-wrap{padding:100px 20px 60px;}footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}}
+
+@media(max-width:768px){
+  .tt-box{
+    position:fixed;
+    bottom:auto;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:calc(100vw - 40px);
+    max-width:300px;
+    z-index:9999;
+    pointer-events:none;
+  }
+  .tt-box::after,.tt-box::before{display:none;}
+}
 </style>
 </head>
 <body>
@@ -157,9 +172,5 @@ footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(
   <span class="footer-copy">© 2026 AETHER. Educational guidance only — not legal advice.</span>
   <a href="legal.html" class="footer-link">Privacy &amp; Terms</a>
 </footer>
-<script>
-document.querySelectorAll('.tt').forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classList.remove('active');});el.classList.toggle('active');});});
-document.addEventListener('click',function(){document.querySelectorAll('.tt.active').forEach(function(el){el.classList.remove('active');});});
-</script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelectorAll('.tt').forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();document.querySelectorAll('.tt.active').forEach(function(o){if(o!==el)o.classLi
