@@ -23,54 +23,40 @@ nav a:hover,nav a.active{color:#C9A14A;}
 .tt.active .tt-box,.tt:hover .tt-box{display:block;}
 .tt-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#C9A14A;display:block;margin-bottom:4px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.page-hero{padding:140px 80px 60px;background:#061729!important;}
+.page-hero{padding:140px 80px 48px;background:#061729!important;}
 .page-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#C9A14A;margin-bottom:14px;opacity:0;animation:fadeUp 0.6s ease 0.1s forwards;}
-.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.15;color:#EEF6FF;margin-bottom:16px;opacity:0;animation:fadeUp 0.6s ease 0.2s forwards;}
-.page-sub{font-size:15px;color:#6A90B8;line-height:1.7;max-width:560px;opacity:0;animation:fadeUp 0.6s ease 0.3s forwards;}
-.disclosure{padding:16px 80px;background:#040F1E!important;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.15;color:#EEF6FF;margin-bottom:20px;opacity:0;animation:fadeUp 0.6s ease 0.2s forwards;}
+.decision-line{font-size:14px;color:#6A90B8;line-height:1.7;max-width:560px;padding:16px 20px;background:#0A1F38!important;border-left:2px solid rgba(201,161,74,0.4);opacity:0;animation:fadeUp 0.6s ease 0.3s forwards;}
+.decision-line strong{color:#C9A14A;font-weight:500;}
+.disclosure{padding:14px 80px;background:#040F1E!important;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);}
 .disclosure p{font-size:11px;color:#4A7090;line-height:1.6;}
-.disclosure strong{color:#C9A14A;font-weight:500;}
-.providers-wrap{padding:60px 80px;flex:1;}
-.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);margin-bottom:48px;}
-.provider-card{background:#061729!important;padding:44px 40px;display:flex;flex-direction:column;position:relative;transition:background 0.25s;}
+.disclosure strong{color:rgba(201,161,74,0.6);font-weight:500;}
+.providers-wrap{padding:52px 80px;flex:1;}
+.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);margin-bottom:40px;}
+.provider-card{background:#061729!important;padding:40px 36px;display:flex;flex-direction:column;position:relative;transition:background 0.25s;}
 .provider-card:hover{background:#0B2240!important;}
 .provider-accent{position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background 0.25s;}
 .provider-card:hover .provider-accent{background:#C9A14A;}
-.provider-badge{font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:20px;}
-.provider-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:#EEF6FF;margin-bottom:6px;line-height:1.2;}
-.provider-price{font-size:13px;color:#6A90B8;margin-bottom:10px;}
-.provider-positioning{font-size:14px;color:#A0C0E0;margin-bottom:24px;line-height:1.6;font-style:italic;}
-.provider-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:36px;flex:1;}
-.provider-features li{font-size:13px;color:#6A90B8;padding-left:16px;position:relative;line-height:1.5;}
-.provider-features li::before{content:'\2014';position:absolute;left:0;color:#C9A14A;font-size:11px;}
-.provider-cta{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:rgba(201,161,74,0.08);border:1px solid rgba(201,161,74,0.25);color:#C9A14A;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;margin-top:auto;}
-.provider-cta:hover{background:#C9A14A!important;color:#061729;}
+.provider-badge{font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:18px;}
+.provider-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#EEF6FF;margin-bottom:4px;line-height:1.2;}
+.provider-price{font-size:13px;color:#6A90B8;margin-bottom:18px;}
+.provider-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px;flex:1;}
+.provider-features li{font-size:13px;color:#6A90B8;padding-left:14px;position:relative;line-height:1.5;}
+.provider-features li::before{content:'-';position:absolute;left:0;color:rgba(201,161,74,0.5);}
+.provider-cta{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;color:#061729;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;margin-top:auto;background:#C9A14A!important;border:none;}
+.provider-cta:hover{background:#E2C07A!important;}
 .provider-cta-arrow{font-size:13px;transition:transform 0.2s;}
 .provider-cta:hover .provider-cta-arrow{transform:translateX(4px);}
-.difference-block{padding:32px;background:#0A1F38!important;border:1px solid rgba(201,161,74,0.18);margin-bottom:48px;}
-.difference-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:12px;}
-.difference-text{font-size:14px;color:#A0C0E0;line-height:1.75;}
+.difference-block{padding:28px 32px;background:#0A1F38!important;border:1px solid rgba(201,161,74,0.15);margin-bottom:40px;}
+.difference-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:10px;}
+.difference-text{font-size:14px;color:#7A9EC0;line-height:1.7;}
 .disclaimer{font-size:11px;color:#304F6A;line-height:1.7;max-width:680px;margin-bottom:0;}
 footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
 .footer-copy{font-size:12px;color:#304F6A;letter-spacing:0.06em;}
 .footer-link{font-size:12px;color:#304F6A;text-decoration:none;}
 .footer-link:hover{color:#C9A14A;}
-@media(max-width:900px){header{padding:0 20px;}nav{gap:16px;}.page-hero{padding:120px 24px 48px;}.disclosure{padding:14px 24px;}.providers-wrap{padding:40px 24px;}.provider-grid{grid-template-columns:1fr;}footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}}
-
-@media(max-width:768px){
-  .tt-box{
-    position:fixed;
-    bottom:auto;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:calc(100vw - 40px);
-    max-width:300px;
-    z-index:9999;
-    pointer-events:none;
-  }
-  .tt-box::after,.tt-box::before{display:none;}
-}
+@media(max-width:900px){header{padding:0 20px;}nav{gap:16px;}.page-hero{padding:120px 24px 40px;}.decision-line{max-width:100%;}.disclosure{padding:14px 24px;}.providers-wrap{padding:36px 24px;}.provider-grid{grid-template-columns:1fr;}footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}}
+@media(max-width:768px){.tt-box{position:fixed;bottom:auto;top:50%;left:50%;transform:translate(-50%,-50%);width:calc(100vw - 40px);max-width:300px;z-index:9999;pointer-events:none;}.tt-box::after,.tt-box::before{display:none;}}
 </style>
 </head>
 <body>
@@ -86,13 +72,13 @@ footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(
 </header>
 
 <div class="page-hero">
-  <p class="page-eyebrow">Formation Providers</p>
-  <h1 class="page-title">You have your recommendation.<br>Here's how to act on it.</h1>
-  <p class="page-sub">Two providers. Selected for quality, transparency, and fit. One prioritizes privacy. One prioritizes cost. Neither will oversell you.</p>
+  <p class="page-eyebrow">Last Step</p>
+  <h1 class="page-title">Pick one and file.<br>Both are vetted. Neither will waste your time.</h1>
+  <p class="decision-line"><strong>Privacy matters to you?</strong> Choose Northwest. &nbsp;<strong>Lowest cost?</strong> Choose Bizee. That's the whole decision.</p>
 </div>
 
 <div class="disclosure">
-  <p><strong>Affiliate Disclosure:</strong> AETHER receives compensation when you use the links below. This does not affect our recommendations — providers were selected independently based on quality and suitability for first-time founders.</p>
+  <p><strong>Affiliate Disclosure:</strong> AETHER earns a referral fee if you sign up through these links. It doesn't change what you pay or why these two were chosen.</p>
 </div>
 
 <div class="providers-wrap">
@@ -100,44 +86,42 @@ footer{padding:28px 80px;background:#030C17!important;border-top:1px solid rgba(
 
     <div class="provider-card">
       <div class="provider-accent"></div>
-      <div class="provider-badge">Privacy-First</div>
+      <div class="provider-badge">Privacy-First &mdash; $39 + state fees</div>
       <h2 class="provider-name">Northwest Registered Agent</h2>
-      <p class="provider-price">$39 + state fees</p>
-      <p class="provider-positioning">Privacy-focused formation with strong support. The right choice if keeping your personal address off public records matters to you.</p>
+      <p class="provider-price">Your personal address never appears on public records</p>
       <ul class="provider-features">
-        <li>Uses their address on public filings — your personal address stays off public records</li>
-        <li>Flat-rate pricing with no hidden upsells or renewal traps</li>
-        <li>Includes one year of <span class="tt">registered agent<span class="tt-box"><span class="tt-label">Registered Agent</span>Required in every state. Receives official legal and government mail on your business's behalf. Must have a physical address in your formation state.</span></span> service</li>
-        <li>Fast turnaround and responsive customer support</li>
-        <li>Strong option for Wyoming, Delaware, and multi-state operations</li>
+        <li>Their address goes on public filings — yours stays private</li>
+        <li>Flat pricing, no upsells, no surprise renewal fees</li>
+        <li>One year of <span class="tt">registered agent<span class="tt-box"><span class="tt-label">Registered Agent</span>Required in every state. Receives official legal and government mail on your business's behalf. Must have a physical address in your formation state.</span></span> service included</li>
+        <li>Strong support — responsive and founder-focused</li>
+        <li>Works for Wyoming, Delaware, and multi-state setups</li>
       </ul>
-      <a href="https://northwestregisteredagent.com" target="_blank" rel="noopener" class="provider-cta">Visit Northwest <span class="provider-cta-arrow">→</span></a>
+      <a href="https://northwestregisteredagent.com" target="_blank" rel="noopener" class="provider-cta">Choose Privacy <span class="provider-cta-arrow">&rarr;</span></a>
     </div>
 
     <div class="provider-card">
       <div class="provider-accent"></div>
-      <div class="provider-badge">Budget-Friendly</div>
+      <div class="provider-badge">Budget-Friendly &mdash; $0 + state fees</div>
       <h2 class="provider-name">Bizee</h2>
-      <p class="provider-price">$0 + state fees</p>
-      <p class="provider-positioning">Beginner-friendly and cost-effective formation. The right choice if keeping upfront costs as low as possible is the priority.</p>
+      <p class="provider-price">You pay only what your state charges to file</p>
       <ul class="provider-features">
-        <li>Free base formation — you pay only the state filing fee</li>
-        <li>Built for first-time founders — guided process, clear steps</li>
-        <li>Handles LLC and corporation formations across all 50 states</li>
-        <li>Includes a free <span class="tt">registered agent<span class="tt-box"><span class="tt-label">Registered Agent</span>Required in every state. Receives official legal and government mail on your business's behalf. Must have a physical address in your formation state.</span></span> for the first year</li>
-        <li>Good option when cost minimization is the primary constraint</li>
+        <li>No base service fee — lowest possible upfront cost</li>
+        <li>Guided process built for first-time founders</li>
+        <li>Covers LLC and corporation formations in all 50 states</li>
+        <li>Free <span class="tt">registered agent<span class="tt-box"><span class="tt-label">Registered Agent</span>Required in every state. Receives official legal and government mail on your business's behalf. Must have a physical address in your formation state.</span></span> for the first year included</li>
+        <li>Right choice when keeping costs minimal is the priority</li>
       </ul>
-      <a href="https://bizee.com" target="_blank" rel="noopener" class="provider-cta">Visit Bizee <span class="provider-cta-arrow">→</span></a>
+      <a href="https://bizee.com" target="_blank" rel="noopener" class="provider-cta">Start for $0 <span class="provider-cta-arrow">&rarr;</span></a>
     </div>
 
   </div>
 
   <div class="difference-block">
-    <div class="difference-label">The difference in one line</div>
-    <p class="difference-text">Northwest costs $39 more upfront and prioritizes your privacy — your name and address stay off public filings. Bizee costs nothing to start and is the better fit if keeping overhead low is what matters most right now. Both are solid. The choice depends on which of those priorities is yours.</p>
+    <div class="difference-label">The only difference that matters</div>
+    <p class="difference-text">Northwest charges $39 more and keeps your name off public filings. Bizee charges nothing upfront and gets you filed fast. Same outcome — your LLC is formed. Different priorities. Pick the one that matches yours.</p>
   </div>
 
-  <p class="disclaimer">The providers listed above are presented for informational and comparative purposes only. AETHER does not guarantee the accuracy of pricing, availability, or service quality. Formation fees vary by state and are subject to change. Consult the provider's website directly for current terms. This guidance does not constitute legal or financial advice.</p>
+  <p class="disclaimer">Providers listed for informational purposes only. Pricing varies by state and may change. Check each provider directly for current terms. Not legal or financial advice.</p>
 </div>
 
 <footer>
