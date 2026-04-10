@@ -155,9 +155,9 @@ var steps=[
     type:"options",cols:2,key:"formationState",
     options:[
       {label:"My Home State",sub:"Simplest path. One filing, one set of fees. Right for most first-time founders."},
-      {label:"Wyoming",sub:"Best for privacy. Strong asset protection, no state income tax. Worth the dual-registration cost if your name off public records matters."},
-      {label:"Delaware",sub:"The VC and investor standard. Required if you plan to raise institutional money."},
-      {label:"Nevada",sub:"Strong charging order protections. Similar to Wyoming but slightly higher cost."},
+      {label:"Wyoming",sub:"Best for privacy. Keeps your name off public filings. No state income tax. Worth the extra registration cost if privacy matters to you."},
+      {label:"Delaware",sub:"The standard for startups raising outside investment. Required if institutional funding is part of your plan."},
+      {label:"Nevada",sub:"Strong legal protection for LLC members. Similar to Wyoming, slightly higher cost."},
       {label:"Florida",sub:"Good fit if Florida is your home state. No personal state income tax for residents."}
     ]
   },
@@ -170,21 +170,21 @@ var steps=[
   },
   {
     stage:"Business Model",
-    guide:{label:"Why your business type matters",text:"Different models carry different liability exposure and tax treatment. A software company selling subscriptions has different structural needs than a consultant billing hourly. This helps us tailor the recommendation to how your money actually flows."},
+    guide:{label:"Why your business type matters",text:"Different business models carry different legal risks and tax treatment. A software company has different needs than a freelance consultant. This helps us match the recommendation to how your business actually works."},
     why:"Different business types carry different tax and liability needs.",
     title:"What is your primary business focus?",
     type:"options",cols:2,key:"businessFocus",
     options:[
       {label:"Products",sub:"Physical goods, e-commerce, or manufacturing. Product businesses benefit from clear liability separation."},
       {label:"Services",sub:"Consulting, freelancing, agencies, coaching. The most common starting point for solo founders."},
-      {label:"Software",sub:"SaaS, apps, or digital products. If VC funding is in your future, this typically points toward a C-Corp."},
+      {label:"Software",sub:"SaaS, apps, or digital products. If outside investment is in your future, this typically points toward a C-Corporation."},
       {label:"Real Estate",sub:"Rentals, flips, or development. Often uses separate LLCs per property to isolate risk."},
       {label:"Other",sub:"Mixed revenue streams or early-stage exploration. We'll still generate a strong recommendation."}
     ]
   },
   {
     stage:"Revenue Projection",
-    guide:{label:"This shapes your tax path",text:"Revenue projections help us determine whether pass-through taxation is enough or whether an S-Corp election would save you real money. Be honest about where you realistically expect to land in year one — there's no wrong answer."},
+    guide:{label:"This shapes your tax path",text:"Your expected revenue tells us whether a basic LLC is enough or whether a different tax setup would save you real money. Be honest about where you expect to land in year one — there's no wrong answer."},
     why:"Your revenue range determines which tax structure actually saves you money.",
     title:"What is your expected first-year revenue?",
     type:"options",cols:2,key:"revenue",
@@ -197,32 +197,32 @@ var steps=[
   },
   {
     stage:"Ownership Structure",
-    guide:{label:"Ownership changes everything",text:"A single-member LLC and a multi-member LLC are taxed completely differently. If partners are involved, your operating agreement becomes the most critical document you'll draft — more important than the filing itself."},
+    guide:{label:"Ownership changes everything",text:"A solo LLC and a co-founder LLC are taxed completely differently. If you have partners, the written agreement you create together is more important than the filing itself."},
     why:"This is the one answer that most directly shapes your recommendation.",
     title:"How many owners will the business have?",
     type:"options",cols:2,key:"owners",
     options:[
-      {label:"Just me",sub:"Solo founder. Simpler structure, full control, clean pass-through taxation."},
-      {label:"2 owners",sub:"Co-founder setup. Multi-member rules apply. Your operating agreement is non-negotiable."},
+      {label:"Just me",sub:"Solo founder. Simpler structure, full control. Business income goes straight to your personal tax return."},
+      {label:"2 owners",sub:"Co-founder setup. You'll need a written agreement that defines ownership, roles, and what happens if one of you leaves."},
       {label:"3 \u2013 4",sub:"Small founding team. Governance clarity becomes even more important here."},
       {label:"5+",sub:"Larger ownership group. Consider whether a corporate structure may be more appropriate long-term."}
     ]
   },
   {
     stage:"Strategic Priority",
-    guide:{label:"What matters most right now",text:"There's no universally correct priority. Early-stage founders often prioritize simplicity. Profitable solo founders often want to minimize self-employment tax. Founders in high-risk industries prioritize liability protection above all else."},
+    guide:{label:"What matters most right now",text:"There's no single right answer here. Early-stage founders usually want simplicity. More profitable founders focus on reducing taxes. Founders with higher legal risk prioritize protection."},
     why:"Knowing your top priority shapes which structure actually fits.",
     title:"What is your top priority at this stage?",
     type:"options",cols:1,key:"priority",
     options:[
-      {label:"Minimize taxes",sub:"You want to reduce the self-employment and pass-through tax burden as income grows."},
+      {label:"Minimize taxes",sub:"You want to reduce what you owe the IRS as your income grows."},
       {label:"Limit liability",sub:"You want maximum separation between personal assets and business risk."},
       {label:"Administrative simplicity",sub:"You want minimal filings and record-keeping requirements. Keep it lean while you build."}
     ]
   },
   {
     stage:"Capital Strategy",
-    guide:{label:"Investors change your structure options",text:"If you plan to raise outside capital — angels, VCs, or institutional investors — your entity choice is largely decided for you. Most institutional investors require a C-Corporation in Delaware. If you're bootstrapping, you have full flexibility."},
+    guide:{label:"Investors change your structure options",text:"If you plan to raise outside investment — from angels, VCs, or institutions — your structure choice is largely made for you. Most outside investors require a C-Corporation in Delaware. If you're self-funded, you have full flexibility."},
     why:"Whether you plan to raise outside money changes everything about your structure.",
     title:"Are outside investors part of your plan?",
     type:"options",cols:2,key:"investors",
