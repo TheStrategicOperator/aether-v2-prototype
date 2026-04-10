@@ -225,8 +225,8 @@ function decide(a){
 
 var CONTENT={
   'Single-Member LLC':{
-    balance:"It protects you without creating overhead you don't need yet. Not the default answer — the right one for where you are.",
-    qualifier:"This is the most efficient structure for where you are right now — not forever, just right now.",
+    balance:"Protects you without overhead you don't need yet. Not the default answer — the right one for where you are.",
+    qualifier:"Right for where you are. When that changes, AETHER will tell you.",
     means:"A Single-Member LLC puts a legal wall between your personal life and your business. If the business gets sued or owes money, your personal bank account, savings, and home stay protected. You report business income on your personal tax return — no separate corporate filing needed. It's the simplest formal structure that actually protects you.",
     tax:["Your business income passes directly to your personal tax return. This is called pass-through taxation. The business pays no separate federal income tax.","You'll pay income tax plus self-employment tax on your net profit. Self-employment tax is 15.3% — it covers Social Security and Medicare. You pay the full amount yourself.","You report income and expenses on a Schedule C attached to your personal return. Track everything — your deductions reduce your taxable profit directly."],
     upgrade:["An S-Corp election becomes worth looking at once your net profit is consistently above about $80,000 per year.","At that point, splitting income into salary and distributions reduces your self-employment tax in a way that covers the extra administrative cost.","Below that threshold, the complexity costs more than it saves. You're making the right call."],
@@ -234,8 +234,8 @@ var CONTENT={
     steps:["Choose your formation state — your home state is almost always the right move to start","File your Articles of Organization with your state","Apply for your EIN at irs.gov — free and takes about 10 minutes online","Open a dedicated business bank account using your EIN","Draft a single-member operating agreement — even as a solo founder, this protects you","Set up basic bookkeeping from day one — never mix personal and business funds"]
   },
   'Multi-Member LLC':{
-    balance:"It covers shared ownership cleanly while keeping taxes straightforward.",
-    qualifier:"This is the right structure for a founding team at your stage — not forever, just right now.",
+    balance:"Covers shared ownership cleanly. Taxes stay straightforward. Governance is defined.",
+    qualifier:"Right for your team at this stage. When you scale or raise, you'll know it's time to reassess.",
     means:"A Multi-Member LLC creates liability protection for all owners while keeping taxes clean. Each member pays taxes on their share of profits through their personal return — no corporate-level tax. The most important document you'll create is your operating agreement, which defines ownership splits, decision-making, and what happens if a partner wants out.",
     tax:["The LLC doesn't pay federal income tax. Each member pays taxes on their share of profits through their personal return.","The business files a Form 1065 each year — an informational return. Each member receives a K-1 showing their share of income and losses.","Each member owes self-employment tax on their share of active business income. Work with a CPA before year-end to model estimated quarterly payments."],
     upgrade:["An S-Corp election may be worth evaluating once combined net profit is high enough to justify the payroll requirements.","If you pursue institutional investment, investors will likely require converting to a C-Corporation at that stage.","For now, this structure covers your ownership situation cleanly without unnecessary complexity."],
@@ -244,7 +244,7 @@ var CONTENT={
   },
   'LLC with S-Corp Election':{
     balance:"Your revenue level makes tax optimization worth the structure. This is how you keep more of what you earn.",
-    qualifier:"You're at the stage where this structure makes financial sense. The math works in your favor.",
+    qualifier:"The math works at your revenue level. This is the structure that keeps more of what you earn.",
     means:"You form an LLC first, then file an election with the IRS to have it taxed like an S-Corporation. This splits your income into two parts: a salary you pay yourself, and distributions of the remaining profit. Only the salary portion is subject to self-employment tax. At your revenue level, that difference is real money.",
     tax:["You pay yourself a reasonable salary. Payroll taxes apply to that salary — Social Security and Medicare.","Profits above your salary are taken as distributions and are not subject to self-employment tax. This is the core tax advantage.","The IRS requires your salary to be defensible — roughly what the market would pay someone doing your job. A CPA should help you set this correctly."],
     upgrade:["You're already at the stage where this upgrade makes sense. The S-Corp election is the upgrade.","If net profit eventually exceeds $500,000 or you pursue institutional investment, a C-Corporation conversion may become necessary.","For now, this is the right structure for where you are."],
@@ -253,7 +253,7 @@ var CONTENT={
   },
   'C-Corporation':{
     balance:"You're building for outside investment. This is the structure that makes institutional capital possible.",
-    qualifier:"If you plan to raise, this isn't optional — it's what investors will expect.",
+    qualifier:"If you're raising, this isn't a preference. It's what investors require.",
     means:"A C-Corporation — especially formed in Delaware — is the standard structure for companies raising outside investment. It supports multiple share classes, stock-based compensation, and the equity mechanics institutional investors require. Delaware corporate law is the most developed in the country. Investors will expect this and will ask for it.",
     tax:["The corporation pays federal income tax on its profits at a flat 21% rate. Shareholders then pay personal income tax on any dividends received — called double taxation.","For growth-stage companies that reinvest profits rather than paying dividends, double taxation rarely matters in practice.","Early investors and founders may qualify for QSBS treatment — potentially excluding up to $10 million in gains from federal tax if shares are held for five or more years."],
     upgrade:["You're already in the right structure for the path you've described.","As you grow, focus on maintaining a clean cap table, issuing shares correctly, and staying current on Delaware and home-state compliance.","If you ever shift away from the institutional investment path, the structure can be revisited — but most founders who start here stay here."],
@@ -272,17 +272,17 @@ function buildEcho(a){
 
 function buildSituation(a,entity){
   var parts=[];
-  if(a.owners==='Just me') parts.push("You're starting as a solo founder");
+  if(a.owners==='Just me') parts.push("You're a solo founder");
   else if(a.owners==='2 owners') parts.push("You're building with a co-founder");
   else if(a.owners==='3 \u2013 4'||a.owners==='3 - 4') parts.push("You have a small founding team");
   else if(a.owners==='5+') parts.push("You have a larger ownership group");
   else parts.push("You're starting out");
   if(a.investors==='Yes, investors') parts.push("planning to raise outside investment");
   else parts.push("not raising outside capital");
-  if(a.revenue==='Under $50K') parts.push("and your expected revenue is still in the early stage");
-  else if(a.revenue==='$50K \u2013 $125K'||a.revenue==='$50K - $125K') parts.push("and your revenue is in the early traction range");
-  else if(a.revenue==='$125K \u2013 $500K'||a.revenue==='$125K - $500K') parts.push("and your revenue is at a scaling stage");
-  else if(a.revenue==='$500K+') parts.push("and your revenue is at an established level");
+  if(a.revenue==='Under $50K') parts.push("early-stage revenue");
+  else if(a.revenue==='$50K \u2013 $125K'||a.revenue==='$50K - $125K') parts.push("early traction");
+  else if(a.revenue==='$125K \u2013 $500K'||a.revenue==='$125K - $500K') parts.push("scaling revenue");
+  else if(a.revenue==='$500K+') parts.push("established revenue");
   var s=parts.join(', ')+'.';
   if(a.priority==='Minimize taxes') s+=' You want to reduce your tax burden as income grows.';
   else if(a.priority==='Limit liability') s+=' You want your personal assets protected from business risk.';
@@ -327,11 +327,11 @@ function renderBlueprint(wrap,entity,isOverride){
 
     '<p class="echo-bar">'+echo+'</p>'+
 
-    '<div class="progress-signal"><div class="progress-dot"></div><span class="progress-text">Structure selected — step 1 of 2 complete</span></div>'+
+    '<div class="progress-signal"><div class="progress-dot"></div><span class="progress-text">Structure confirmed — ready to file</span></div>'+
 
     '<div class="transformation-bar">'+
-      '<p class="transformation-text">Your business now has a legal foundation. That puts you ahead of most people who are still deciding whether to start.</p>'+
-      '<p class="identity-line">This is how early-stage founders set themselves up correctly.</p>'+
+      '<p class="transformation-text">The decision is made. You\'re no longer figuring out what to do — you\'re executing.</p>'+
+      '<p class="identity-line">Founders who get this right early don\'t revisit it. They build on it.</p>'+
     '</div>'+
 
     '<div class="decision-wrap">'+
@@ -366,8 +366,8 @@ function renderBlueprint(wrap,entity,isOverride){
       '<div class="r-label">When To Upgrade</div>'+
       '<div class="r-body">'+
         '<ul class="upgrade-list">'+upgradeHtml+'</ul>'+
-        (entity==='Single-Member LLC'?'<div class="upgrade-milestone"><p class="upgrade-milestone-text"><strong>When you hit $80K+ net profit</strong> — your tax strategy changes. Come back to AETHER at that point and re-run the scan. Your structure recommendation will shift.</p></div>':'')+
-        (entity==='Multi-Member LLC'?'<div class="upgrade-milestone"><p class="upgrade-milestone-text"><strong>When outside investment enters the picture</strong> — your structure needs to evolve. Come back to AETHER before that conversation happens, not after.</p></div>':'')+
+        (entity==='Single-Member LLC'?'<div class="upgrade-milestone"><p class="upgrade-milestone-text"><strong>When net profit crosses $80K consistently</strong> — re-run this scan. Your recommendation will shift.</p></div>':'')+
+        (entity==='Multi-Member LLC'?'<div class="upgrade-milestone"><p class="upgrade-milestone-text"><strong>When outside investment enters the picture</strong> — re-run this scan before that conversation, not after.</p></div>':'')+
       '</div>'+
     '</div>'+
 
@@ -385,7 +385,7 @@ function renderBlueprint(wrap,entity,isOverride){
     '</div>'+
 
     '<div class="rescan-section">'+
-      '<div class="rescan-title">Your structure evolves as you grow</div>'+
+      '<div class="rescan-title">Return when any of these apply</div>'+
       '<ul class="rescan-triggers">'+
         '<li>You bring on a partner or co-founder</li>'+
         '<li>Your net profit crosses $80K consistently</li>'+
@@ -395,13 +395,13 @@ function renderBlueprint(wrap,entity,isOverride){
 
     '<div class="cta-block">'+
       '<p class="cta-headline">Structure decided. Time to file.</p>'+
-      '<p class="cta-sub">Two vetted providers. One prioritizes privacy, one prioritizes cost. Pick one and move forward.</p>'+
-      '<a href="partners.html" class="btn-primary">Start Filing \u2192</a>'+
+      '<p class="cta-sub">You know your structure. You know why it fits. The only thing left is the filing.</p>'+
+      '<a href="partners.html" class="btn-primary">File My '+entity+' \u2192</a>'+
     '</div>'+
 
     '<div style="text-align:center;">'+
       '<button class="btn-secondary" onclick="resetScan()">\u2190 Update My Answers</button>'+
-      '<p class="bookmark-note">Saved in this browser. Bookmark this page — when your revenue or goals shift, re-run the scan and your recommendation updates automatically.</p>'+
+      '<p class="bookmark-note">Saved in this browser. Bookmark this page — your recommendation updates when your situation does.</p>'+
     '</div>';
 
   document.querySelectorAll('#stepsList li').forEach(function(li){
