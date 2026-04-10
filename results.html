@@ -26,6 +26,12 @@ nav a:hover,nav a.active{color:#C9A14A;}
 @media(max-width:500px){.tt-box{left:-20px;transform:none;width:210px;}}
 .results-wrap{max-width:780px;margin:0 auto;padding:108px 40px 80px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.quick-summary{margin-bottom:28px;padding:20px 24px 20px 24px;background:#0A1F38!important;border:1px solid rgba(201,161,74,0.2);border-left:3px solid #C9A14A;opacity:0;animation:fadeUp 0.5s ease 0.0s forwards;}
+.qs-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:12px;}
+.qs-row{display:flex;flex-direction:column;gap:8px;}
+.qs-item{font-size:13px;color:#A0C0E0;line-height:1.55;padding-left:16px;position:relative;}
+.qs-item::before{content:'-';position:absolute;left:0;color:rgba(201,161,74,0.5);}
+.qs-item strong{color:#EEF6FF;font-weight:500;}
 .headsup-section{margin-bottom:24px;padding:20px 24px;background:#061729!important;border:1px solid rgba(255,255,255,0.07);border-left:2px solid rgba(201,161,74,0.35);opacity:0;animation:fadeUp 0.5s ease 0.12s forwards;}
 .headsup-title{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9A14A;margin-bottom:4px;}
 .headsup-sub{font-size:11px;color:#304F6A;margin-bottom:14px;letter-spacing:0.04em;}
@@ -230,8 +236,8 @@ var CONTENT={
     means:"A Single-Member LLC separates your personal assets from your business legally. If the business is sued or owes money, your personal savings and home are not at risk. Income reports on your personal return — no corporate filing. Simplest formal structure that actually protects you.",
     tax:["Business income passes directly to your personal return. The business pays no separate federal tax.","You pay income tax plus self-employment tax on net profit. Self-employment tax is 15.3% — Social Security and Medicare. Unlike an employee, you cover the full amount.","Income and expenses go on a Schedule C with your personal return. Every deduction directly reduces your taxable profit."],
     upgrade:["An S-Corp election is worth evaluating once net profit consistently exceeds $80,000.","At that level, splitting income into salary and distributions reduces self-employment tax enough to cover the added overhead.","Below that threshold, the complexity costs more than it saves. This is the right structure now."],
-    notFit:[{l:"S-Corp Election",r:"The math doesn't work yet. It saves money when net profit is consistently above $80K. Below that, you're adding payroll complexity for no return."},{l:"C-Corporation",r:"C-Corps exist for one reason — raising institutional capital. Without that plan, you're carrying the weight of a structure built for a different situation."},{l:"Multi-Member LLC",r:"You're the only owner. This structure is for businesses with two or more co-founders."}],
-    steps:["Choose your formation state — your home state is almost always the right move to start","File your Articles of Organization with your state","Apply for your EIN at irs.gov — free and takes about 10 minutes online","Open a dedicated business bank account using your EIN","Draft a single-member operating agreement — even as a solo founder, this protects you","Set up basic bookkeeping from day one — never mix personal and business funds"]
+    notFit:[{l:"S-Corp Election",r:"The math doesn't work yet. It saves money when net profit is consistently above $80K. Below that, you're adding payroll complexity for no return."},{l:"C-Corporation",r:"C-Corps are built for companies raising outside investment. Without that plan, you're taking on corporate overhead that doesn't benefit you."},{l:"Multi-Member LLC",r:"You're the only owner. This structure is for businesses with two or more co-founders."}],
+    steps:["Choose your formation state — your home state is almost always the right move to start","File your LLC formation documents with your state","Apply for your EIN at irs.gov — free and takes about 10 minutes online","Open a dedicated business bank account using your EIN","Draft a written operating agreement — even as a solo founder, this protects you","Set up basic bookkeeping from day one — never mix personal and business funds"]
   },
   'Multi-Member LLC':{
     balance:"Covers shared ownership cleanly. Taxes stay straightforward. Governance is defined.",
@@ -240,7 +246,7 @@ var CONTENT={
     tax:["The LLC pays no federal income tax. Each member reports and pays tax on their share personally.","The business files a Form 1065 annually. Each member receives a K-1 showing their income and loss share.","Each member owes self-employment tax on their share. Work with a CPA before year-end on estimated quarterly payments."],
     upgrade:["An S-Corp election becomes worth evaluating once combined net profit justifies the payroll overhead.","If you pursue institutional investment, a C-Corporation conversion will be required.","For now, this covers your situation cleanly."],
     notFit:[{l:"Single-Member LLC",r:"You have co-founders. A single-member structure doesn't cover shared ownership or partner governance."},{l:"C-Corporation",r:"No institutional investors in the plan right now. Adds significant legal cost and complexity without the capital-raise benefit."},{l:"S-Corp Election",r:"Available later, but the payroll requirements add overhead that isn't worth it at this stage."}],
-    steps:["Agree on ownership percentages in writing before you file anything","File your Articles of Organization listing all members","Apply for your EIN — required for multi-member entities even without employees","Draft a comprehensive operating agreement — get legal review, not a template","Open a business bank account with capital accounts tracked for each member","Set up basic bookkeeping and calendar your state annual report deadline"]
+    steps:["Agree on ownership percentages in writing before you file anything","File your LLC formation documents listing all members","Apply for your EIN — required for multi-member entities even without employees","Draft a written ownership agreement — get legal review, not a generic template","Open a business bank account with each member's contributions tracked separately","Set up basic bookkeeping and calendar your state annual report deadline"]
   },
   'LLC with S-Corp Election':{
     balance:"Your revenue makes tax optimization worth the added structure. This is how you keep more of what you earn.",
@@ -249,7 +255,7 @@ var CONTENT={
     tax:["You pay yourself a salary. Payroll taxes apply to that salary — Social Security and Medicare.","Profit above your salary is taken as distributions — not subject to self-employment tax. That's where the savings are.","The IRS requires a defensible salary — market rate for your role. A CPA should set this number."],
     upgrade:["You're already at the stage where this makes sense. The S-Corp election is the upgrade.","If net profit exceeds $500K or you pursue institutional investment, a C-Corporation conversion becomes necessary.","This is the right structure for where you are."],
     notFit:[{l:"Standard LLC",r:"At your revenue level, staying with a standard LLC means leaving real money on the table in self-employment taxes every year."},{l:"C-Corporation",r:"No institutional investors in your plan. C-Corps add double taxation and legal complexity without the capital-raise benefit."},{l:"Multi-Member LLC",r:"You're the primary owner. Multi-member governance adds complexity your situation doesn't require."}],
-    steps:["Form the LLC in your chosen state first","File Form 2553 with the IRS within 75 days of formation — or by March 15 for an existing LLC","Set up payroll and pay yourself a documented, reasonable salary before taking distributions","Apply for your EIN immediately if not already done","Open separate accounts for operating funds and owner distributions","Engage a CPA before your first full tax year under the S-Corp election"]
+    steps:["Form the LLC in your chosen state first","File the S-Corp tax election with the IRS within 75 days of formation — or by March 15 for an existing LLC","Set up payroll and pay yourself a documented, reasonable salary before taking distributions","Apply for your EIN immediately if not already done","Open separate accounts for operating funds and owner distributions","Engage a CPA before your first full tax year under the S-Corp election"]
   },
   'C-Corporation':{
     balance:"You're building for outside investment. This is the structure that makes institutional capital possible.",
@@ -258,7 +264,7 @@ var CONTENT={
     tax:["The corporation pays 21% federal income tax on profits. Shareholders pay personal tax on dividends — this is double taxation.","For companies that reinvest profits rather than pay dividends, double taxation rarely matters in practice.","Early investors and founders may qualify for QSBS — excluding up to $10 million in gains from federal tax if shares are held five or more years."],
     upgrade:["You're in the right structure for this path.","Focus on a clean cap table, correct share issuance, and staying current on Delaware and home-state compliance.","If the investment path changes, the structure can shift — but most founders who start here stay here."],
     notFit:[{l:"Single-Member LLC",r:"Can't support the share classes and investor mechanics that institutional capital requires."},{l:"Multi-Member LLC",r:"LLCs can't cleanly issue preferred stock or support the equity structures investors expect."},{l:"S-Corp Election",r:"S-Corps can't have more than 100 shareholders or institutional investors. Not compatible with the capital-raise path you described."}],
-    steps:["Engage a startup attorney before filing — decisions made at formation affect fundraising for years","File in Delaware for investor compatibility","Register as a foreign entity in your home state if you operate outside Delaware","Apply for your EIN as a C-Corporation","Issue founders shares at a low par value immediately after formation","File 83(b) elections for all founders within 30 days of share issuance — this deadline cannot be extended","Set up a cap table tool like Carta from day one"]
+    steps:["Engage a startup attorney before filing — decisions made at formation affect fundraising for years","File in Delaware for investor compatibility","Register as a foreign entity in your home state if you operate outside Delaware","Apply for your EIN as a C-Corporation","Issue founder shares at a low nominal value immediately after formation — standard practice","File an 83(b) tax election for all founders within 30 days of receiving shares — this deadline cannot be extended under any circumstances","Set up an ownership tracking tool like Carta from day one — records who owns what at every stage"]
   }
 };
 
@@ -284,9 +290,9 @@ function buildSituation(a,entity){
   else if(a.revenue==='$125K \u2013 $500K'||a.revenue==='$125K - $500K') parts.push("scaling revenue");
   else if(a.revenue==='$500K+') parts.push("established revenue");
   var s=parts.join(', ')+'.';
-  if(a.priority==='Minimize taxes') s+=' You want to reduce your tax burden as income grows.';
-  else if(a.priority==='Limit liability') s+=' You want your personal assets protected from business risk.';
-  else if(a.priority==='Administrative simplicity') s+=' You want to keep things simple and manageable while you build.';
+  if(a.priority==='Minimize taxes') s+=' Your focus is keeping taxes low as income grows.';
+  else if(a.priority==='Limit liability') s+=' Your focus is keeping your personal assets protected from business risk.';
+  else if(a.priority==='Administrative simplicity') s+=' Your focus is keeping things simple and manageable while you build.';
   if(a.operatingState) s+=' Operating in '+a.operatingState+'.';
   return s.charAt(0).toUpperCase()+s.slice(1);
 }
@@ -309,6 +315,19 @@ function buildFit(a,entity){
   return pts;
 }
 
+function buildQuickSummary(entity,d){
+  var upgrade='';
+  if(entity==='Single-Member LLC') upgrade='When net profit consistently exceeds $80K, an S-Corp tax option may save you money — run the scan again at that point.';
+  else if(entity==='Multi-Member LLC') upgrade='If you raise outside investment, you'll need to convert to a C-Corporation. Come back before that conversation.';
+  else if(entity==='LLC with S-Corp Election') upgrade='If net profit exceeds $500K or you raise institutional investment, a C-Corporation conversion becomes necessary.';
+  else if(entity==='C-Corporation') upgrade='You're in the right structure for this path. Maintain a clean cap table and stay current on compliance.';
+  return '<div class="quick-summary"><div class="qs-label">Quick Summary</div><div class="qs-row">'+
+    '<div class="qs-item"><strong>Structure:</strong> '+entity+'</div>'+
+    '<div class="qs-item"><strong>What it does:</strong> '+d.balance+'</div>'+
+    '<div class="qs-item"><strong>When to reassess:</strong> '+upgrade+'</div>'+
+  '</div></div>';
+}
+
 function renderBlueprint(wrap,entity,isOverride){
   var d=CONTENT[entity];
   if(!d) return;
@@ -326,6 +345,8 @@ function renderBlueprint(wrap,entity,isOverride){
     (isOverride?'<div style="margin-bottom:24px;padding:11px 18px;background:rgba(201,161,74,0.07);border:1px solid rgba(201,161,74,0.25);border-left:3px solid #C9A14A;"><p style="font-size:12px;color:#C9A14A;font-weight:500;">You chose to proceed — your blueprint is below.</p></div>':'')+
 
     '<p class="echo-bar">'+echo+'</p>'+
+
+    buildQuickSummary(entity,d)+
 
     '<div class="progress-signal"><div class="progress-dot"></div><span class="progress-text">Structure confirmed — ready to file</span></div>'+
 
@@ -423,7 +444,7 @@ function renderHold(wrap){
           '<li>Every state charges annual fees and report requirements — whether or not your business made a dollar that year.</li>'+
           '<li>Forming too early locks in decisions that can be expensive to undo — wrong state, wrong entity, wrong ownership splits.</li>'+
           '<li>Most clients and payment processors work with a sole proprietor. You don\'t need an LLC to start earning.</li>'+
-          '<li>Formation signals permanence. Right now your priority should be proving the business works, not formalizing it.</li>'+
+          '<li>Filing creates obligations to maintain — whether or not your business makes money. Right now your priority is proving the business works.</li>'+
         '</ul>'+
       '</div>'+
     '</div>'+
@@ -519,7 +540,7 @@ function buildHeadsUp(a, entity){
 
   // Formation state mismatch
   if(a.formationState && a.formationState !== 'My Home State' && a.operatingState){
-    tips.push("Forming outside your home state usually means filing in two places — worth confirming the cost difference before you decide.");
+    tips.push("Forming outside your home state usually means filing and paying fees in two places — confirm the cost difference before you decide.");
   }
 
   // Multi-member with no mention of agreement
