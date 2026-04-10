@@ -317,10 +317,10 @@ function buildFit(a,entity){
 
 function buildQuickSummary(entity,d){
   var upgrade='';
-  if(entity==='Single-Member LLC') upgrade='When net profit consistently exceeds $80K, an S-Corp tax option may save you money — run the scan again at that point.';
-  else if(entity==='Multi-Member LLC') upgrade='If you raise outside investment, you'll need to convert to a C-Corporation. Come back before that conversation.';
+  if(entity==='Single-Member LLC') upgrade='When net profit consistently exceeds $80K, an S-Corp tax option may save you money. Re-run the scan at that point.';
+  else if(entity==='Multi-Member LLC') upgrade='If you raise outside investment, a C-Corporation conversion will be required. Come back before that conversation.';
   else if(entity==='LLC with S-Corp Election') upgrade='If net profit exceeds $500K or you raise institutional investment, a C-Corporation conversion becomes necessary.';
-  else if(entity==='C-Corporation') upgrade='You're in the right structure for this path. Maintain a clean cap table and stay current on compliance.';
+  else if(entity==='C-Corporation') upgrade='You are in the right structure for this path. Maintain a clean cap table and stay current on compliance.';
   return '<div class="quick-summary"><div class="qs-label">Quick Summary</div><div class="qs-row">'+
     '<div class="qs-item"><strong>Structure:</strong> '+entity+'</div>'+
     '<div class="qs-item"><strong>What it does:</strong> '+d.balance+'</div>'+
