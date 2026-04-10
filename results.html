@@ -77,6 +77,15 @@ nav a:hover,nav a.active{color:#C9A14A;}
 .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:transparent!important;border:1px solid rgba(255,255,255,0.10);color:#5A88B0;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;appearance:none;transition:all 0.2s;text-decoration:none;}
 .btn-secondary:hover{border-color:#5A88B0;color:#C8DEFF;}
 .bookmark-note{text-align:center;font-size:11px;color:#2A4060;margin-top:12px;letter-spacing:0.04em;}
+.progress-signal{display:flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:fadeUp 0.4s ease 0.03s forwards;}
+.progress-dot{width:8px;height:8px;border-radius:50%;background:#C9A14A;flex-shrink:0;}
+.progress-text{font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(201,161,74,0.65);}
+.transformation-bar{margin-bottom:32px;padding:18px 22px;background:rgba(201,161,74,0.05);border:1px solid rgba(201,161,74,0.15);border-left:3px solid rgba(201,161,74,0.5);opacity:0;animation:fadeUp 0.5s ease 0.09s forwards;}
+.transformation-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#C8DEFF;line-height:1.4;font-style:italic;}
+.identity-line{font-size:12px;color:#4A7090;margin-top:8px;letter-spacing:0.03em;}
+.upgrade-milestone{margin-top:14px;padding:14px 18px;background:#061729!important;border:1px solid rgba(201,161,74,0.15);border-left:2px solid rgba(201,161,74,0.35);}
+.upgrade-milestone-text{font-size:12px;color:#4A7090;line-height:1.6;}
+.upgrade-milestone-text strong{color:rgba(201,161,74,0.7);font-weight:500;}
 .no-data{text-align:center;padding:80px 40px;}
 .no-data h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#EEF6FF;margin-bottom:16px;}
 .no-data p{color:#6A90B8;margin-bottom:28px;}
@@ -216,8 +225,8 @@ function decide(a){
 
 var CONTENT={
   'Single-Member LLC':{
-    balance:"This isn’t a default answer — it’s based on how your situation actually lines up right now.",
-    qualifier:"It protects you without adding complexity you don’t need yet. This is the right move for where you are right now — not forever, just right now.",
+    balance:"It protects you without creating overhead you don't need yet. Not the default answer — the right one for where you are.",
+    qualifier:"This is the most efficient structure for where you are right now — not forever, just right now.",
     means:"A Single-Member LLC puts a legal wall between your personal life and your business. If the business gets sued or owes money, your personal bank account, savings, and home stay protected. You report business income on your personal tax return — no separate corporate filing needed. It's the simplest formal structure that actually protects you.",
     tax:["Your business income passes directly to your personal tax return. This is called pass-through taxation. The business pays no separate federal income tax.","You'll pay income tax plus self-employment tax on your net profit. Self-employment tax is 15.3% — it covers Social Security and Medicare. You pay the full amount yourself.","You report income and expenses on a Schedule C attached to your personal return. Track everything — your deductions reduce your taxable profit directly."],
     upgrade:["An S-Corp election becomes worth looking at once your net profit is consistently above about $80,000 per year.","At that point, splitting income into salary and distributions reduces your self-employment tax in a way that covers the extra administrative cost.","Below that threshold, the complexity costs more than it saves. You're making the right call."],
@@ -318,6 +327,13 @@ function renderBlueprint(wrap,entity,isOverride){
 
     '<p class="echo-bar">'+echo+'</p>'+
 
+    '<div class="progress-signal"><div class="progress-dot"></div><span class="progress-text">Structure selected — step 1 of 2 complete</span></div>'+
+
+    '<div class="transformation-bar">'+
+      '<p class="transformation-text">Your business now has a legal foundation. That puts you ahead of most people who are still deciding whether to start.</p>'+
+      '<p class="identity-line">This is how early-stage founders set themselves up correctly.</p>'+
+    '</div>'+
+
     '<div class="decision-wrap">'+
       '<div class="decision-eyebrow">Your Recommendation</div>'+
       '<h1 class="decision-headline">The right structure for your situation is a<br><em>'+entity+'</em></h1>'+
@@ -348,7 +364,11 @@ function renderBlueprint(wrap,entity,isOverride){
 
     '<div class="r-section" style="animation-delay:0.44s">'+
       '<div class="r-label">When To Upgrade</div>'+
-      '<div class="r-body"><ul class="upgrade-list">'+upgradeHtml+'</ul></div>'+
+      '<div class="r-body">'+
+        '<ul class="upgrade-list">'+upgradeHtml+'</ul>'+
+        (entity==='Single-Member LLC'?'<div class="upgrade-milestone"><p class="upgrade-milestone-text"><strong>When you hit $80K+ net profit</strong> — your tax strategy changes. Come back to AETHER at that point and re-run the scan. Your structure recommendation will shift.</p></div>':'')+
+        (entity==='Multi-Member LLC'?'<div class="upgrade-milestone"><p class="upgrade-milestone-text"><strong>When outside investment enters the picture</strong> — your structure needs to evolve. Come back to AETHER before that conversation happens, not after.</p></div>':'')+
+      '</div>'+
     '</div>'+
 
     '<div class="r-section" style="animation-delay:0.5s">'+
@@ -365,7 +385,7 @@ function renderBlueprint(wrap,entity,isOverride){
     '</div>'+
 
     '<div class="rescan-section">'+
-      '<div class="rescan-title">Come back when something changes</div>'+
+      '<div class="rescan-title">Your structure evolves as you grow</div>'+
       '<ul class="rescan-triggers">'+
         '<li>You bring on a partner or co-founder</li>'+
         '<li>Your net profit crosses $80K consistently</li>'+
@@ -374,14 +394,14 @@ function renderBlueprint(wrap,entity,isOverride){
     '</div>'+
 
     '<div class="cta-block">'+
-      '<p class="cta-headline">Your next step is ready — let’s move.</p>'+
-      '<p class="cta-sub">Based on what you told us, here are the two services that fit your situation — one prioritizes privacy, one prioritizes cost. Neither will oversell you.</p>'+
-      '<a href="partners.html" class="btn-primary">See Your Best Formation Options →</a>'+
+      '<p class="cta-headline">Structure decided. Time to file.</p>'+
+      '<p class="cta-sub">Two vetted providers. One prioritizes privacy, one prioritizes cost. Pick one and move forward.</p>'+
+      '<a href="partners.html" class="btn-primary">Start Filing \u2192</a>'+
     '</div>'+
 
     '<div style="text-align:center;">'+
       '<button class="btn-secondary" onclick="resetScan()">\u2190 Update My Answers</button>'+
-      '<p class="bookmark-note">Your recommendation is saved in this browser. Bookmark this page and return when your situation shifts.</p>'+
+      '<p class="bookmark-note">Saved in this browser. Bookmark this page — when your revenue or goals shift, re-run the scan and your recommendation updates automatically.</p>'+
     '</div>';
 
   document.querySelectorAll('#stepsList li').forEach(function(li){
